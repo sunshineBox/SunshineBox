@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.utlis;
+package shaolizhi.sunshinebox.utils;
 
 import android.app.Activity;
 import android.widget.Toast;

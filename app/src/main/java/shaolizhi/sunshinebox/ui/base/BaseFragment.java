@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.utlis.ToastUtils;
+import shaolizhi.sunshinebox.utils.ToastUtils;
 
 
 /**

@@ -10,7 +10,7 @@ import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.utlis.ToastUtils;
+import shaolizhi.sunshinebox.utils.ToastUtils;
 
 
 /**
