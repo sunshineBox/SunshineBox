@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SunshineBox</string>
+
+    <!--BaseActivity and BaseFragment-->
+    <string name="base_string1">服务器错误，请稍后再试</string>
+    <string name="base_string2">001：数据解析错误</string>
+    <string name="base_string3">401：服务器系统错误</string>
+    <string name="base_string4">402：请求参数错误</string>
+    <string name="base_string5">203：未登录</string>
+    <string name="base_string6">网络连接失败</string>
+    <string name="base_string7">网络连接失败，请检查您的网络设置</string>
 </resources>
