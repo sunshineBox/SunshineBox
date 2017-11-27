@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.WindowManager;
@@ -34,6 +35,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         setContentView(layoutId());
         ButterKnife.bind(this);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         created(savedInstanceState);
 
     }
@@ -43,7 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onResume();
         resumed();
     }
-
 
 
     public void showToastForRequestResult(@NonNull String flag) {
@@ -65,23 +69,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-    protected void toast401(){
+    protected void toast401() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string3));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string3));
     }
 
-    protected void toast402(){
+    protected void toast402() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string4));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string4));
     }
 
-    protected void toast203(){
+    protected void toast203() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string5));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string5));
     }
 
-    protected void toast403(){
+    protected void toast403() {
         ToastUtils.showToast(getString(R.string.base_string7));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string6));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string6));
     }
 }
