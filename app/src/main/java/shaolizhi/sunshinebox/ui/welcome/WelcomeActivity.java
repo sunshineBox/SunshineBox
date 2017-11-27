@@ -1,12 +1,20 @@
 package shaolizhi.sunshinebox.ui.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 
+import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.ui.activation_code.ActivationCodeActivity;
 
 public class WelcomeActivity extends BaseActivity {
+
+    @OnClick(R.id.welcome_button)
+    public void openActivity() {
+        Intent intent = new Intent(WelcomeActivity.this, ActivationCodeActivity.class);
+        startActivity(intent);
+    }
 
 
     @Override
@@ -16,10 +24,7 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
+
     }
 
     @Override
