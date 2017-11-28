@@ -9,6 +9,13 @@
     android:focusableInTouchMode="true"
     tools:context="shaolizhi.sunshinebox.ui.activation_code.ActivationCodeActivity">
 
+    <ImageButton
+        android:id="@+id/activation_code_act_imagebutton1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#6bcab2"
+        android:src="@drawable/ic_arrow_back" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

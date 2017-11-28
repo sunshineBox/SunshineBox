@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 
@@ -29,6 +30,11 @@ public class ActivationCodeActivity extends BaseActivity {
 
     @BindView(R.id.activation_code_act_relativelayout1)
     RelativeLayout relativeLayout;
+
+    @OnClick(R.id.activation_code_act_imagebutton1)
+    public void back() {
+        finish();
+    }
 
     @Override
     protected int layoutId() {
