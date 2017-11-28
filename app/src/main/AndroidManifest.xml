@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activation_code.ActivationCodeActivity"></activity>
+        <activity
+            android:name=".ui.activation_code.ActivationCodeActivity"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

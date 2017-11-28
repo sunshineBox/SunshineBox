@@ -31,4 +31,6 @@ public class WelcomeActivity extends BaseActivity {
     protected void resumed() {
 
     }
+
+
 }

@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activation_code_act_relativelayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6bcab2"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="shaolizhi.sunshinebox.ui.activation_code.ActivationCodeActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="180dp"
         android:layout_marginTop="60dp"
         android:text="@string/activation_code_act_string2"
         android:textColor="#f9f9f9"
@@ -17,16 +20,17 @@
         android:textStyle="bold" />
 
     <EditText
+        android:id="@+id/activation_code_act_edittext1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
-        android:layout_marginStart="120dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginStart="175dp"
         android:layout_marginTop="160dp"
         android:hint="@string/activation_code_act_string1"
         android:inputType="phone"
         android:paddingBottom="26dp"
-        android:paddingEnd="140dp"
-        android:paddingStart="140dp"
+        android:paddingEnd="180dp"
+        android:paddingStart="180dp"
         android:textColor="#f9f9f9"
         android:textColorHint="#96f9f9f9"
         android:textSize="30sp"
@@ -35,9 +39,57 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="129dp"
+        android:layout_marginStart="180dp"
         android:layout_marginTop="169dp"
         android:text="@string/activation_code_act_string3"
         android:textColor="#f9f9f9"
         android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/activation_code_act_button1"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="740dp"
+        android:layout_marginTop="169dp"
+        android:background="@drawable/shape_white_button"
+        android:text="发送验证码"
+        android:textColor="#6bcab2"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/activation_code_act_edittext2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="180dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="240dp"
+        android:hint="请输入手机验证码"
+        android:inputType="phone"
+        android:paddingBottom="26dp"
+        android:paddingEnd="180dp"
+        android:paddingStart="180dp"
+        android:textColor="#f9f9f9"
+        android:textColorHint="#96f9f9f9"
+        android:textSize="30sp"
+        android:theme="@style/MyEditText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="249dp"
+        android:text="验证码"
+        android:textColor="#f9f9f9"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/activation_code_act_button2"
+        android:layout_width="670dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/shape_white_button"
+        android:text="下一步"
+        android:textColor="#6bcab2"
+        android:textStyle="bold" />
 </RelativeLayout>
