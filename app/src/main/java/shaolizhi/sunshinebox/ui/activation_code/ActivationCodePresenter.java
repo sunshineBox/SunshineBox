@@ -3,10 +3,13 @@ package shaolizhi.sunshinebox.ui.activation_code;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 
+import java.util.Objects;
+
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.base.BaseFragment;
 import shaolizhi.sunshinebox.utils.App;
+import shaolizhi.sunshinebox.utils.ToastUtils;
 
 /**
  * 由邵励治于2017/11/29创造.
@@ -65,15 +68,45 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
 
     @Override
     public void requestVerificationCodeBeanSuccess(@NonNull VerificationCodeBean bean) {
-
+        if (bean.getFlag() != null) {
+            switch (bean.getFlag()) {
+                case "001":
+                    if (Objects.equals(bean.getMessage(), "success")) {
+                        ToastUtils.showToast("验证码发送成功");
+                    } else if (Objects.equals(bean.getMessage(), "failure")) {
+                        ToastUtils.showToast("对不起，该手机号没有激活权限或已经激活");
+                        resumeResendButtonState();
+                    } else {
+                        if (view instanceof BaseFragment) {
+                            ((BaseFragment) view).showToastForRequestResult("401");
+                        }
+                        if (view instanceof BaseActivity) {
+                            ((BaseActivity) view).showToastForRequestResult("401");
+                        }
+                    }
+                    break;
+                default:
+                    if (view instanceof BaseFragment) {
+                        ((BaseFragment) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    if (view instanceof BaseActivity) {
+                        ((BaseActivity) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    break;
+            }
+        }
     }
 
-    @Override
-    public void requestVerificationCodeBeanFailure() {
+    private void resumeResendButtonState() {
         timer.cancel();
         view.setResendButtonEnable(true);
         view.setResendButtonText(App.mAppContext.getString(R.string.activation_code_act_string4));
         isTimerRunning = false;
+    }
+
+    @Override
+    public void requestVerificationCodeBeanFailure() {
+        resumeResendButtonState();
 
         if (view instanceof BaseFragment) {
             ((BaseFragment) view).showToastForRequestResult("403");
