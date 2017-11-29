@@ -8,14 +8,14 @@ import android.support.annotation.NonNull;
 
 public class ActivationCodeModel implements ActivationCodeContract.Model {
 
-    ActivationCodeContract.CallBack callBack;
+    private ActivationCodeContract.CallBack callBack;
 
-    public ActivationCodeModel(ActivationCodeContract.CallBack callBack) {
+    ActivationCodeModel(ActivationCodeContract.CallBack callBack) {
         this.callBack = callBack;
     }
 
     @Override
     public void requestVerificationCodeBean(@NonNull String phoneNumber) {
-
+        callBack.requestVerificationCodeBeanFailure();
     }
 }

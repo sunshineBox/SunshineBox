@@ -70,6 +70,11 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
 
     @Override
     public void requestVerificationCodeBeanFailure() {
+        timer.cancel();
+        view.setResendButtonEnable(true);
+        view.setResendButtonText(App.mAppContext.getString(R.string.activation_code_act_string4));
+        isTimerRunning = false;
+
         if (view instanceof BaseFragment) {
             ((BaseFragment) view).showToastForRequestResult("403");
         }

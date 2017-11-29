@@ -45,6 +45,11 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
     @BindView(R.id.activation_code_act_button2)
     Button commitButton;
 
+    @OnClick(R.id.activation_code_act_button2)
+    public void commit() {
+
+    }
+
     @BindView(R.id.activation_code_act_relativelayout1)
     RelativeLayout relativeLayout;
 
@@ -107,7 +112,7 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
         sendVerificationCodeButton.setEnabled(clickable);
         if (clickable) {
             sendVerificationCodeButton.setBackgroundResource(R.drawable.shape_white_button);
-            sendVerificationCodeButton.setTextColor(Color.parseColor("#04917f"));
+            sendVerificationCodeButton.setTextColor(Color.parseColor("#6bcab2"));
         } else {
             sendVerificationCodeButton.setBackgroundResource(R.drawable.shape_trans_button);
             sendVerificationCodeButton.setTextColor(Color.parseColor("#f9f9f9"));
