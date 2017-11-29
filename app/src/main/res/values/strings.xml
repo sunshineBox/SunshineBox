@@ -19,5 +19,6 @@
     <string name="activation_code_act_string1">请输入您的手机号</string>
     <string name="activation_code_act_string2">输入手机号</string>
     <string name="activation_code_act_string3">手机号</string>
+    <string name="activation_code_act_string4">再次发送</string>
 
 </resources>

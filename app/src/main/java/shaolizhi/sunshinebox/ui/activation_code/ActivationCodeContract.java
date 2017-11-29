@@ -12,10 +12,18 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
 public interface ActivationCodeContract {
     interface View extends BaseView {
         void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final android.view.View outerViewGroup, final android.view.View theBottomMostView);
+
+        void setResendButtonEnable(Boolean clickable);
+
+        void setResendButtonText(String text);
+
+        String getPhoneNumber();
     }
 
     interface Presenter extends BasePresenter {
         void tryToRequestVerificationCode();
+
+        void startCountDown();
     }
 
     interface Model {

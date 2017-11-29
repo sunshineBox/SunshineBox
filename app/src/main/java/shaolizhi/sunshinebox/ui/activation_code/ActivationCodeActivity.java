@@ -1,6 +1,7 @@
 package shaolizhi.sunshinebox.ui.activation_code;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
@@ -28,10 +29,14 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
     @BindView(R.id.activation_code_act_edittext2)
     EditText verificationCodeEdt;
 
+    @BindView(R.id.activation_code_act_button1)
+    Button sendVerificationCodeButton;
+
+
     @OnClick(R.id.activation_code_act_button1)
     public void sendVerificationCode() {
         if (checkPhoneNumber) {
-            ToastUtils.showToast("输入正确，正在发送验证码");
+            presenter.tryToRequestVerificationCode();
         } else {
             ToastUtils.showToast("请输入正确的手机号码");
         }
@@ -69,10 +74,6 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
 
     }
 
-    private void setUpPhoneNumberEditText() {
-
-    }
-
     /**
      * 监听软键盘变化，并使Layout一直不被遮挡
      *
@@ -99,6 +100,28 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
                 }
             }
         });
+    }
+
+    @Override
+    public void setResendButtonEnable(Boolean clickable) {
+        sendVerificationCodeButton.setEnabled(clickable);
+        if (clickable) {
+            sendVerificationCodeButton.setBackgroundResource(R.drawable.shape_white_button);
+            sendVerificationCodeButton.setTextColor(Color.parseColor("#04917f"));
+        } else {
+            sendVerificationCodeButton.setBackgroundResource(R.drawable.shape_trans_button);
+            sendVerificationCodeButton.setTextColor(Color.parseColor("#f9f9f9"));
+        }
+    }
+
+    @Override
+    public void setResendButtonText(String text) {
+        sendVerificationCodeButton.setText(text);
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return phoneNumberEdt.getText().toString();
     }
 
     //获取软键盘高度
