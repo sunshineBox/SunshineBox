@@ -3,6 +3,8 @@ package shaolizhi.sunshinebox.ui.activation_code;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -11,23 +13,40 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.utils.ToastUtils;
 
-public class ActivationCodeActivity extends BaseActivity {
+public class ActivationCodeActivity extends BaseActivity implements ActivationCodeContract.View, TextWatcher {
     @BindView(R.id.activation_code_act_edittext1)
     EditText phoneNumberEdt;
 
     @BindView(R.id.activation_code_act_edittext2)
     EditText verificationCodeEdt;
 
+    @OnClick(R.id.activation_code_act_button1)
+    public void sendVerificationCode() {
+        if (checkPhoneNumber) {
+            ToastUtils.showToast("输入正确，正在发送验证码");
+        } else {
+            ToastUtils.showToast("请输入正确的手机号码");
+        }
+    }
+
     @BindView(R.id.activation_code_act_button2)
     Button commitButton;
 
     @BindView(R.id.activation_code_act_relativelayout1)
     RelativeLayout relativeLayout;
+
+    ActivationCodeContract.Presenter presenter;
+
+    private boolean checkPhoneNumber = false;
+
 
     @OnClick(R.id.activation_code_act_imagebutton1)
     public void back() {
@@ -41,11 +60,16 @@ public class ActivationCodeActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
+        presenter = new ActivationCodePresenter(this);
+        presenter.start();
     }
 
     @Override
     protected void resumed() {
+
+    }
+
+    private void setUpPhoneNumberEditText() {
 
     }
 
@@ -55,6 +79,7 @@ public class ActivationCodeActivity extends BaseActivity {
      * @param outerViewGroup    传入顶层ViewGroup
      * @param theBottomMostView 处于布局最下面的View
      */
+    @Override
     public void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final View outerViewGroup, final View theBottomMostView) {
         outerViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -164,5 +189,36 @@ public class ActivationCodeActivity extends BaseActivity {
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus()
                     .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    @Override
+    public void setUpView() {
+        listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
+        phoneNumberEdt.addTextChangedListener(this);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        phoneNumberEdt.removeTextChangedListener(this);
+        int maxInputPhoneNumber = 11;
+        if (editable.length() > maxInputPhoneNumber) {
+            editable.replace(maxInputPhoneNumber, editable.length(), "", 0, 0);
+        }
+        phoneNumberEdt.addTextChangedListener(this);
+
+        //输入检测
+        //输入检测
+        String phoneNumberRule = "^1[0-9]{10}$";
+        checkPhoneNumber = Pattern.matches(phoneNumberRule, editable);
     }
 }
