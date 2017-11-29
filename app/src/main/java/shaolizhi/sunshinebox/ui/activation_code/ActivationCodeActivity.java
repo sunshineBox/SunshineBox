@@ -1,8 +1,6 @@
 package shaolizhi.sunshinebox.ui.activation_code;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -43,7 +41,7 @@ public class ActivationCodeActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        controlKeyboardLayout(this, relativeLayout, commitButton);
+        listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
     }
 
     @Override
@@ -51,43 +49,38 @@ public class ActivationCodeActivity extends BaseActivity {
 
     }
 
-    private boolean flag = true;
-
-    public void controlKeyboardLayout(Context context, final View root, final View scrollToView) {
-        final int navigationBarHeight = getNavigationBarHeight(context);
-
-        root.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+    /**
+     * 监听软键盘变化，并使Layout一直不被遮挡
+     *
+     * @param outerViewGroup    传入顶层ViewGroup
+     * @param theBottomMostView 处于布局最下面的View
+     */
+    public void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final View outerViewGroup, final View theBottomMostView) {
+        outerViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                Rect rect = new Rect();
-                //获取root在窗体的可视区域
-                root.getWindowVisibleDisplayFrame(rect);
-                //获取root在窗体的不可视区域高度(被其他View遮挡的区域高度)
-                int rootInvisibleHeight = root.getRootView().getHeight() - rect.bottom;
-                //若不可视区域高度大于100，则键盘显示
-                if (rootInvisibleHeight > navigationBarHeight && flag) {
-                    int[] location = new int[2];
-                    //获取scrollToView在窗体的坐标
-                    scrollToView.getLocationInWindow(location);
-                    //计算root滚动高度，使scrollToView在可见区域
-                    int scrollHeight = (location[1] + scrollToView.getHeight()) - rect.bottom;
-                    if (root.getScrollY() != 0) {// 如果已经滚动，要根据上次滚动，重新计算位置。
-                        scrollHeight += root.getScrollY();
-                    }
-                    root.scrollTo(0, scrollHeight);
+                int l = theBottomMostView.getBottom();
+                int ll = getWindow().getDecorView().getBottom() - getSoftKeyBoardHeight();
+                int scrollY = l - ll;
+                if (getSoftKeyBoardHeight() == 0) {
+                    //软键盘没有弹出
+                    outerViewGroup.scrollTo(0, 0);
                 } else {
-                    //键盘隐藏
-                    root.scrollTo(0, 0);
+                    //软键盘弹出
+                    if (outerViewGroup.getScaleY() != 0) {
+                        scrollY += outerViewGroup.getScrollY();
+                    }
+                    outerViewGroup.scrollTo(0, scrollY);
                 }
             }
         });
     }
 
-    //获取虚拟按键高度
-    private int getNavigationBarHeight(Context context) {
-        Resources resources = context.getResources();
-        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
-        return resources.getDimensionPixelSize(resourceId);
+    //获取软键盘高度
+    private int getSoftKeyBoardHeight() {
+        Rect rect = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        return getWindow().getDecorView().getBottom() - rect.bottom;
     }
 
     //让View失去焦点
@@ -114,7 +107,6 @@ public class ActivationCodeActivity extends BaseActivity {
         return false;
     }
 
-
     public boolean isTouchView(View[] views, MotionEvent ev) {
         if (views == null || views.length == 0) return false;
         int[] location = new int[2];
@@ -122,24 +114,31 @@ public class ActivationCodeActivity extends BaseActivity {
             view.getLocationOnScreen(location);
             int x = location[0];
             int y = location[1];
-            if (ev.getX() > x && ev.getX() < (x + view.getWidth())
-                    && ev.getY() > y && ev.getY() < (y + view.getHeight())) {
+            if (ev.getX() > x
+                    && ev.getX() < (x + view.getWidth())
+                    && ev.getY() > y
+                    && ev.getY() < (y + view.getHeight())) {
                 return true;
             }
         }
         return false;
     }
 
+    //Activity的点击事件分发
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        //若屏幕上有按下操作
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            if (isTouchView(filterViewByIds(), ev)) return super.dispatchTouchEvent(ev);
-            if (hideSoftByEditViewIds() == null || hideSoftByEditViewIds().length == 0)
+            if (isTouchView(filterViewByIds(), ev)) {
                 return super.dispatchTouchEvent(ev);
+            }
+            if (hideSoftByEditViewIds() == null || hideSoftByEditViewIds().length == 0) {
+                return super.dispatchTouchEvent(ev);
+            }
             View v = getCurrentFocus();
             if (isFocusEditText(v, hideSoftByEditViewIds())) {
                 //隐藏键盘
-                hideInputForce(this);
+                hideSoftKeyboard(this);
                 clearViewFocus(v, hideSoftByEditViewIds());
             }
         }
@@ -155,10 +154,11 @@ public class ActivationCodeActivity extends BaseActivity {
         return new View[]{phoneNumberEdt, verificationCodeEdt};
     }
 
-    public static void hideInputForce(Activity activity) {
-        if (activity == null || activity.getCurrentFocus() == null)
+    //隐藏软键盘
+    public static void hideSoftKeyboard(Activity activity) {
+        if (activity == null || activity.getCurrentFocus() == null) {
             return;
-
+        }
         InputMethodManager inputMethodManager = ((InputMethodManager) activity.getSystemService(INPUT_METHOD_SERVICE));
         if (inputMethodManager != null) {
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus()
