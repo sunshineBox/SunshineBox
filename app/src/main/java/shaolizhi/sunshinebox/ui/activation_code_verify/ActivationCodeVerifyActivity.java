@@ -3,6 +3,8 @@ package shaolizhi.sunshinebox.ui.activation_code_verify;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -15,6 +17,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.widget.MyEditText;
 
 public class ActivationCodeVerifyActivity extends BaseActivity implements ActivationCodeVerifyContract.View {
 
@@ -32,7 +35,7 @@ public class ActivationCodeVerifyActivity extends BaseActivity implements Activa
     }
 
     @BindView(R.id.activation_code_verify_act_edittext1)
-    EditText activationCodeEdt;
+    MyEditText activationCodeEdt;
 
     @BindView(R.id.activation_code_verify_act_button)
     Button commitButton;
@@ -59,6 +62,45 @@ public class ActivationCodeVerifyActivity extends BaseActivity implements Activa
     @Override
     public void setUpView() {
         listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
+        activationCodeEdt.addTextChangedListener(new TextWatcher() {
+
+            boolean isDelete = false;
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                isDelete = i1 > i2;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                activationCodeEdt.removeTextChangedListener(this);
+                int maxInput = 14;
+                if (editable.length() > maxInput) {
+                    editable.replace(maxInput, editable.length(), "", 0, 0);
+                }
+                if (isDelete) {
+                    if (editable.length() == 5) {
+                        editable.replace(4, 5, "", 0, 0);
+                    }
+                    if (editable.length() == 10) {
+                        editable.replace(9, 10, "", 0, 0);
+                    }
+                } else {
+                    if (editable.length() == 4) {
+                        editable.replace(4, 4, "-", 0, 1);
+                    }
+                    if (editable.length() == 9) {
+                        editable.replace(9, 9, "-", 0, 1);
+                    }
+                }
+                activationCodeEdt.addTextChangedListener(this);
+            }
+        });
     }
 
     //获取软键盘高度

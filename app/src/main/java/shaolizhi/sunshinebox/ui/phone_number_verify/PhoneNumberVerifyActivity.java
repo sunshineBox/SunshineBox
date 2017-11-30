@@ -52,7 +52,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
             if (checkCaptcha) {
                 presenter.tryToVerifyCaptcha();
             } else {
-             ToastUtils.showToast(getString(R.string.phone_number_verify_act_string6));
+                ToastUtils.showToast(getString(R.string.phone_number_verify_act_string6));
             }
         } else {
             ToastUtils.showToast(getString(R.string.phone_number_verify_act_string5));
