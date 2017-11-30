@@ -27,11 +27,10 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
     EditText phoneNumberEdt;
 
     @BindView(R.id.activation_code_act_edittext2)
-    EditText verificationCodeEdt;
+    EditText captchaEdt;
 
     @BindView(R.id.activation_code_act_button1)
     Button sendVerificationCodeButton;
-
 
     @OnClick(R.id.activation_code_act_button1)
     public void sendVerificationCode() {
@@ -47,7 +46,7 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
 
     @OnClick(R.id.activation_code_act_button2)
     public void commit() {
-
+        presenter.tryToVerifyCaptcha();
     }
 
     @BindView(R.id.activation_code_act_relativelayout1)
@@ -129,6 +128,11 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
         return phoneNumberEdt.getText().toString();
     }
 
+    @Override
+    public String getCaptcha() {
+        return captchaEdt.getText().toString();
+    }
+
     //获取软键盘高度
     private int getSoftKeyBoardHeight() {
         Rect rect = new Rect();
@@ -204,7 +208,7 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
     }
 
     public View[] filterViewByIds() {
-        return new View[]{phoneNumberEdt, verificationCodeEdt};
+        return new View[]{phoneNumberEdt, captchaEdt};
     }
 
     //隐藏软键盘

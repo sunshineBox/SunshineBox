@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import shaolizhi.sunshinebox.ui.verify_phone_number.CheckCaptchaBean;
 import shaolizhi.sunshinebox.ui.verify_phone_number.SendCaptchaBean;
 
 /**
@@ -16,4 +17,8 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("sunshinebox/activation_system/SendCaptcha.php")
     Call<SendCaptchaBean> sendCaptchaAPI(@Field("phone_number") String phoneNumber);
+
+    @FormUrlEncoded
+    @POST("sunshinebox/activation_system/CheckCaptcha.php")
+    Call<CheckCaptchaBean> checkCaptchaAPI(@Field("phone_number") String phoneNumber, @Field("captcha") String captcha);
 }

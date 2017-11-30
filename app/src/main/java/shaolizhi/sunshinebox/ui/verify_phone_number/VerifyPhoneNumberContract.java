@@ -18,21 +18,31 @@ public interface VerifyPhoneNumberContract {
         void setResendButtonText(String text);
 
         String getPhoneNumber();
+
+        String getCaptcha();
     }
 
     interface Presenter extends BasePresenter {
         void tryToRequestCaptcha();
+
+        void tryToVerifyCaptcha();
 
         void startCountDown();
     }
 
     interface Model {
         void requestSendCaptchaBean(@NonNull String phoneNumber);
+
+        void requestCheckCaptchaBean(@NonNull String phoneNumber, @NonNull String captcha);
     }
 
     interface CallBack {
         void requestSendCaptchaBeanSuccess(@NonNull SendCaptchaBean bean);
 
         void requestSendCaptchaBeanFailure();
+
+        void requestCheckCaptchaBeanSuccess(@NonNull CheckCaptchaBean bean);
+
+        void requestCheckCaptchaBeanFailure();
     }
 }

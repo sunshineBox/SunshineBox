@@ -60,6 +60,11 @@ public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Pre
     }
 
     @Override
+    public void tryToVerifyCaptcha() {
+        model.requestCheckCaptchaBean(view.getPhoneNumber(), view.getCaptcha());
+    }
+
+    @Override
     public void startCountDown() {
         if (!isTimerRunning) {
             timer.start();
@@ -108,6 +113,49 @@ public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Pre
     public void requestSendCaptchaBeanFailure() {
         resumeResendButtonState();
 
+        if (view instanceof BaseFragment) {
+            ((BaseFragment) view).showToastForRequestResult("403");
+        }
+        if (view instanceof BaseActivity) {
+            ((BaseActivity) view).showToastForRequestResult("403");
+        }
+    }
+
+    @Override
+    public void requestCheckCaptchaBeanSuccess(@NonNull CheckCaptchaBean bean) {
+        if (bean.getFlag() != null) {
+            switch (bean.getFlag()) {
+                case "001":
+                    if (Objects.equals(bean.getMessage(), "success")) {
+                        ToastUtils.showToast("验证成功");
+                    } else if (Objects.equals(bean.getMessage(), "incorrect")) {
+                        ToastUtils.showToast("您输入的验证码有误");
+                    } else if (Objects.equals(bean.getMessage(), "expired")) {
+                        ToastUtils.showToast("您的验证码已过期");
+                    } else {
+                        if (view instanceof BaseFragment) {
+                            ((BaseFragment) view).showToastForRequestResult("401");
+                        }
+                        if (view instanceof BaseActivity) {
+                            ((BaseActivity) view).showToastForRequestResult("401");
+                        }
+                    }
+                    break;
+                default:
+                    if (view instanceof BaseFragment) {
+                        ((BaseFragment) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    if (view instanceof BaseActivity) {
+                        ((BaseActivity) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    break;
+            }
+        }
+    }
+
+
+    @Override
+    public void requestCheckCaptchaBeanFailure() {
         if (view instanceof BaseFragment) {
             ((BaseFragment) view).showToastForRequestResult("403");
         }

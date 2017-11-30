@@ -54,4 +54,33 @@ public class VerifyPhoneNumberModel implements VerifyPhoneNumberContract.Model {
             }
         });
     }
+
+    @Override
+    public void requestCheckCaptchaBean(@NonNull String phoneNumber, @NonNull String captcha) {
+        Gson gson = new GsonBuilder().create();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        ApiService service = retrofit.create(ApiService.class);
+
+        Call<CheckCaptchaBean> call = service.checkCaptchaAPI(phoneNumber, captcha);
+
+        call.enqueue(new Callback<CheckCaptchaBean>() {
+            @Override
+            public void onResponse(@NonNull Call<CheckCaptchaBean> call, @NonNull Response<CheckCaptchaBean> response) {
+                CheckCaptchaBean bean = response.body();
+                if (bean != null) {
+                    callBack.requestCheckCaptchaBeanSuccess(bean);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<CheckCaptchaBean> call, @NonNull Throwable t) {
+                callBack.requestCheckCaptchaBeanFailure();
+            }
+        });
+    }
 }
