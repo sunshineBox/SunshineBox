@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.activation_code;
+package shaolizhi.sunshinebox.ui.verify_phone_number;
 
 import android.support.annotation.NonNull;
 
@@ -18,16 +18,16 @@ import static shaolizhi.sunshinebox.data.ApiService.BASE_URL;
  * 由邵励治于2017/11/29创造.
  */
 
-public class ActivationCodeModel implements ActivationCodeContract.Model {
+public class VerifyPhoneNumberModel implements VerifyPhoneNumberContract.Model {
 
-    private ActivationCodeContract.CallBack callBack;
+    private VerifyPhoneNumberContract.CallBack callBack;
 
-    ActivationCodeModel(ActivationCodeContract.CallBack callBack) {
+    VerifyPhoneNumberModel(VerifyPhoneNumberContract.CallBack callBack) {
         this.callBack = callBack;
     }
 
     @Override
-    public void requestVerificationCodeBean(@NonNull String phoneNumber) {
+    public void requestSendCaptchaBean(@NonNull String phoneNumber) {
         Gson gson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -37,20 +37,20 @@ public class ActivationCodeModel implements ActivationCodeContract.Model {
 
         ApiService service = retrofit.create(ApiService.class);
 
-        Call<VerificationCodeBean> call = service.sendCaptchaAPI(phoneNumber);
+        Call<SendCaptchaBean> call = service.sendCaptchaAPI(phoneNumber);
 
-        call.enqueue(new Callback<VerificationCodeBean>() {
+        call.enqueue(new Callback<SendCaptchaBean>() {
             @Override
-            public void onResponse(@NonNull Call<VerificationCodeBean> call, @NonNull Response<VerificationCodeBean> response) {
-                VerificationCodeBean bean = response.body();
+            public void onResponse(@NonNull Call<SendCaptchaBean> call, @NonNull Response<SendCaptchaBean> response) {
+                SendCaptchaBean bean = response.body();
                 if (bean != null) {
-                    callBack.requestVerificationCodeBeanSuccess(bean);
+                    callBack.requestSendCaptchaBeanSuccess(bean);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<VerificationCodeBean> call, @NonNull Throwable t) {
-                callBack.requestVerificationCodeBeanFailure();
+            public void onFailure(@NonNull Call<SendCaptchaBean> call, @NonNull Throwable t) {
+                callBack.requestSendCaptchaBeanFailure();
             }
         });
     }

@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.activation_code;
+package shaolizhi.sunshinebox.ui.verify_phone_number;
 
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -15,15 +15,15 @@ import shaolizhi.sunshinebox.utils.ToastUtils;
  * 由邵励治于2017/11/29创造.
  */
 
-public class ActivationCodePresenter implements ActivationCodeContract.Presenter, ActivationCodeContract.CallBack {
+public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Presenter, VerifyPhoneNumberContract.CallBack {
 
-    private ActivationCodeContract.View view;
+    private VerifyPhoneNumberContract.View view;
 
-    private ActivationCodeContract.Model model;
+    private VerifyPhoneNumberContract.Model model;
 
-    ActivationCodePresenter(ActivationCodeContract.View view) {
+    VerifyPhoneNumberPresenter(VerifyPhoneNumberContract.View view) {
         this.view = view;
-        model = new ActivationCodeModel(this);
+        model = new VerifyPhoneNumberModel(this);
     }
 
     private Boolean isTimerRunning = false;
@@ -42,7 +42,7 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
         public void onFinish() {
             if (view != null) {
                 view.setResendButtonEnable(true);
-                view.setResendButtonText(App.mAppContext.getString(R.string.activation_code_act_string4));
+                view.setResendButtonText(App.mAppContext.getString(R.string.verify_phone_number_act_string4));
                 isTimerRunning = false;
             }
         }
@@ -54,9 +54,9 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
     }
 
     @Override
-    public void tryToRequestVerificationCode() {
+    public void tryToRequestCaptcha() {
         startCountDown();
-        model.requestVerificationCodeBean(view.getPhoneNumber());
+        model.requestSendCaptchaBean(view.getPhoneNumber());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
     }
 
     @Override
-    public void requestVerificationCodeBeanSuccess(@NonNull VerificationCodeBean bean) {
+    public void requestSendCaptchaBeanSuccess(@NonNull SendCaptchaBean bean) {
         if (bean.getFlag() != null) {
             switch (bean.getFlag()) {
                 case "001":
@@ -100,12 +100,12 @@ public class ActivationCodePresenter implements ActivationCodeContract.Presenter
     private void resumeResendButtonState() {
         timer.cancel();
         view.setResendButtonEnable(true);
-        view.setResendButtonText(App.mAppContext.getString(R.string.activation_code_act_string4));
+        view.setResendButtonText(App.mAppContext.getString(R.string.verify_phone_number_act_string4));
         isTimerRunning = false;
     }
 
     @Override
-    public void requestVerificationCodeBeanFailure() {
+    public void requestSendCaptchaBeanFailure() {
         resumeResendButtonState();
 
         if (view instanceof BaseFragment) {

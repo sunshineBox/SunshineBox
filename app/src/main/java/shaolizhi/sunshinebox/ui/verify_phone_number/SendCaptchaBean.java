@@ -1,10 +1,10 @@
-package shaolizhi.sunshinebox.ui.activation_code;
+package shaolizhi.sunshinebox.ui.verify_phone_number;
 
 /**
  * 由邵励治于2017/11/29创造.
  */
 
-public class VerificationCodeBean {
+public class SendCaptchaBean {
     /**
      * flag : 001
      * message : success

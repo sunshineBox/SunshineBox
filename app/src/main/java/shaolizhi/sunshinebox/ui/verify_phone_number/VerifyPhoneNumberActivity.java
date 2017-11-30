@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.activation_code;
+package shaolizhi.sunshinebox.ui.verify_phone_number;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -22,7 +22,7 @@ import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
-public class ActivationCodeActivity extends BaseActivity implements ActivationCodeContract.View, TextWatcher {
+public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPhoneNumberContract.View, TextWatcher {
     @BindView(R.id.activation_code_act_edittext1)
     EditText phoneNumberEdt;
 
@@ -36,9 +36,9 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
     @OnClick(R.id.activation_code_act_button1)
     public void sendVerificationCode() {
         if (checkPhoneNumber) {
-            presenter.tryToRequestVerificationCode();
+            presenter.tryToRequestCaptcha();
         } else {
-            ToastUtils.showToast("请输入正确的手机号码");
+            ToastUtils.showToast(getString(R.string.verify_phone_number_act_string5));
         }
     }
 
@@ -53,7 +53,7 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
     @BindView(R.id.activation_code_act_relativelayout1)
     RelativeLayout relativeLayout;
 
-    ActivationCodeContract.Presenter presenter;
+    VerifyPhoneNumberContract.Presenter presenter;
 
     private boolean checkPhoneNumber = false;
 
@@ -70,7 +70,7 @@ public class ActivationCodeActivity extends BaseActivity implements ActivationCo
 
     @Override
     protected void created(Bundle bundle) {
-        presenter = new ActivationCodePresenter(this);
+        presenter = new VerifyPhoneNumberPresenter(this);
         presenter.start();
     }
 

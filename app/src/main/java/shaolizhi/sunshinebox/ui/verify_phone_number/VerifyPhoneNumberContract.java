@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.activation_code;
+package shaolizhi.sunshinebox.ui.verify_phone_number;
 
 import android.support.annotation.NonNull;
 
@@ -9,7 +9,7 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
  * 由邵励治于2017/11/29创造.
  */
 
-public interface ActivationCodeContract {
+public interface VerifyPhoneNumberContract {
     interface View extends BaseView {
         void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final android.view.View outerViewGroup, final android.view.View theBottomMostView);
 
@@ -21,18 +21,18 @@ public interface ActivationCodeContract {
     }
 
     interface Presenter extends BasePresenter {
-        void tryToRequestVerificationCode();
+        void tryToRequestCaptcha();
 
         void startCountDown();
     }
 
     interface Model {
-        void requestVerificationCodeBean(@NonNull String phoneNumber);
+        void requestSendCaptchaBean(@NonNull String phoneNumber);
     }
 
     interface CallBack {
-        void requestVerificationCodeBeanSuccess(@NonNull VerificationCodeBean bean);
+        void requestSendCaptchaBeanSuccess(@NonNull SendCaptchaBean bean);
 
-        void requestVerificationCodeBeanFailure();
+        void requestSendCaptchaBeanFailure();
     }
 }
