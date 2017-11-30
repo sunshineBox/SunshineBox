@@ -20,6 +20,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a3c9f46f-e8b1-4367-ac78-86162aa9a291" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyContract.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="283">
-              <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,28 +93,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PhoneNumberVerifyActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PhoneNumberVerifyActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1092">
-              <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
+            <state relative-caret-position="648">
+              <caret line="292" column="43" lean-forward="true" selection-start-line="292" selection-start-column="43" selection-end-line="292" selection-end-column="43" />
               <folding>
-                <element signature="e#1397#1448#0" expanded="true" />
-                <element signature="e#1614#1615#0" expanded="true" />
-                <element signature="e#1660#1661#0" expanded="true" />
+                <element signature="e#1384#1435#0" expanded="true" />
+                <element signature="e#1770#1821#0" expanded="true" />
+                <element signature="e#1888#1939#0" expanded="true" />
                 <element signature="method#created#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-                <element signature="method#listenToTheSoftKeyboardAndKeepTheLayoutVisible#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-                <element signature="e#4379#4380#0" expanded="true" />
-                <element signature="e#4433#4434#0" expanded="true" />
+                <element signature="e#4718#4719#0" expanded="true" />
+                <element signature="e#4772#4773#0" expanded="true" />
                 <element signature="method#getSoftKeyBoardHeight#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
                 <element signature="method#clearViewFocus#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
                 <element signature="method#isFocusEditText#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
                 <element signature="method#isTouchView#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
                 <element signature="method#dispatchTouchEvent#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
                 <element signature="method#hideSoftKeyboard#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-                <element signature="method#beforeTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-                <element signature="method#onTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-                <element signature="method#afterTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -135,8 +132,8 @@
       <file leaf-file-name="PhoneNumberVerifyPresenter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyPresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="-95">
+              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+            <state relative-caret-position="605">
+              <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -1993,9 +1990,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/verify_phone_number/VerifyPhoneNumberPresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/verify_phone_number/VerifyPhoneNumberActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/VerifyPhoneNumberActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/activation_code_verify/ActivationCodeVerifyActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java" />
       </list>
     </option>
   </component>
@@ -2152,6 +2149,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="phone_number_verify" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SunshineBox" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sunshinebox" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="activation_code_verify" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -2279,7 +2302,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512017231781" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512024130929" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2327,7 +2350,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512017231781" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512024130929" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2510,7 +2533,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512017231782" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1512024130930" />
       </method>
     </configuration>
     <list size="1">
@@ -2651,7 +2674,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512017216933</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="little change">
+      <created>1512017250049</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1512017250050</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2736,7 +2766,8 @@
     <MESSAGE value="重构了验证手机号的包名以及类名" />
     <MESSAGE value="验证验证码界面完全OJBK" />
     <MESSAGE value="重构了之前的命名，添加了ActivationCodeVerifyActivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构了之前的命名，添加了ActivationCodeVerifyActivity" />
+    <MESSAGE value="little change" />
+    <option name="LAST_COMMIT_MESSAGE" value="little change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2750,22 +2781,18 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1397#1448#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1660#1661#0" expanded="true" />
+            <element signature="e#1384#1435#0" expanded="true" />
+            <element signature="e#1770#1821#0" expanded="true" />
+            <element signature="e#1888#1939#0" expanded="true" />
             <element signature="method#created#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#listenToTheSoftKeyboardAndKeepTheLayoutVisible#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="e#4379#4380#0" expanded="true" />
-            <element signature="e#4433#4434#0" expanded="true" />
+            <element signature="e#4718#4719#0" expanded="true" />
+            <element signature="e#4772#4773#0" expanded="true" />
             <element signature="method#getSoftKeyBoardHeight#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#clearViewFocus#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#isFocusEditText#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#isTouchView#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#dispatchTouchEvent#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#hideSoftKeyboard#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#beforeTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#onTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2790,22 +2817,18 @@
         <state relative-caret-position="189">
           <caret line="11" column="34" lean-forward="false" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding>
-            <element signature="e#1397#1448#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1660#1661#0" expanded="true" />
+            <element signature="e#1384#1435#0" expanded="true" />
+            <element signature="e#1770#1821#0" expanded="true" />
+            <element signature="e#1888#1939#0" expanded="true" />
             <element signature="method#created#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#listenToTheSoftKeyboardAndKeepTheLayoutVisible#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="e#4379#4380#0" expanded="true" />
-            <element signature="e#4433#4434#0" expanded="true" />
+            <element signature="e#4718#4719#0" expanded="true" />
+            <element signature="e#4772#4773#0" expanded="true" />
             <element signature="method#getSoftKeyBoardHeight#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#clearViewFocus#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#isFocusEditText#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#isTouchView#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#dispatchTouchEvent#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
             <element signature="method#hideSoftKeyboard#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#beforeTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#onTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3120,26 +3143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyContract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyPresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_activation_code_verify.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3162,36 +3165,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="131" column="5" lean-forward="false" selection-start-line="131" selection-start-column="5" selection-end-line="131" selection-end-column="5" />
-          <folding>
-            <element signature="e#1397#1448#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1660#1661#0" expanded="true" />
-            <element signature="method#created#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#listenToTheSoftKeyboardAndKeepTheLayoutVisible#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="e#4379#4380#0" expanded="true" />
-            <element signature="e#4433#4434#0" expanded="true" />
-            <element signature="method#getSoftKeyBoardHeight#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#clearViewFocus#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#isFocusEditText#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#isTouchView#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#dispatchTouchEvent#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#hideSoftKeyboard#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#beforeTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#onTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-            <element signature="method#afterTextChanged#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/base/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
           <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyContract.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyPresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -3208,9 +3206,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        <state relative-caret-position="605">
+          <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/phone_number_verify/PhoneNumberVerifyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="292" column="43" lean-forward="true" selection-start-line="292" selection-start-column="43" selection-end-line="292" selection-end-column="43" />
+          <folding>
+            <element signature="e#1384#1435#0" expanded="true" />
+            <element signature="e#1770#1821#0" expanded="true" />
+            <element signature="e#1888#1939#0" expanded="true" />
+            <element signature="method#created#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="e#4718#4719#0" expanded="true" />
+            <element signature="e#4772#4773#0" expanded="true" />
+            <element signature="method#getSoftKeyBoardHeight#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="method#clearViewFocus#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="method#isFocusEditText#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="method#isTouchView#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="method#dispatchTouchEvent#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+            <element signature="method#hideSoftKeyboard#0;class#PhoneNumberVerifyActivity#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -24,7 +24,7 @@ import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.activation_code_verify.ActivationCodeVerifyActivity;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
-public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View, TextWatcher {
+public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View {
     @BindView(R.id.activation_code_act_edittext1)
     EditText phoneNumberEdt;
 
@@ -48,7 +48,15 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
 
     @OnClick(R.id.activation_code_act_button2)
     public void commit() {
-        presenter.tryToVerifyCaptcha();
+        if (checkPhoneNumber) {
+            if (checkCaptcha) {
+                presenter.tryToVerifyCaptcha();
+            } else {
+             ToastUtils.showToast(getString(R.string.phone_number_verify_act_string6));
+            }
+        } else {
+            ToastUtils.showToast(getString(R.string.phone_number_verify_act_string5));
+        }
     }
 
     @BindView(R.id.activation_code_act_relativelayout1)
@@ -57,6 +65,8 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
     PhoneNumberVerifyContract.Presenter presenter;
 
     private boolean checkPhoneNumber = false;
+
+    private boolean checkCaptcha = false;
 
 
     @OnClick(R.id.activation_code_act_imagebutton1)
@@ -234,31 +244,55 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
     @Override
     public void setUpView() {
         listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
-        phoneNumberEdt.addTextChangedListener(this);
-    }
+        phoneNumberEdt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
-    }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-    @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
-    }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                phoneNumberEdt.removeTextChangedListener(this);
+                int maxInputPhoneNumber = 11;
+                if (editable.length() > maxInputPhoneNumber) {
+                    editable.replace(maxInputPhoneNumber, editable.length(), "", 0, 0);
+                }
+                phoneNumberEdt.addTextChangedListener(this);
 
-    @Override
-    public void afterTextChanged(Editable editable) {
-        phoneNumberEdt.removeTextChangedListener(this);
-        int maxInputPhoneNumber = 11;
-        if (editable.length() > maxInputPhoneNumber) {
-            editable.replace(maxInputPhoneNumber, editable.length(), "", 0, 0);
-        }
-        phoneNumberEdt.addTextChangedListener(this);
+                //输入检测
+                //输入检测
+                String phoneNumberRule = "^1[0-9]{10}$";
+                checkPhoneNumber = Pattern.matches(phoneNumberRule, editable);
+            }
+        });
+        captchaEdt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        //输入检测
-        //输入检测
-        String phoneNumberRule = "^1[0-9]{10}$";
-        checkPhoneNumber = Pattern.matches(phoneNumberRule, editable);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                captchaEdt.removeTextChangedListener(this);
+                int maxInputNumber = 4;
+                if (editable.length() > maxInputNumber) {
+                    editable.replace(maxInputNumber, editable.length(), "", 0, 0);
+                }
+                captchaEdt.addTextChangedListener(this);
+
+                String rule = "^[0-9]{4}$";
+                checkCaptcha = Pattern.matches(rule, editable);
+            }
+        });
     }
 }
