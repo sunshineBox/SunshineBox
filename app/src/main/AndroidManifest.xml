@@ -65,8 +65,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.verify_phone_number.VerifyPhoneNumberActivity"
+            android:name=".ui.phone_number_verify.PhoneNumberVerifyActivity"
             android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".ui.activation_code_verify.ActivationCodeVerifyActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.verify_phone_number;
+package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 import android.support.annotation.NonNull;
 
@@ -18,11 +18,11 @@ import static shaolizhi.sunshinebox.data.ApiService.BASE_URL;
  * 由邵励治于2017/11/29创造.
  */
 
-public class VerifyPhoneNumberModel implements VerifyPhoneNumberContract.Model {
+public class PhoneNumberVerifyModel implements PhoneNumberVerifyContract.Model {
 
-    private VerifyPhoneNumberContract.CallBack callBack;
+    private PhoneNumberVerifyContract.CallBack callBack;
 
-    VerifyPhoneNumberModel(VerifyPhoneNumberContract.CallBack callBack) {
+    PhoneNumberVerifyModel(PhoneNumberVerifyContract.CallBack callBack) {
         this.callBack = callBack;
     }
 

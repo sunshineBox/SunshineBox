@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.verify_phone_number;
+package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -15,15 +15,15 @@ import shaolizhi.sunshinebox.utils.ToastUtils;
  * 由邵励治于2017/11/29创造.
  */
 
-public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Presenter, VerifyPhoneNumberContract.CallBack {
+public class PhoneNumberVerifyPresenter implements PhoneNumberVerifyContract.Presenter, PhoneNumberVerifyContract.CallBack {
 
-    private VerifyPhoneNumberContract.View view;
+    private PhoneNumberVerifyContract.View view;
 
-    private VerifyPhoneNumberContract.Model model;
+    private PhoneNumberVerifyContract.Model model;
 
-    VerifyPhoneNumberPresenter(VerifyPhoneNumberContract.View view) {
+    PhoneNumberVerifyPresenter(PhoneNumberVerifyContract.View view) {
         this.view = view;
-        model = new VerifyPhoneNumberModel(this);
+        model = new PhoneNumberVerifyModel(this);
     }
 
     private Boolean isTimerRunning = false;
@@ -42,7 +42,7 @@ public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Pre
         public void onFinish() {
             if (view != null) {
                 view.setResendButtonEnable(true);
-                view.setResendButtonText(App.mAppContext.getString(R.string.verify_phone_number_act_string4));
+                view.setResendButtonText(App.mAppContext.getString(R.string.phone_number_verify_act_string4));
                 isTimerRunning = false;
             }
         }
@@ -105,7 +105,7 @@ public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Pre
     private void resumeResendButtonState() {
         timer.cancel();
         view.setResendButtonEnable(true);
-        view.setResendButtonText(App.mAppContext.getString(R.string.verify_phone_number_act_string4));
+        view.setResendButtonText(App.mAppContext.getString(R.string.phone_number_verify_act_string4));
         isTimerRunning = false;
     }
 
@@ -127,7 +127,7 @@ public class VerifyPhoneNumberPresenter implements VerifyPhoneNumberContract.Pre
             switch (bean.getFlag()) {
                 case "001":
                     if (Objects.equals(bean.getMessage(), "success")) {
-                        ToastUtils.showToast("验证成功");
+                        view.openVerifyActivationCodeActivity();
                     } else if (Objects.equals(bean.getMessage(), "incorrect")) {
                         ToastUtils.showToast("您输入的验证码有误");
                     } else if (Objects.equals(bean.getMessage(), "expired")) {

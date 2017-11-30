@@ -6,13 +6,13 @@ import android.os.Bundle;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
-import shaolizhi.sunshinebox.ui.verify_phone_number.VerifyPhoneNumberActivity;
+import shaolizhi.sunshinebox.ui.phone_number_verify.PhoneNumberVerifyActivity;
 
 public class WelcomeActivity extends BaseActivity {
 
     @OnClick(R.id.welcome_button)
     public void openActivity() {
-        Intent intent = new Intent(WelcomeActivity.this, VerifyPhoneNumberActivity.class);
+        Intent intent = new Intent(WelcomeActivity.this, PhoneNumberVerifyActivity.class);
         startActivity(intent);
     }
 

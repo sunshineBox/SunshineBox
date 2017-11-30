@@ -1,11 +1,10 @@
-package shaolizhi.sunshinebox.ui.verify_phone_number;
+package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 /**
- * 由邵励治于2017/11/30创造.
+ * 由邵励治于2017/11/29创造.
  */
 
-public class CheckCaptchaBean {
-
+public class SendCaptchaBean {
     /**
      * flag : 001
      * message : success

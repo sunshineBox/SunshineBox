@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.verify_phone_number;
+package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 import android.support.annotation.NonNull;
 
@@ -9,13 +9,15 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
  * 由邵励治于2017/11/29创造.
  */
 
-public interface VerifyPhoneNumberContract {
+public interface PhoneNumberVerifyContract {
     interface View extends BaseView {
         void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final android.view.View outerViewGroup, final android.view.View theBottomMostView);
 
         void setResendButtonEnable(Boolean clickable);
 
         void setResendButtonText(String text);
+
+        void openVerifyActivationCodeActivity();
 
         String getPhoneNumber();
 

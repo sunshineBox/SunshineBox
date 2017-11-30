@@ -1,6 +1,7 @@
-package shaolizhi.sunshinebox.ui.verify_phone_number;
+package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -20,9 +21,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.ui.activation_code_verify.ActivationCodeVerifyActivity;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
-public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPhoneNumberContract.View, TextWatcher {
+public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View, TextWatcher {
     @BindView(R.id.activation_code_act_edittext1)
     EditText phoneNumberEdt;
 
@@ -37,7 +39,7 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
         if (checkPhoneNumber) {
             presenter.tryToRequestCaptcha();
         } else {
-            ToastUtils.showToast(getString(R.string.verify_phone_number_act_string5));
+            ToastUtils.showToast(getString(R.string.phone_number_verify_act_string5));
         }
     }
 
@@ -52,7 +54,7 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
     @BindView(R.id.activation_code_act_relativelayout1)
     RelativeLayout relativeLayout;
 
-    VerifyPhoneNumberContract.Presenter presenter;
+    PhoneNumberVerifyContract.Presenter presenter;
 
     private boolean checkPhoneNumber = false;
 
@@ -64,12 +66,12 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
 
     @Override
     protected int layoutId() {
-        return R.layout.activity_activation_code;
+        return R.layout.activity_phone_number_verify;
     }
 
     @Override
     protected void created(Bundle bundle) {
-        presenter = new VerifyPhoneNumberPresenter(this);
+        presenter = new PhoneNumberVerifyPresenter(this);
         presenter.start();
     }
 
@@ -121,6 +123,12 @@ public class VerifyPhoneNumberActivity extends BaseActivity implements VerifyPho
     @Override
     public void setResendButtonText(String text) {
         sendVerificationCodeButton.setText(text);
+    }
+
+    @Override
+    public void openVerifyActivationCodeActivity() {
+        Intent intent = new Intent(PhoneNumberVerifyActivity.this, ActivationCodeVerifyActivity.class);
+        startActivity(intent);
     }
 
     @Override
