@@ -16,6 +16,7 @@
     <string name="welcome_act_string2">我们致力于用科技填补城乡教育鸿沟</string>
     <string name="welcome_act_string4">点击激活</string>
 
+    <!--PhoneNumberVerifyActivity-->
     <string name="phone_number_verify_act_string1">请输入您的手机号</string>
     <string name="phone_number_verify_act_string2">输入手机号</string>
     <string name="phone_number_verify_act_string3">手机号</string>
