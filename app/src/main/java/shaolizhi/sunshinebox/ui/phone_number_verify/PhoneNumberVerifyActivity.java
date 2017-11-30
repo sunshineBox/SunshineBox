@@ -25,16 +25,16 @@ import shaolizhi.sunshinebox.ui.activation_code_verify.ActivationCodeVerifyActiv
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
 public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View {
-    @BindView(R.id.activation_code_act_edittext1)
+    @BindView(R.id.phone_number_verify_act_edittext1)
     EditText phoneNumberEdt;
 
-    @BindView(R.id.activation_code_act_edittext2)
+    @BindView(R.id.phone_number_verify_act_edittext2)
     EditText captchaEdt;
 
-    @BindView(R.id.activation_code_act_button1)
+    @BindView(R.id.phone_number_verify_act_button1)
     Button sendVerificationCodeButton;
 
-    @OnClick(R.id.activation_code_act_button1)
+    @OnClick(R.id.phone_number_verify_act_button1)
     public void sendVerificationCode() {
         if (checkPhoneNumber) {
             presenter.tryToRequestCaptcha();
@@ -43,10 +43,10 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
         }
     }
 
-    @BindView(R.id.activation_code_act_button2)
+    @BindView(R.id.phone_number_verify_act_button2)
     Button commitButton;
 
-    @OnClick(R.id.activation_code_act_button2)
+    @OnClick(R.id.phone_number_verify_act_button2)
     public void commit() {
         if (checkPhoneNumber) {
             if (checkCaptcha) {
@@ -59,7 +59,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
         }
     }
 
-    @BindView(R.id.activation_code_act_relativelayout1)
+    @BindView(R.id.phone_number_verify_act_relativelayout1)
     RelativeLayout relativeLayout;
 
     PhoneNumberVerifyContract.Presenter presenter;
@@ -69,7 +69,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
     private boolean checkCaptcha = false;
 
 
-    @OnClick(R.id.activation_code_act_imagebutton1)
+    @OnClick(R.id.phone_number_verify_act_imagebutton1)
     public void back() {
         finish();
     }
@@ -96,7 +96,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
      * @param outerViewGroup    传入顶层ViewGroup
      * @param theBottomMostView 处于布局最下面的View
      */
-    @Override
+
     public void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final View outerViewGroup, final View theBottomMostView) {
         outerViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -222,7 +222,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
     }
 
     public int[] hideSoftByEditViewIds() {
-        return new int[]{R.id.activation_code_act_edittext1, R.id.activation_code_act_edittext2};
+        return new int[]{R.id.phone_number_verify_act_edittext1, R.id.phone_number_verify_act_edittext2};
     }
 
     public View[] filterViewByIds() {

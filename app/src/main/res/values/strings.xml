@@ -23,5 +23,16 @@
     <string name="phone_number_verify_act_string4">再次发送</string>
     <string name="phone_number_verify_act_string5">请输入正确的手机号码</string>
     <string name="phone_number_verify_act_string6">请输入正确的验证码</string>
+    <string name="phone_number_verify_act_string7">验证码</string>
+    <string name="phone_number_verify_act_string8">下一步</string>
+    <string name="phone_number_verify_act_string9">发送验证码</string>
+    <string name="phone_number_verify_act_string10">请输入手机验证码</string>
+    <string name="phone_number_verify_act_string11">返回</string>
+
+    <!--PhoneNumberVerifyActivity-->
+    <string name="activation_code_verify_act_string1">返回</string>
+    <string name="activation_code_verify_act_string2">输入激活码</string>
+    <string name="activation_code_verify_act_string3">请输入对应的激活码</string>
+    <string name="activation_code_verify_act_string4">激活码</string>
 
 </resources>
