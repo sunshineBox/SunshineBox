@@ -1,10 +1,12 @@
 package shaolizhi.sunshinebox.ui.activation_code_verify;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -23,6 +25,8 @@ public class ActivationCodeVerifyActivity extends BaseActivity implements Activa
 
     @BindView(R.id.activation_code_verify_act_relativelayout)
     RelativeLayout relativeLayout;
+
+    private String phoneNumber;
 
     @OnClick(R.id.activation_code_verify_act_button)
     public void commit() {
@@ -61,6 +65,9 @@ public class ActivationCodeVerifyActivity extends BaseActivity implements Activa
 
     @Override
     public void setUpView() {
+        Intent intent = getIntent();
+        phoneNumber = intent.getStringExtra("phone_number");
+        Log.i("phoneNum", phoneNumber);
         listenToTheSoftKeyboardAndKeepTheLayoutVisible(relativeLayout, commitButton);
         activationCodeEdt.addTextChangedListener(new TextWatcher() {
 
@@ -214,4 +221,17 @@ public class ActivationCodeVerifyActivity extends BaseActivity implements Activa
         });
     }
 
+    @Override
+    public String getPhoneNumber() {
+        if (phoneNumber != null) {
+            return phoneNumber;
+        } else {
+            return "00000000000";
+        }
+    }
+
+    @Override
+    public String getActivationCode() {
+        return null;
+    }
 }

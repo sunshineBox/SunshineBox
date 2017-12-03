@@ -9,7 +9,9 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
 
 public interface ActivationCodeVerifyContract {
     interface View extends BaseView {
+        String getPhoneNumber();
 
+        String getActivationCode();
     }
 
     interface Presenter extends BasePresenter {
