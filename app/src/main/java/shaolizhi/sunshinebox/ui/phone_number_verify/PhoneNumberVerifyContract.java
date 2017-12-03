@@ -1,5 +1,6 @@
 package shaolizhi.sunshinebox.ui.phone_number_verify;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import shaolizhi.sunshinebox.ui.base.BasePresenter;
@@ -16,6 +17,8 @@ public interface PhoneNumberVerifyContract {
         void setResendButtonText(String text);
 
         void openVerifyActivationCodeActivity();
+
+        Context getContext();
 
         String getPhoneNumber();
 

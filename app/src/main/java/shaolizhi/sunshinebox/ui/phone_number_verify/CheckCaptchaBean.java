@@ -9,12 +9,12 @@ public class CheckCaptchaBean {
     /**
      * flag : 001
      * message : success
-     * content : null
+     * content : {"uuid":"1"}
      */
 
     private String flag;
     private String message;
-    private Object content;
+    private ContentBean content;
 
     public String getFlag() {
         return flag;
@@ -32,11 +32,27 @@ public class CheckCaptchaBean {
         this.message = message;
     }
 
-    public Object getContent() {
+    public ContentBean getContent() {
         return content;
     }
 
-    public void setContent(Object content) {
+    public void setContent(ContentBean content) {
         this.content = content;
+    }
+
+    public static class ContentBean {
+        /**
+         * uuid : 1
+         */
+
+        private String uuid;
+
+        public String getUuid() {
+            return uuid;
+        }
+
+        public void setUuid(String uuid) {
+            this.uuid = uuid;
+        }
     }
 }

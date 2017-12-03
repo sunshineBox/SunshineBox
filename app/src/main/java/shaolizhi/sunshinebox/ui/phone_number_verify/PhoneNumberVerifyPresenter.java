@@ -6,9 +6,11 @@ import android.support.annotation.NonNull;
 import java.util.Objects;
 
 import shaolizhi.sunshinebox.R;
+import shaolizhi.sunshinebox.data.CacheData;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.base.BaseFragment;
 import shaolizhi.sunshinebox.utils.App;
+import shaolizhi.sunshinebox.utils.SharedPreferencesUtils;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
 /**
@@ -127,7 +129,10 @@ public class PhoneNumberVerifyPresenter implements PhoneNumberVerifyContract.Pre
             switch (bean.getFlag()) {
                 case "001":
                     if (Objects.equals(bean.getMessage(), "success")) {
-                        view.openVerifyActivationCodeActivity();
+                        if (bean.getContent().getUuid() != null) {
+                            SharedPreferencesUtils.put(view.getContext(), CacheData.UUID, bean.getContent().getUuid());
+                            view.openVerifyActivationCodeActivity();
+                        }
                     } else if (Objects.equals(bean.getMessage(), "incorrect")) {
                         ToastUtils.showToast("您输入的验证码有误");
                     } else if (Objects.equals(bean.getMessage(), "expired")) {

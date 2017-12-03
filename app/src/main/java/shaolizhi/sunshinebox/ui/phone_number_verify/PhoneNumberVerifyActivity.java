@@ -1,6 +1,7 @@
 package shaolizhi.sunshinebox.ui.phone_number_verify;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -140,6 +141,11 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
         Intent intent = new Intent(PhoneNumberVerifyActivity.this, HomePageActivity.class);
         intent.putExtra("phone_number", getPhoneNumber());
         startActivity(intent);
+    }
+
+    @Override
+    public Context getContext() {
+        return PhoneNumberVerifyActivity.this;
     }
 
     @Override
