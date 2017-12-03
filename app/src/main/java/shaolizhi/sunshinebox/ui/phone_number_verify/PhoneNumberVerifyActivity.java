@@ -21,7 +21,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
-import shaolizhi.sunshinebox.ui.activation_code_verify.ActivationCodeVerifyActivity;
+import shaolizhi.sunshinebox.ui.home_page.HomePageActivity;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
 public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View {
@@ -137,7 +137,7 @@ public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumb
 
     @Override
     public void openVerifyActivationCodeActivity() {
-        Intent intent = new Intent(PhoneNumberVerifyActivity.this, ActivationCodeVerifyActivity.class);
+        Intent intent = new Intent(PhoneNumberVerifyActivity.this, HomePageActivity.class);
         intent.putExtra("phone_number", getPhoneNumber());
         startActivity(intent);
     }
