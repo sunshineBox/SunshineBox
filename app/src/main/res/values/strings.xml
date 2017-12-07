@@ -37,5 +37,11 @@
 
     <!--HomePageActivity-->
     <string name="home_page_act_string1">再按一次退出程序</string>
+    <string name="home_page_act_string2">阳光盒子——给孩子更好的教育</string>
+    <string name="home_page_act_string3">音乐</string>
+    <string name="home_page_act_string4">听阅读</string>
+    <string name="home_page_act_string5">动作儿歌</string>
+    <string name="home_page_act_string6">做游戏</string>
+    <string name="home_page_act_string7">Setting</string>
 
 </resources>

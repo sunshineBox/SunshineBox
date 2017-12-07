@@ -11,14 +11,15 @@
         android:layout_height="65dp"
         android:layout_alignParentEnd="true"
         android:background="#00ffffff"
-        android:src="@drawable/ic_account_box" />
+        android:src="@drawable/ic_settings"
+        android:contentDescription="@string/home_page_act_string7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="110dp"
-        android:text="阳光盒子——给孩子更好的教育"
+        android:text="@string/home_page_act_string2"
         android:textColor="#f9f9f9"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -31,7 +32,7 @@
         android:layout_marginBottom="160dp"
         android:layout_marginStart="48dp"
         android:background="@drawable/shape_trans_button"
-        android:text="音乐"
+        android:text="@string/home_page_act_string3"
         android:textColor="#f9f9f9"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -44,7 +45,7 @@
         android:layout_marginBottom="60dp"
         android:layout_marginStart="48dp"
         android:background="@drawable/shape_trans_button"
-        android:text="听阅读"
+        android:text="@string/home_page_act_string4"
         android:textColor="#f9f9f9"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -58,7 +59,7 @@
         android:layout_marginBottom="60dp"
         android:layout_marginStart="320dp"
         android:background="@drawable/shape_trans_button"
-        android:text="动作儿歌"
+        android:text="@string/home_page_act_string5"
         android:textColor="#f9f9f9"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -71,7 +72,7 @@
         android:layout_marginBottom="160dp"
         android:layout_marginStart="320dp"
         android:background="@drawable/shape_trans_button"
-        android:text="做游戏"
+        android:text="@string/home_page_act_string6"
         android:textColor="#f9f9f9"
         android:textSize="16sp"
         android:textStyle="bold" />
