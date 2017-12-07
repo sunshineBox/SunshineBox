@@ -12,7 +12,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import shaolizhi.sunshinebox.data.ApiService;
 
-import static shaolizhi.sunshinebox.data.ApiService.BASE_URL;
+import static shaolizhi.sunshinebox.data.ApiService.BASE_URL_DEVELOPMENT;
 
 /**
  * 由邵励治于2017/11/29创造.
@@ -31,7 +31,7 @@ public class PhoneNumberVerifyModel implements PhoneNumberVerifyContract.Model {
         Gson gson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL_DEVELOPMENT)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
@@ -60,7 +60,7 @@ public class PhoneNumberVerifyModel implements PhoneNumberVerifyContract.Model {
         Gson gson = new GsonBuilder().create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL_DEVELOPMENT)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

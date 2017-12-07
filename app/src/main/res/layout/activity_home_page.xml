@@ -2,13 +2,77 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#6bcab2"
     android:layout_height="match_parent"
+    android:background="@drawable/home_page_background"
     tools:context="shaolizhi.sunshinebox.ui.home_page.HomePageActivity">
 
-    <TextView
-        android:id="@+id/home_page_act_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:background="#00ffffff"
+        android:src="@drawable/ic_account_box" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="110dp"
+        android:text="阳光盒子——给孩子更好的教育"
+        android:textColor="#f9f9f9"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/shape_trans_button"
+        android:text="音乐"
+        android:textColor="#f9f9f9"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/shape_trans_button"
+        android:text="听阅读"
+        android:textColor="#f9f9f9"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginStart="320dp"
+        android:background="@drawable/shape_trans_button"
+        android:text="动作儿歌"
+        android:textColor="#f9f9f9"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="160dp"
+        android:layout_marginStart="320dp"
+        android:background="@drawable/shape_trans_button"
+        android:text="做游戏"
+        android:textColor="#f9f9f9"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 </RelativeLayout>

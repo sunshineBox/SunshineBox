@@ -12,7 +12,8 @@ import shaolizhi.sunshinebox.ui.phone_number_verify.SendCaptchaBean;
  */
 
 public interface ApiService {
-    String BASE_URL = "http://111.231.71.150/";
+    String BASE_URL_DEVELOPMENT = "http://111.231.71.150/";
+    String BASE_URL_PRODUCTION = "http://39.104.55.82";
 
     @FormUrlEncoded
     @POST("sunshinebox/activation_system/SendCaptcha.php")

@@ -16,7 +16,6 @@ public class WelcomeActivity extends BaseActivity {
         startActivity(intent);
     }
 
-
     @Override
     protected int layoutId() {
         return R.layout.activity_welcome;
