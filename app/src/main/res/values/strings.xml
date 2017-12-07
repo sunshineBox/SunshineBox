@@ -35,4 +35,7 @@
     <string name="activation_code_verify_act_string3">请输入该手机号对应的激活码</string>
     <string name="activation_code_verify_act_string4">激活码</string>
 
+    <!--HomePageActivity-->
+    <string name="home_page_act_string1">再按一次退出程序</string>
+
 </resources>
