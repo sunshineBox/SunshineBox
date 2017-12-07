@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.phone_number_verify.PhoneNumberVerifyActivity;
+import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 
-public class WelcomeActivity extends BaseActivity {
+public class WelcomeActivity extends ActivationActivityManager {
 
     @OnClick(R.id.welcome_button)
     public void openActivity() {

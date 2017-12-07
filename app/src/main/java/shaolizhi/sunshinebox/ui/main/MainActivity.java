@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.home_page.HomePageActivity;
 import shaolizhi.sunshinebox.ui.welcome.WelcomeActivity;
+import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 import shaolizhi.sunshinebox.utils.SharedPreferencesUtils;
 
 import static shaolizhi.sunshinebox.data.CacheData.UUID;
@@ -15,7 +15,7 @@ import static shaolizhi.sunshinebox.data.CacheData.UUID;
  * 由邵励治于2017/12/7创造.
  */
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends ActivationActivityManager {
 
     Intent intent;
 

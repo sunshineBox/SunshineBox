@@ -3,12 +3,10 @@ package shaolizhi.sunshinebox.ui.home_page;
 import android.os.Bundle;
 
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.data.CacheData;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
-import shaolizhi.sunshinebox.utils.SharedPreferencesUtils;
+import shaolizhi.sunshinebox.utils.ActivityCollectorUtils;
 
 public class HomePageActivity extends BaseActivity {
-
 
 
     @Override
@@ -18,7 +16,8 @@ public class HomePageActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        String uuid = SharedPreferencesUtils.get(this, CacheData.UUID);
+        ActivityCollectorUtils.finishAll();
+
     }
 
     @Override

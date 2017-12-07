@@ -21,11 +21,11 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.home_page.HomePageActivity;
+import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
-public class PhoneNumberVerifyActivity extends BaseActivity implements PhoneNumberVerifyContract.View {
+public class PhoneNumberVerifyActivity extends ActivationActivityManager implements PhoneNumberVerifyContract.View {
     @BindView(R.id.phone_number_verify_act_edittext1)
     EditText phoneNumberEdt;
 
