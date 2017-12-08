@@ -43,5 +43,10 @@
     <string name="home_page_act_string5">动作儿歌</string>
     <string name="home_page_act_string6">做游戏</string>
     <string name="home_page_act_string7">Setting</string>
+    <string name="setting_act_string1">你好，励治</string>
+    <string name="setting_act__menu_string1">意见反馈</string>
+    <string name="setting_act__menu_string2">使用说明</string>
+    <string name="setting_act__menu_string3">特别感谢</string>
+    <string name="setting_act__menu_string4">退出激活</string>
 
 </resources>

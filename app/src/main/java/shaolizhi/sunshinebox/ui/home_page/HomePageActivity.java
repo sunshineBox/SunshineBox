@@ -1,14 +1,22 @@
 package shaolizhi.sunshinebox.ui.home_page;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.ui.setting.SettingActivity;
 import shaolizhi.sunshinebox.utils.ActivityCollectorUtils;
 import shaolizhi.sunshinebox.utils.UIUtils;
 
 public class HomePageActivity extends BaseActivity {
 
+    @OnClick(R.id.home_page_act_imagebutton)
+    public void openSettingActivity() {
+        Intent intent = new Intent(HomePageActivity.this, SettingActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected int layoutId() {
