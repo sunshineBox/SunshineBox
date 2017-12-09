@@ -5,12 +5,12 @@ import android.os.Bundle;
 
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.setting.SettingActivity;
 import shaolizhi.sunshinebox.utils.ActivityCollectorUtils;
+import shaolizhi.sunshinebox.utils.FormalActivityManager;
 import shaolizhi.sunshinebox.utils.UIUtils;
 
-public class HomePageActivity extends BaseActivity {
+public class HomePageActivity extends FormalActivityManager {
 
     @OnClick(R.id.home_page_act_imagebutton)
     public void openSettingActivity() {
