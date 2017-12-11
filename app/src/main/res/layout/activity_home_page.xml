@@ -12,8 +12,8 @@
         android:layout_height="65dp"
         android:layout_alignParentEnd="true"
         android:background="#00ffffff"
-        android:src="@drawable/ic_settings"
-        android:contentDescription="@string/home_page_act_string7" />
+        android:contentDescription="@string/home_page_act_string7"
+        android:src="@drawable/ic_settings" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,6 +26,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/home_page_act_button"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"

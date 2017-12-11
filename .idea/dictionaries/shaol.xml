@@ -2,7 +2,10 @@
   <dictionary name="shaol">
     <words>
       <w>bcab</w>
+      <w>drawerlayout</w>
       <w>imagebutton</w>
+      <w>imagebuttton</w>
+      <w>navigationview</w>
       <w>relativelayout</w>
     </words>
   </dictionary>

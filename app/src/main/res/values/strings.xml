@@ -43,10 +43,24 @@
     <string name="home_page_act_string5">动作儿歌</string>
     <string name="home_page_act_string6">做游戏</string>
     <string name="home_page_act_string7">Setting</string>
+
+    <!--SettingActivity-->
     <string name="setting_act_string1">你好，励治</string>
     <string name="setting_act__menu_string1">意见反馈</string>
     <string name="setting_act__menu_string2">使用说明</string>
     <string name="setting_act__menu_string3">特别感谢</string>
     <string name="setting_act__menu_string4">退出激活</string>
 
+    <!--IndexActivity-->
+    <string name="index_act_string1">阳光盒子</string>
+    <string name="index_act_string2">打开菜单</string>
+    <string name="index_act_string3">再按一次退出程序</string>
+    <string name="index_act_string4">动作儿歌</string>
+    <string name="index_act_string5">听阅读</string>
+    <string name="index_act_string6">音乐</string>
+    <string name="index_act_string7">做游戏</string>
+    <string name="index_act_string8">动作儿歌</string>
+    <string name="index_act_string9">听阅读</string>
+    <string name="index_act_string10">音乐</string>
+    <string name="index_act_string11">做游戏</string>
 </resources>

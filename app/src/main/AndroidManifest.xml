@@ -57,7 +57,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.welcome.WelcomeActivity"></activity>
+        <activity android:name=".ui.welcome.WelcomeActivity" />
         <activity
             android:name=".ui.phone_number_verify.PhoneNumberVerifyActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -69,7 +69,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.setting.SettingActivity"></activity>
+        <activity android:name=".ui.setting.SettingActivity" />
+        <activity android:name=".ui.index.IndexActivity"></activity>
     </application>
 
 </manifest>
