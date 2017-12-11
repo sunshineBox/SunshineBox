@@ -18,7 +18,7 @@ import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.index.game.GameFragment;
-import shaolizhi.sunshinebox.ui.index.listen_to_reading.ListenToReadingFragment;
+import shaolizhi.sunshinebox.ui.index.reading.ReadingFragment;
 import shaolizhi.sunshinebox.ui.index.music.MusicFragment;
 import shaolizhi.sunshinebox.ui.index.nursery_rhymes.NurseryRhymesFragment;
 import shaolizhi.sunshinebox.utils.UIUtils;
@@ -42,7 +42,7 @@ public class IndexActivity extends BaseActivity {
 
     NurseryRhymesFragment nurseryRhymesFragment;
 
-    ListenToReadingFragment listenToReadingFragment;
+    ReadingFragment listenToReadingFragment;
 
     MusicFragment musicFragment;
 
@@ -71,7 +71,7 @@ public class IndexActivity extends BaseActivity {
     protected void created(Bundle bundle) {
         nurseryRhymesFragment = new NurseryRhymesFragment();
 
-        listenToReadingFragment = new ListenToReadingFragment();
+        listenToReadingFragment = new ReadingFragment();
 
         musicFragment = new MusicFragment();
 

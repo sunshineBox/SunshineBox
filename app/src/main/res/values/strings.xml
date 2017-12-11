@@ -59,8 +59,8 @@
     <string name="index_act_string5">听阅读</string>
     <string name="index_act_string6">音乐</string>
     <string name="index_act_string7">做游戏</string>
-    <string name="index_act_string8">动作儿歌</string>
-    <string name="index_act_string9">听阅读</string>
+    <string name="index_act_string8">儿歌</string>
+    <string name="index_act_string9">阅读</string>
     <string name="index_act_string10">音乐</string>
-    <string name="index_act_string11">做游戏</string>
+    <string name="index_act_string11">游戏</string>
 </resources>

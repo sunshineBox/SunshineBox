@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.listen_to_reading;
+package shaolizhi.sunshinebox.ui.index.reading;
 
 import android.os.Bundle;
 
@@ -9,10 +9,10 @@ import shaolizhi.sunshinebox.ui.base.BaseFragment;
  * 由邵励治于2017/12/11创造.
  */
 
-public class ListenToReadingFragment extends BaseFragment {
+public class ReadingFragment extends BaseFragment {
     @Override
     protected int layoutId() {
-        return R.layout.fragment_listen_to_reading;
+        return R.layout.fragment_reading;
     }
 
     @Override
