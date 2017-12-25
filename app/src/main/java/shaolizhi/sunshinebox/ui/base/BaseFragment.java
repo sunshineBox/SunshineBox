@@ -56,7 +56,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        unbinder.unbind();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 
     @Override
@@ -65,24 +67,24 @@ public abstract class BaseFragment extends Fragment {
         this.mActivity = context;
     }
 
-    protected void toast401(){
+    protected void toast401() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string3));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string3));
     }
 
-    protected void toast402(){
+    protected void toast402() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string4));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string4));
     }
 
-    protected void toast203(){
+    protected void toast203() {
         ToastUtils.showToast(getString(R.string.base_string1));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string5));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string5));
     }
 
-    protected void toast403(){
+    protected void toast403() {
         ToastUtils.showToast(getString(R.string.base_string7));
-        Log.i(this.getClass().getSimpleName(),getString(R.string.base_string6));
+        Log.i(this.getClass().getSimpleName(), getString(R.string.base_string6));
     }
 
     public void showToastForRequestResult(@NonNull String flag) {
