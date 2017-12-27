@@ -61,7 +61,6 @@ public class IndexActivity extends BaseActivity {
         }
     }
 
-
     @Override
     protected int layoutId() {
         return R.layout.activity_index;
@@ -117,7 +116,6 @@ public class IndexActivity extends BaseActivity {
 
     }
 
-
     @Override
     protected void resumed() {
 
@@ -161,7 +159,6 @@ public class IndexActivity extends BaseActivity {
             }
         }
     }
-
 
     @Override
     public void onBackPressed() {

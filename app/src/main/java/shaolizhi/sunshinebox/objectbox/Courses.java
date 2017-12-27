@@ -1,0 +1,117 @@
+package shaolizhi.sunshinebox.objectbox;
+
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+/**
+ * 由邵励治于2017/12/27创造.
+ */
+
+@Entity
+public class Courses {
+    @Id
+    long id;
+
+    String course_id;
+
+    String course_type;
+
+    String course_video;
+
+    String course_name;
+
+    String last_modification_time;
+
+    String video_storage_address;
+
+    String audio_storage_address;
+
+    Boolean isDownload;
+
+    @Override
+    public String toString() {
+        return "Courses{" +
+                "id=" + id +
+                ", course_id='" + course_id + '\'' +
+                ", course_type='" + course_type + '\'' +
+                ", course_video='" + course_video + '\'' +
+                ", course_name='" + course_name + '\'' +
+                ", last_modification_time='" + last_modification_time + '\'' +
+                ", video_storage_address='" + video_storage_address + '\'' +
+                ", audio_storage_address='" + audio_storage_address + '\'' +
+                ", isDownload=" + isDownload +
+                '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCourse_id() {
+        return course_id;
+    }
+
+    public void setCourse_id(String course_id) {
+        this.course_id = course_id;
+    }
+
+    public String getCourse_type() {
+        return course_type;
+    }
+
+    public void setCourse_type(String course_type) {
+        this.course_type = course_type;
+    }
+
+    public String getCourse_video() {
+        return course_video;
+    }
+
+    public void setCourse_video(String course_video) {
+        this.course_video = course_video;
+    }
+
+    public String getCourse_name() {
+        return course_name;
+    }
+
+    public void setCourse_name(String course_name) {
+        this.course_name = course_name;
+    }
+
+    public String getLast_modification_time() {
+        return last_modification_time;
+    }
+
+    public void setLast_modification_time(String last_modification_time) {
+        this.last_modification_time = last_modification_time;
+    }
+
+    public String getVideo_storage_address() {
+        return video_storage_address;
+    }
+
+    public void setVideo_storage_address(String video_storage_address) {
+        this.video_storage_address = video_storage_address;
+    }
+
+    public String getAudio_storage_address() {
+        return audio_storage_address;
+    }
+
+    public void setAudio_storage_address(String audio_storage_address) {
+        this.audio_storage_address = audio_storage_address;
+    }
+
+    public Boolean getDownload() {
+        return isDownload;
+    }
+
+    public void setDownload(Boolean download) {
+        isDownload = download;
+    }
+}
