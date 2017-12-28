@@ -7,7 +7,7 @@ import android.util.Log;
 import io.objectbox.BoxStore;
 import io.objectbox.android.AndroidObjectBrowser;
 import shaolizhi.sunshinebox.BuildConfig;
-import shaolizhi.sunshinebox.objectbox.MyObjectBox;
+import shaolizhi.sunshinebox.objectbox.courses.MyObjectBox;
 
 /**
  * 由邵励治于2017/10/23创造.

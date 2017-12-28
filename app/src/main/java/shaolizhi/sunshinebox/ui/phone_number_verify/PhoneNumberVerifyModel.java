@@ -11,6 +11,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import shaolizhi.sunshinebox.data.ApiService;
+import shaolizhi.sunshinebox.utils.ServiceGenerator;
 
 import static shaolizhi.sunshinebox.data.ApiService.BASE_URL_DEVELOPMENT;
 
@@ -28,14 +29,7 @@ public class PhoneNumberVerifyModel implements PhoneNumberVerifyContract.Model {
 
     @Override
     public void requestSendCaptchaBean(@NonNull String phoneNumber) {
-        Gson gson = new GsonBuilder().create();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL_DEVELOPMENT)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        ApiService service = retrofit.create(ApiService.class);
+        ApiService service = ServiceGenerator.createService(ApiService.class);
 
         Call<SendCaptchaBean> call = service.sendCaptchaAPI(phoneNumber);
 
