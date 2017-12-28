@@ -22,7 +22,7 @@ public class Courses {
 
     String course_name;
 
-    String last_modification_time;
+    long last_modification_time;
 
     String video_storage_address;
 
@@ -93,11 +93,11 @@ public class Courses {
         this.course_name = course_name;
     }
 
-    public String getLast_modification_time() {
+    public long getLast_modification_time() {
         return last_modification_time;
     }
 
-    public void setLast_modification_time(String last_modification_time) {
+    public void setLast_modification_time(long last_modification_time) {
         this.last_modification_time = last_modification_time;
     }
 

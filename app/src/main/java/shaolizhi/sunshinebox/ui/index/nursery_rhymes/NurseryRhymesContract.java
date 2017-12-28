@@ -32,7 +32,7 @@ public class NurseryRhymesContract {
 
         void requestDataFromNet(@NonNull String courseType, @NonNull String maxLastModificationTime);
 
-        void requestDataFromDatabase();
+        List requestDataFromDatabase();
 
         void storedInTheDatabase(@NonNull NurseryRhymesBean bean);
 
@@ -43,9 +43,5 @@ public class NurseryRhymesContract {
         void requestDataFromNetSuccess(@NonNull NurseryRhymesBean bean);
 
         void requestDataFromNetFailure();
-
-        void requestDataFromDatabaseSuccess(@NonNull List<Courses> coursesList);
-
-        void requestDataFromDatabaseFailure();
     }
 }

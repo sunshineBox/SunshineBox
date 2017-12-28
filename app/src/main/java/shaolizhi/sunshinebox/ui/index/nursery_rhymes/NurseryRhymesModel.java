@@ -64,14 +64,17 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
     }
 
     @Override
-    public void requestDataFromDatabase() {
-
+    public List requestDataFromDatabase() {
+        QueryBuilder<Courses> builder = coursesBox.query();
+        Query query = builder.equal(Courses_.course_type, "rhymes").build();
+        return query.find();
     }
 
     /**
      * 将网络中的数据存储到数据库中，
      * 已存在的 UPDATE
      * 不存在的 INSERT
+     *
      * @param bean 传入的网络中的数据
      */
     @Override
@@ -85,7 +88,7 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
             courses.setCourse_type(item.getCourse_type());
             courses.setCourse_video(item.getCourse_video());
             courses.setCourse_audio(item.getCourse_audio());
-            courses.setLast_modification_time(item.getLast_modification_time());
+            courses.setLast_modification_time(Long.parseLong(item.getLast_modification_time()));
             courses.setVideo_storage_address(null);
             courses.setAudio_storage_address(null);
             courses.setDownload(false);
@@ -121,6 +124,8 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
 
     @Override
     public String getMaxModificationTime() {
-        return null;
+        QueryBuilder<Courses> builder = coursesBox.query();
+        Query query = builder.build();
+        return String.valueOf(query.max(Courses_.last_modification_time));
     }
 }
