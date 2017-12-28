@@ -84,6 +84,7 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
             Long id = getIdFromDatabase(item.getCourse_id());
             Courses courses = new Courses();
             courses.setId(id);
+            courses.setCourse_name(item.getCourse_name());
             courses.setCourse_id(item.getCourse_id());
             courses.setCourse_type(item.getCourse_type());
             courses.setCourse_video(item.getCourse_video());
