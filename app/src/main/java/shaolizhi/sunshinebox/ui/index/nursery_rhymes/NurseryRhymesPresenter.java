@@ -2,6 +2,10 @@ package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
 
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
+import shaolizhi.sunshinebox.objectbox.courses.Courses;
+
 /**
  * 由邵励治于2017/12/27创造.
  */
@@ -29,12 +33,14 @@ public class NurseryRhymesPresenter implements NurseryRhymesContract.Presenter, 
         } else {
             model.requestDataFromNet("rhymes", "0");
         }
-        model.requestDataFromDatabase();
     }
 
     @Override
     public void requestDataFromNetSuccess(@NonNull NurseryRhymesBean bean) {
         model.storedInTheDatabase(bean);
+        List<Courses> coursesList = model.requestDataFromDatabase();
+        view.setDataInAdapter(coursesList);
+        view.setRefresh(false);
     }
 
     @Override

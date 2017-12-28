@@ -18,6 +18,7 @@ public class NurseryRhymesBean {
     private String message;
     private List<ContentBean> content;
 
+
     public String getFlag() {
         return flag;
     }

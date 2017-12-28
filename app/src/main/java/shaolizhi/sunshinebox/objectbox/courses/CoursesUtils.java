@@ -25,7 +25,7 @@ public class CoursesUtils {
     }
 
     public Box<Courses> getCoursesBox(Activity activity) {
-        BoxStore boxStore = ((App) ((Activity) App.mAppContext).getApplication()).getBoxStore();
+        BoxStore boxStore = ((App) activity.getApplication()).getBoxStore();
         return boxStore.boxFor(Courses.class);
     }
 

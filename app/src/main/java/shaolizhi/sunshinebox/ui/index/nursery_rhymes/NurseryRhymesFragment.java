@@ -79,7 +79,7 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
 
     @Override
     public void setDataInAdapter(@NonNull List<Courses> coursesList) {
-
+        adapter.setCoursesList(coursesList);
     }
 
     @Override
