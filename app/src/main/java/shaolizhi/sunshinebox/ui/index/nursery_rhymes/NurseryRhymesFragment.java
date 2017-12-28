@@ -1,12 +1,17 @@
 package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import shaolizhi.sunshinebox.R;
+import shaolizhi.sunshinebox.objectbox.courses.Courses;
 import shaolizhi.sunshinebox.ui.base.BaseFragment;
 import shaolizhi.sunshinebox.ui.index.IndexAdapter;
 import shaolizhi.sunshinebox.widget.MyRefreshLayout;
@@ -27,12 +32,12 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
 
     IndexAdapter adapter;
 
-    Context context;
+    Activity activity;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.context = context;
+        this.activity = (Activity) context;
     }
 
     @Override
@@ -53,17 +58,32 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
 
     @Override
     public void onRefresh() {
-        myRefreshLayout.setRefreshing(false);
+        presenter.tryToLoadDataIntoRecyclerView();
     }
 
     @Override
     public void setUpView() {
         //set up recyclerview
-        adapter = new IndexAdapter(context);
+        adapter = new IndexAdapter(activity);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
         recyclerView.setAdapter(adapter);
 
         //set up refreshlayout
         myRefreshLayout.setOnRefreshListener(this);
+    }
+
+    @Override
+    public void setRefresh(boolean refresh) {
+        myRefreshLayout.setRefreshing(refresh);
+    }
+
+    @Override
+    public void setDataInAdapter(@NonNull List<Courses> coursesList) {
+
+    }
+
+    @Override
+    public Activity getFuckingActivity() {
+        return activity;
     }
 }

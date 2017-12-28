@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.objectbox;
+package shaolizhi.sunshinebox.objectbox.courses;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -18,6 +18,8 @@ public class Courses {
 
     String course_video;
 
+    String course_audio;
+
     String course_name;
 
     String last_modification_time;
@@ -27,6 +29,14 @@ public class Courses {
     String audio_storage_address;
 
     Boolean isDownload;
+
+    public String getCourse_audio() {
+        return course_audio;
+    }
+
+    public void setCourse_audio(String course_audio) {
+        this.course_audio = course_audio;
+    }
 
     @Override
     public String toString() {
