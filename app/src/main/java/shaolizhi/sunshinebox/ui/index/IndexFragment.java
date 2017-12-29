@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
+package shaolizhi.sunshinebox.ui.index;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,14 +13,13 @@ import butterknife.BindView;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
 import shaolizhi.sunshinebox.ui.base.BaseFragment;
-import shaolizhi.sunshinebox.ui.index.IndexAdapter;
 import shaolizhi.sunshinebox.widget.MyRefreshLayout;
 
 /**
  * 由邵励治于2017/12/11创造.
  */
 
-public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayout.OnRefreshListener, NurseryRhymesContract.View {
+public class IndexFragment extends BaseFragment implements MyRefreshLayout.OnRefreshListener, IndexContract.View {
 
     @BindView(R.id.nursery_rhymes_fgm_my_refreshlayout)
     MyRefreshLayout myRefreshLayout;
@@ -28,11 +27,21 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
     @BindView(R.id.nursery_rhymes_fgm_recyclerview)
     RecyclerView recyclerView;
 
-    NurseryRhymesContract.Presenter presenter;
+    IndexContract.Presenter presenter;
 
     IndexAdapter adapter;
 
     Activity activity;
+
+    String courseType;
+
+    static IndexFragment newInstance(String courseType) {
+        IndexFragment indexFragment = new IndexFragment();
+        Bundle args = new Bundle();
+        args.putString("course_type", courseType);
+        indexFragment.setArguments(args);
+        return indexFragment;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -47,8 +56,10 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
 
     @Override
     protected void created(Bundle bundle) {
-        presenter = new NurseryRhymesPresenter(this);
+        courseType = getArguments().getString("course_type");
+        presenter = new IndexPresenter(this);
         presenter.start();
+
     }
 
     @Override
@@ -85,5 +96,10 @@ public class NurseryRhymesFragment extends BaseFragment implements MyRefreshLayo
     @Override
     public Activity getFuckingActivity() {
         return activity;
+    }
+
+    @Override
+    public String getCourseType() {
+        return courseType;
     }
 }

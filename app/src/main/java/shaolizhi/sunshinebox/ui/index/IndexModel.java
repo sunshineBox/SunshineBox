@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
+package shaolizhi.sunshinebox.ui.index;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -22,15 +22,15 @@ import shaolizhi.sunshinebox.utils.ServiceGenerator;
  * 由邵励治于2017/12/27创造.
  */
 
-public class NurseryRhymesModel implements NurseryRhymesContract.Model {
+public class IndexModel implements IndexContract.Model {
 
-    private NurseryRhymesContract.CallBack callBack;
+    private IndexContract.CallBack callBack;
 
     private CoursesUtils coursesUtils;
 
     private Box<Courses> coursesBox;
 
-    NurseryRhymesModel(@NonNull NurseryRhymesContract.CallBack callBack, @NonNull Activity activity) {
+    IndexModel(@NonNull IndexContract.CallBack callBack, @NonNull Activity activity) {
         this.callBack = callBack;
         //get coursesUtils
         coursesUtils = CoursesUtils.getInstance();
@@ -46,27 +46,27 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
     @Override
     public void requestDataFromNet(@NonNull String courseType, @NonNull String maxLastModificationTime) {
         ApiService apiService = ServiceGenerator.createService(ApiService.class);
-        Call<NurseryRhymesBean> call = apiService.getIndexDataAPI(courseType, maxLastModificationTime);
-        call.enqueue(new Callback<NurseryRhymesBean>() {
+        Call<IndexBean> call = apiService.getIndexDataAPI(courseType, maxLastModificationTime);
+        call.enqueue(new Callback<IndexBean>() {
             @Override
-            public void onResponse(@NonNull Call<NurseryRhymesBean> call, @NonNull Response<NurseryRhymesBean> response) {
-                NurseryRhymesBean bean = response.body();
+            public void onResponse(@NonNull Call<IndexBean> call, @NonNull Response<IndexBean> response) {
+                IndexBean bean = response.body();
                 if (bean != null) {
                     callBack.requestDataFromNetSuccess(bean);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<NurseryRhymesBean> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<IndexBean> call, @NonNull Throwable t) {
                 callBack.requestDataFromNetFailure();
             }
         });
     }
 
     @Override
-    public List requestDataFromDatabase() {
+    public List requestDataFromDatabase(@NonNull String courseType) {
         QueryBuilder<Courses> builder = coursesBox.query();
-        Query query = builder.equal(Courses_.course_type, "rhymes").build();
+        Query query = builder.equal(Courses_.course_type, courseType).build();
         return query.find();
     }
 
@@ -78,9 +78,9 @@ public class NurseryRhymesModel implements NurseryRhymesContract.Model {
      * @param bean 传入的网络中的数据
      */
     @Override
-    public void storedInTheDatabase(@NonNull NurseryRhymesBean bean) {
-        List<NurseryRhymesBean.ContentBean> contentBeans = bean.getContent();
-        for (NurseryRhymesBean.ContentBean item : contentBeans) {
+    public void storedInTheDatabase(@NonNull IndexBean bean) {
+        List<IndexBean.ContentBean> contentBeans = bean.getContent();
+        for (IndexBean.ContentBean item : contentBeans) {
             Long id = getIdFromDatabase(item.getCourse_id());
             Courses courses = new Courses();
             courses.setId(id);

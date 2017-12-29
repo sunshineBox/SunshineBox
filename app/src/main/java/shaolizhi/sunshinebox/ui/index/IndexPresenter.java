@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
+package shaolizhi.sunshinebox.ui.index;
 
 import android.support.annotation.NonNull;
 
@@ -12,14 +12,14 @@ import shaolizhi.sunshinebox.ui.base.BaseFragment;
  * 由邵励治于2017/12/27创造.
  */
 
-public class NurseryRhymesPresenter implements NurseryRhymesContract.Presenter, NurseryRhymesContract.CallBack {
+public class IndexPresenter implements IndexContract.Presenter, IndexContract.CallBack {
 
-    private NurseryRhymesContract.View view;
-    private NurseryRhymesContract.Model model;
+    private IndexContract.View view;
+    private IndexContract.Model model;
 
-    NurseryRhymesPresenter(@NonNull NurseryRhymesContract.View view) {
+    IndexPresenter(@NonNull IndexContract.View view) {
         this.view = view;
-        model = new NurseryRhymesModel(this, view.getFuckingActivity());
+        model = new IndexModel(this, view.getFuckingActivity());
     }
 
     @Override
@@ -31,14 +31,14 @@ public class NurseryRhymesPresenter implements NurseryRhymesContract.Presenter, 
     @Override
     public void tryToLoadDataIntoRecyclerView() {
         if (model.isThereAnyDataInTheDatabase()) {
-            model.requestDataFromNet("rhymes", model.getMaxModificationTime());
+            model.requestDataFromNet(view.getCourseType(), model.getMaxModificationTime());
         } else {
-            model.requestDataFromNet("rhymes", "0");
+            model.requestDataFromNet(view.getCourseType(), "0");
         }
     }
 
     @Override
-    public void requestDataFromNetSuccess(@NonNull NurseryRhymesBean bean) {
+    public void requestDataFromNetSuccess(@NonNull IndexBean bean) {
         if (bean.getFlag() != null) {
             switch (bean.getFlag()) {
                 case "001":
@@ -52,7 +52,7 @@ public class NurseryRhymesPresenter implements NurseryRhymesContract.Presenter, 
                             }
                         } else if (bean.getMessage().equals("success")) {
                             model.storedInTheDatabase(bean);
-                            List<Courses> coursesList = model.requestDataFromDatabase();
+                            List<Courses> coursesList = model.requestDataFromDatabase(view.getCourseType());
                             view.setDataInAdapter(coursesList);
                             view.setRefresh(false);
                         }

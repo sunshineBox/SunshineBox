@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
-import shaolizhi.sunshinebox.ui.index.nursery_rhymes.NurseryRhymesBean;
+import shaolizhi.sunshinebox.ui.index.IndexBean;
 import shaolizhi.sunshinebox.ui.phone_number_verify.CheckCaptchaBean;
 import shaolizhi.sunshinebox.ui.phone_number_verify.SendCaptchaBean;
 
@@ -26,6 +26,6 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("sunshinebox/home_page/GetIndexData.php")
-    Call<NurseryRhymesBean> getIndexDataAPI(@Field("course_type") String courseType, @Field("max_last_modification_time") String maxLastModificationTime);
+    Call<IndexBean> getIndexDataAPI(@Field("course_type") String courseType, @Field("max_last_modification_time") String maxLastModificationTime);
 
 }

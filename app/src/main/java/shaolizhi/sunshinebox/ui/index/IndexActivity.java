@@ -17,10 +17,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
-import shaolizhi.sunshinebox.ui.index.game.GameFragment;
-import shaolizhi.sunshinebox.ui.index.reading.ReadingFragment;
-import shaolizhi.sunshinebox.ui.index.music.MusicFragment;
-import shaolizhi.sunshinebox.ui.index.nursery_rhymes.NurseryRhymesFragment;
 import shaolizhi.sunshinebox.utils.UIUtils;
 
 public class IndexActivity extends BaseActivity {
@@ -40,13 +36,13 @@ public class IndexActivity extends BaseActivity {
     @BindView(R.id.index_content_act_toolbar)
     Toolbar toolbar;
 
-    NurseryRhymesFragment nurseryRhymesFragment;
+    IndexFragment rhymesFragment;
 
-    ReadingFragment listenToReadingFragment;
+    IndexFragment readingFragment;
 
-    MusicFragment musicFragment;
+    IndexFragment musicFragment;
 
-    GameFragment gameFragment;
+    IndexFragment gameFragment;
 
     MyAdapter adapter;
 
@@ -68,13 +64,13 @@ public class IndexActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        nurseryRhymesFragment = new NurseryRhymesFragment();
+        rhymesFragment = IndexFragment.newInstance("rhymes");
 
-        listenToReadingFragment = new ReadingFragment();
+        readingFragment = IndexFragment.newInstance("reading");
 
-        musicFragment = new MusicFragment();
+        musicFragment = IndexFragment.newInstance("music");
 
-        gameFragment = new GameFragment();
+        gameFragment = IndexFragment.newInstance("game");
 
         adapter = new MyAdapter(getSupportFragmentManager());
 
@@ -130,9 +126,9 @@ public class IndexActivity extends BaseActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return nurseryRhymesFragment;
+                    return rhymesFragment;
                 case 1:
-                    return listenToReadingFragment;
+                    return readingFragment;
                 case 2:
                     return musicFragment;
                 default:

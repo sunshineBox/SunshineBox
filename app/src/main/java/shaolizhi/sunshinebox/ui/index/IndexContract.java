@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
+package shaolizhi.sunshinebox.ui.index;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -13,13 +13,15 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
  * 由邵励治于2017/12/27创造.
  */
 
-public class NurseryRhymesContract {
+class IndexContract {
     interface View extends BaseView {
         void setRefresh(boolean refresh);
 
         void setDataInAdapter(@NonNull List<Courses> coursesList);
 
         Activity getFuckingActivity();
+
+        String getCourseType();
     }
 
 
@@ -32,15 +34,15 @@ public class NurseryRhymesContract {
 
         void requestDataFromNet(@NonNull String courseType, @NonNull String maxLastModificationTime);
 
-        List requestDataFromDatabase();
+        List requestDataFromDatabase(@NonNull String courseType);
 
-        void storedInTheDatabase(@NonNull NurseryRhymesBean bean);
+        void storedInTheDatabase(@NonNull IndexBean bean);
 
         String getMaxModificationTime();
     }
 
     interface CallBack {
-        void requestDataFromNetSuccess(@NonNull NurseryRhymesBean bean);
+        void requestDataFromNetSuccess(@NonNull IndexBean bean);
 
         void requestDataFromNetFailure();
     }

@@ -1,4 +1,4 @@
-package shaolizhi.sunshinebox.ui.index.nursery_rhymes;
+package shaolizhi.sunshinebox.ui.index;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
  * 由邵励治于2017/12/28创造.
  */
 
-public class NurseryRhymesBean {
+public class IndexBean {
 
     /**
      * flag : 001
