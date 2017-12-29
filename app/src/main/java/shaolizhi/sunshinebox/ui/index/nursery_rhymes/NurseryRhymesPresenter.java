@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
+import shaolizhi.sunshinebox.ui.base.BaseActivity;
+import shaolizhi.sunshinebox.ui.base.BaseFragment;
 
 /**
  * 由邵励治于2017/12/27创造.
@@ -37,14 +39,45 @@ public class NurseryRhymesPresenter implements NurseryRhymesContract.Presenter, 
 
     @Override
     public void requestDataFromNetSuccess(@NonNull NurseryRhymesBean bean) {
-        model.storedInTheDatabase(bean);
-        List<Courses> coursesList = model.requestDataFromDatabase();
-        view.setDataInAdapter(coursesList);
-        view.setRefresh(false);
+        if (bean.getFlag() != null) {
+            switch (bean.getFlag()) {
+                case "001":
+                    if (bean.getMessage() != null) {
+                        if (bean.getMessage().equals("failure")) {
+                            if (view instanceof BaseFragment) {
+                                ((BaseFragment) view).showToastForRequestResult("402");
+                            }
+                            if (view instanceof BaseActivity) {
+                                ((BaseActivity) view).showToastForRequestResult("402");
+                            }
+                        } else if (bean.getMessage().equals("success")) {
+                            model.storedInTheDatabase(bean);
+                            List<Courses> coursesList = model.requestDataFromDatabase();
+                            view.setDataInAdapter(coursesList);
+                            view.setRefresh(false);
+                        }
+                    }
+                    break;
+                default:
+                    if (view instanceof BaseFragment) {
+                        ((BaseFragment) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    if (view instanceof BaseActivity) {
+                        ((BaseActivity) view).showToastForRequestResult(bean.getFlag());
+                    }
+                    break;
+            }
+        }
     }
 
     @Override
     public void requestDataFromNetFailure() {
+        if (view instanceof BaseFragment) {
+            ((BaseFragment) view).showToastForRequestResult("403");
+        }
+        if (view instanceof BaseActivity) {
+            ((BaseActivity) view).showToastForRequestResult("403");
+        }
         view.setRefresh(false);
     }
 
