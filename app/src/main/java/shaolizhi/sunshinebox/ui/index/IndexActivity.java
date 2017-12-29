@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
+import shaolizhi.sunshinebox.objectbox.courses.CoursesUtils;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.utils.UIUtils;
 
@@ -64,6 +65,8 @@ public class IndexActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
+        CoursesUtils.getInstance().printAllObject(CoursesUtils.getInstance().getCoursesBox(this));
+
         rhymesFragment = IndexFragment.newInstance("rhymes");
 
         readingFragment = IndexFragment.newInstance("reading");

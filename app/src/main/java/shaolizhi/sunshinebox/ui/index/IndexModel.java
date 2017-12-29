@@ -39,8 +39,8 @@ public class IndexModel implements IndexContract.Model {
     }
 
     @Override
-    public Boolean isThereAnyDataInTheDatabase() {
-        return coursesUtils.isCoursesBoxHasData(coursesBox);
+    public Boolean isThereAnyDataInTheDatabase(@NonNull String courseType) {
+        return coursesUtils.isCoursesBoxHasData(coursesBox,courseType);
     }
 
     @Override

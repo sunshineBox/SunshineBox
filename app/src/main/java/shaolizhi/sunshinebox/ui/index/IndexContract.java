@@ -30,7 +30,7 @@ class IndexContract {
     }
 
     interface Model {
-        Boolean isThereAnyDataInTheDatabase();
+        Boolean isThereAnyDataInTheDatabase(@NonNull String courseType);
 
         void requestDataFromNet(@NonNull String courseType, @NonNull String maxLastModificationTime);
 

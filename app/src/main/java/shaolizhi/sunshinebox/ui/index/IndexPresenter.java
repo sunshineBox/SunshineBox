@@ -30,7 +30,7 @@ public class IndexPresenter implements IndexContract.Presenter, IndexContract.Ca
 
     @Override
     public void tryToLoadDataIntoRecyclerView() {
-        if (model.isThereAnyDataInTheDatabase()) {
+        if (model.isThereAnyDataInTheDatabase(view.getCourseType())) {
             model.requestDataFromNet(view.getCourseType(), model.getMaxModificationTime());
         } else {
             model.requestDataFromNet(view.getCourseType(), "0");
