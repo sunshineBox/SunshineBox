@@ -38,7 +38,7 @@ class IndexContract {
 
         void storedInTheDatabase(@NonNull IndexBean bean);
 
-        String getMaxModificationTime();
+        String getMaxModificationTime(@NonNull String courseType);
     }
 
     interface CallBack {

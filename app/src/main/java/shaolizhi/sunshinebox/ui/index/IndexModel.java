@@ -40,7 +40,7 @@ public class IndexModel implements IndexContract.Model {
 
     @Override
     public Boolean isThereAnyDataInTheDatabase(@NonNull String courseType) {
-        return coursesUtils.isCoursesBoxHasData(coursesBox,courseType);
+        return coursesUtils.isCoursesBoxHasData(coursesBox, courseType);
     }
 
     @Override
@@ -124,9 +124,10 @@ public class IndexModel implements IndexContract.Model {
     }
 
     @Override
-    public String getMaxModificationTime() {
+    public String getMaxModificationTime(@NonNull String courseType) {
         QueryBuilder<Courses> builder = coursesBox.query();
-        Query query = builder.build();
+        builder.equal(Courses_.course_type, courseType);
+        Query<Courses> query = builder.build();
         return String.valueOf(query.max(Courses_.last_modification_time));
     }
 }
