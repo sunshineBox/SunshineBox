@@ -46,13 +46,13 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         isDownloadList = list;
     }
 
-    public IndexAdapter(Context context) {
+    IndexAdapter(Context context) {
         this.context = context;
         layoutInflater = LayoutInflater.from(this.context);
     }
 
     //for view
-    public void setCoursesList(List<Courses> coursesList) {
+    void setCoursesList(List<Courses> coursesList) {
         setCourseNameList(coursesList);
         setIsDownloadList(coursesList);
         notifyDataSetChanged();

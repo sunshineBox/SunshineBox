@@ -64,9 +64,9 @@ public class IndexModel implements IndexContract.Model {
     }
 
     @Override
-    public List requestDataFromDatabase(@NonNull String courseType) {
+    public List<Courses> requestDataFromDatabase(@NonNull String courseType) {
         QueryBuilder<Courses> builder = coursesBox.query();
-        Query query = builder.equal(Courses_.course_type, courseType).build();
+        Query<Courses> query = builder.equal(Courses_.course_type, courseType).build();
         return query.find();
     }
 

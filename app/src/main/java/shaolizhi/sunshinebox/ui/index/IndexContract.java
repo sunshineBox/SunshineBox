@@ -34,7 +34,7 @@ class IndexContract {
 
         void requestDataFromNet(@NonNull String courseType, @NonNull String maxLastModificationTime);
 
-        List requestDataFromDatabase(@NonNull String courseType);
+        List<Courses> requestDataFromDatabase(@NonNull String courseType);
 
         void storedInTheDatabase(@NonNull IndexBean bean);
 
