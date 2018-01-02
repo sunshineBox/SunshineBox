@@ -74,13 +74,22 @@ public class IndexModel implements IndexContract.Model {
      * 将网络中的数据存储到数据库中，
      * 已存在的 UPDATE
      * 不存在的 INSERT
+     * delete中的 DELETE
      *
      * @param bean 传入的网络中的数据
      */
     @Override
     public void storedInTheDatabase(@NonNull IndexBean bean) {
-        List<IndexBean.ContentBean> contentBeans = bean.getContent();
-        for (IndexBean.ContentBean item : contentBeans) {
+
+        //将delete中返回的数据从数据库中删除，course_id存在的删除，不存在的啥都不做
+        List<IndexBean.ContentBean.DeleteBean> deleteBeans = bean.getContent().getDelete();
+        for (IndexBean.ContentBean.DeleteBean item : deleteBeans) {
+            deleteCourseWithCourseId(item.getCourse_id());
+        }
+
+        //将update中返回的数据存入数据库，course_id已存在的UPDATE，不存在的INSERT
+        List<IndexBean.ContentBean.UpdateBean> updateBeans = bean.getContent().getUpdate();
+        for (IndexBean.ContentBean.UpdateBean item : updateBeans) {
             Long id = getIdFromDatabase(item.getCourse_id());
             Courses courses = new Courses();
             courses.setId(id);
@@ -121,6 +130,18 @@ public class IndexModel implements IndexContract.Model {
             }
         }
         return 0;
+    }
+
+    private void deleteCourseWithCourseId(String courseId) {
+        if (getIdFromDatabase(courseId) != 0) {
+            QueryBuilder<Courses> builder = coursesBox.query();
+            builder.equal(Courses_.course_id, courseId);
+            Query<Courses> query = builder.build();
+            Courses courses = query.findUnique();
+            if (courses != null) {
+                coursesBox.remove(courses);
+            }
+        }
     }
 
     @Override
