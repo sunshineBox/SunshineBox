@@ -63,4 +63,11 @@
     <string name="index_act_string9">阅读</string>
     <string name="index_act_string10">音乐</string>
     <string name="index_act_string11">游戏</string>
+
+    <!--CourseActivity-->
+    <string name="course_act_string1">返回</string>
+    <string name="course_act_string2">PLAY音频</string>
+    <string name="course_act_string3">PLAY视频</string>
+    <string name="course_act_string4">上一课</string>
+    <string name="course_act_string5">下一课</string>
 </resources>
