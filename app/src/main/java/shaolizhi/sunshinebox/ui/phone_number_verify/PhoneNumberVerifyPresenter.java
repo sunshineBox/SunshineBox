@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import java.util.Objects;
 
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.data.CacheData;
+import shaolizhi.sunshinebox.data.ConstantData;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 import shaolizhi.sunshinebox.ui.base.BaseFragment;
 import shaolizhi.sunshinebox.utils.App;
@@ -130,7 +130,7 @@ public class PhoneNumberVerifyPresenter implements PhoneNumberVerifyContract.Pre
                 case "001":
                     if (Objects.equals(bean.getMessage(), "success")) {
                         if (bean.getContent().getUuid() != null) {
-                            SharedPreferencesUtils.put(view.getContext(), CacheData.UUID, bean.getContent().getUuid());
+                            SharedPreferencesUtils.put(view.getContext(), ConstantData.UUID, bean.getContent().getUuid());
                             view.openVerifyActivationCodeActivity();
                         }
                     } else if (Objects.equals(bean.getMessage(), "incorrect")) {

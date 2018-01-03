@@ -18,6 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageButton
+                android:id="@+id/course_act_imagebutton1"
                 android:layout_width="?attr/actionBarSize"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_centerVertical="true"
@@ -26,6 +27,7 @@
                 android:src="@drawable/ic_arrow_back_black_24dp" />
 
             <TextView
+                android:id="@+id/course_act_textview1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

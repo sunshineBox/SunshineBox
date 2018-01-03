@@ -1,6 +1,8 @@
 package shaolizhi.sunshinebox.ui.index;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,16 +15,21 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import shaolizhi.sunshinebox.R;
+import shaolizhi.sunshinebox.data.ConstantData;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
+import shaolizhi.sunshinebox.ui.course.CourseActivity;
 
 /**
  * 由邵励治于2017/12/11创造.
  */
 
-public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHolder> {
 
-    private Context context;
     private LayoutInflater layoutInflater;
+
+    private List<Courses> coursesList;
+
+    private Activity activity;
 
     //data from coursesList
     private List<String> courseNameList;
@@ -47,50 +54,40 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     IndexAdapter(Context context) {
-        this.context = context;
-        layoutInflater = LayoutInflater.from(this.context);
+        layoutInflater = LayoutInflater.from(context);
+        activity = (Activity) context;
     }
 
     //for view
     void setCoursesList(List<Courses> coursesList) {
-        setCourseNameList(coursesList);
-        setIsDownloadList(coursesList);
+        this.coursesList = coursesList;
         notifyDataSetChanged();
     }
 
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public IndexViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View layout = layoutInflater.inflate(R.layout.item_index, parent, false);
-        return new MyViewHolder(layout);
+        return new IndexViewHolder(layout);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof MyViewHolder) {
-            ((MyViewHolder) holder).courseNameTextview.setText(courseNameList.get(position));
-            if (isDownloadList.get(position)) {
-                ((MyViewHolder) holder).isDownloadTextview.setText("已下载");
-            } else {
-                ((MyViewHolder) holder).isDownloadTextview.setText("未下载");
-            }
+    public void onBindViewHolder(IndexViewHolder holder, int position) {
+        if (holder != null) {
+            holder.bind(coursesList.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        if (courseNameList != null && isDownloadList != null) {
-            if (courseNameList.size() == isDownloadList.size()) {
-                return courseNameList.size();
-            } else {
-                return 0;
-            }
+        if (coursesList != null) {
+            return coursesList.size();
         } else {
             return 0;
         }
     }
 
-    static class MyViewHolder extends RecyclerView.ViewHolder {
+    class IndexViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.index_item_textview1)
         TextView isDownloadTextview;
@@ -98,9 +95,29 @@ public class IndexAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         @BindView(R.id.index_item_textview2)
         TextView courseNameTextview;
 
-        MyViewHolder(View itemView) {
+        private Courses courses;
+
+        void bind(Courses courses) {
+            this.courses = courses;
+            courseNameTextview.setText(this.courses.getCourse_name());
+            if (this.courses.getDownload()) {
+                isDownloadTextview.setText("已下载");
+            } else {
+                isDownloadTextview.setText("未下载");
+            }
+        }
+
+        IndexViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(activity, CourseActivity.class);
+            intent.putExtra(ConstantData.COURSE, this.courses);
+            activity.startActivity(intent);
         }
     }
 }

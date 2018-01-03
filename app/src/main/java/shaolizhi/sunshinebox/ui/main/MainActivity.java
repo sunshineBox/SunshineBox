@@ -9,7 +9,7 @@ import shaolizhi.sunshinebox.ui.welcome.WelcomeActivity;
 import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 import shaolizhi.sunshinebox.utils.SharedPreferencesUtils;
 
-import static shaolizhi.sunshinebox.data.CacheData.UUID;
+import static shaolizhi.sunshinebox.data.ConstantData.UUID;
 
 /**
  * 由邵励治于2017/12/7创造.

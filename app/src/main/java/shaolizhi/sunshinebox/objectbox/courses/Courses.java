@@ -1,5 +1,7 @@
 package shaolizhi.sunshinebox.objectbox.courses;
 
+import java.io.Serializable;
+
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
@@ -8,7 +10,7 @@ import io.objectbox.annotation.Id;
  */
 
 @Entity
-public class Courses {
+public class Courses implements Serializable{
     @Id
     long id;
 
