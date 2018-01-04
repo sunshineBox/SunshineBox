@@ -1,9 +1,14 @@
 package shaolizhi.sunshinebox.ui.course;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
+import shaolizhi.sunshinebox.utils.IOUtils;
 
 /**
  * 由邵励治于2018/1/4创造.
@@ -70,6 +75,8 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                 //音频已下载
                 playAudio();
             } else {
+                //请求权限
+                checkPermissions();
                 //音频未下载
                 downloadAudio();
             }
@@ -77,6 +84,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     }
 
     private void playAudio() {
+
     }
 
     private void downloadAudio() {
@@ -94,10 +102,12 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         }
         if (courses != null) {
             if (courses.getIs_audio_downloaded()) {
-                //音频已下载
+                //视频已下载
                 playVideo();
             } else {
-                //音频未下载
+                //请求权限
+                checkPermissions();
+                //视频未下载
                 downloadVideo();
             }
         }
@@ -111,6 +121,18 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         isVideoDownloading = true;
         //弹出SnackBar
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string8, Snackbar.LENGTH_SHORT).show();
+        IOUtils.createDirectory();
+        model.requestVideoByCourseId(courseId);
+    }
 
+    private void checkPermissions() {
+        //检查运行时权限
+        if (ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS}, 1);
+        }
+
+        if (ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+        }
     }
 }

@@ -36,6 +36,10 @@ class CourseContract {
 
     interface Model {
         Courses getCourseByCourseId(String courseId);
+
+        void requestVideoByCourseId(String courseId);
+
+        void requestAudioByCourseId(String courseId);
     }
 
     interface CallBack {
