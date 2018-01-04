@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,28 +29,6 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHol
     private List<Courses> coursesList;
 
     private Activity activity;
-
-    //data from coursesList
-    private List<String> courseNameList;
-    private List<Boolean> isDownloadList;
-
-    //data from coursesList's setter
-    private void setCourseNameList(List<Courses> coursesList) {
-        List<String> list = new ArrayList<>();
-        for (Courses item : coursesList) {
-            list.add(item.getCourse_name());
-        }
-        courseNameList = list;
-    }
-
-    //data from coursesList's setter
-    private void setIsDownloadList(List<Courses> coursesList) {
-        List<Boolean> list = new ArrayList<>();
-        for (Courses item : coursesList) {
-            list.add(item.getDownload());
-        }
-        isDownloadList = list;
-    }
 
     IndexAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
@@ -100,10 +77,10 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHol
         void bind(Courses courses) {
             this.courses = courses;
             courseNameTextview.setText(this.courses.getCourse_name());
-            if (this.courses.getDownload()) {
-                isDownloadTextview.setText("已下载");
+            if (this.courses.getIs_video_downloaded()) {
+                isDownloadTextview.setText("视频已下载");
             } else {
-                isDownloadTextview.setText("未下载");
+                isDownloadTextview.setText("视频未下载");
             }
         }
 

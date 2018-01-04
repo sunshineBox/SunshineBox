@@ -30,30 +30,9 @@ public class Courses implements Serializable{
 
     String audio_storage_address;
 
-    Boolean isDownload;
+    Boolean is_audio_downloaded;
 
-    public String getCourse_audio() {
-        return course_audio;
-    }
-
-    public void setCourse_audio(String course_audio) {
-        this.course_audio = course_audio;
-    }
-
-    @Override
-    public String toString() {
-        return "Courses{" +
-                "id=" + id +
-                ", course_id='" + course_id + '\'' +
-                ", course_type='" + course_type + '\'' +
-                ", course_video='" + course_video + '\'' +
-                ", course_name='" + course_name + '\'' +
-                ", last_modification_time='" + last_modification_time + '\'' +
-                ", video_storage_address='" + video_storage_address + '\'' +
-                ", audio_storage_address='" + audio_storage_address + '\'' +
-                ", isDownload=" + isDownload +
-                '}';
-    }
+    Boolean is_video_downloaded;
 
     public long getId() {
         return id;
@@ -85,6 +64,14 @@ public class Courses implements Serializable{
 
     public void setCourse_video(String course_video) {
         this.course_video = course_video;
+    }
+
+    public String getCourse_audio() {
+        return course_audio;
+    }
+
+    public void setCourse_audio(String course_audio) {
+        this.course_audio = course_audio;
     }
 
     public String getCourse_name() {
@@ -119,11 +106,19 @@ public class Courses implements Serializable{
         this.audio_storage_address = audio_storage_address;
     }
 
-    public Boolean getDownload() {
-        return isDownload;
+    public Boolean getIs_audio_downloaded() {
+        return is_audio_downloaded;
     }
 
-    public void setDownload(Boolean download) {
-        isDownload = download;
+    public void setIs_audio_downloaded(Boolean is_audio_downloaded) {
+        this.is_audio_downloaded = is_audio_downloaded;
+    }
+
+    public Boolean getIs_video_downloaded() {
+        return is_video_downloaded;
+    }
+
+    public void setIs_video_downloaded(Boolean is_video_downloaded) {
+        this.is_video_downloaded = is_video_downloaded;
     }
 }
