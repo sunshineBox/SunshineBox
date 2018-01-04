@@ -2,6 +2,7 @@ package shaolizhi.sunshinebox.ui.course;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,14 +19,13 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     private CourseContract.Presenter presenter;
 
-    private Boolean isAudioDownloading;
-
-    private Boolean isVideoDownloading;
-
     @OnClick(R.id.course_act_imagebutton1)
     public void back() {
         finish();
     }
+
+    @BindView(R.id.course_act_coordinatorLayout)
+    CoordinatorLayout coordinatorLayout;
 
     @BindView(R.id.course_act_textview1)
     TextView courseNameTextView;
@@ -35,7 +35,7 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @OnClick(R.id.course_act_button1)
     public void clickAudioButton() {
-
+        presenter.tryToPlayAudio();
     }
 
     @BindView(R.id.course_act_button2)
@@ -43,7 +43,7 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @OnClick(R.id.course_act_button2)
     public void clickVideoButton() {
-
+        presenter.tryToPlayVideo();
     }
 
     @BindView(R.id.course_act_button3)
@@ -117,6 +117,11 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     @Override
     public void setVideoButtonText(int resId) {
         videoButton.setText(resId);
+    }
+
+    @Override
+    public CoordinatorLayout getCoordinatorLayout() {
+        return coordinatorLayout;
     }
 
     @Override

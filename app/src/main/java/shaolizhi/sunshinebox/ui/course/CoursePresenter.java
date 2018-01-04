@@ -1,5 +1,7 @@
 package shaolizhi.sunshinebox.ui.course;
 
+import android.support.design.widget.Snackbar;
+
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
 
@@ -13,9 +15,20 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     private CourseContract.Model model;
 
+    private String courseId = null;
+
+    private Boolean isAudioDownloading = false;
+
+    private Boolean isVideoDownloading = false;
+
     CoursePresenter(CourseContract.View view) {
         this.view = view;
         model = new CourseModel(this, view.getActivity());
+        try {
+            courseId = view.getCourseIdFromIntent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -26,10 +39,8 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     private void setUpButtonTextWhenThereIsNoDownload() {
         Courses courses = null;
-        try {
-            courses = model.getCourseByCourseId(view.getCourseIdFromIntent());
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (courseId != null) {
+            courses = model.getCourseByCourseId(courseId);
         }
 
         if (courses != null) {
@@ -45,5 +56,61 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                 view.setVideoButtonText(R.string.course_act_string7);
             }
         }
+    }
+
+    @Override
+    public void tryToPlayAudio() {
+        Courses courses = null;
+        if (courseId != null) {
+            courses = model.getCourseByCourseId(courseId);
+        }
+
+        if (courses != null) {
+            if (courses.getIs_audio_downloaded()) {
+                //音频已下载
+                playAudio();
+            } else {
+                //音频未下载
+                downloadAudio();
+            }
+        }
+    }
+
+    private void playAudio() {
+    }
+
+    private void downloadAudio() {
+        isAudioDownloading = true;
+        //弹出SnackBar
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string8, Snackbar.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void tryToPlayVideo() {
+        Courses courses = null;
+        if (courseId != null) {
+            courses = model.getCourseByCourseId(courseId);
+        }
+        if (courses != null) {
+            if (courses.getIs_audio_downloaded()) {
+                //音频已下载
+                playVideo();
+            } else {
+                //音频未下载
+                downloadVideo();
+            }
+        }
+    }
+
+    private void playVideo() {
+
+    }
+
+    private void downloadVideo() {
+        isVideoDownloading = true;
+        //弹出SnackBar
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string8, Snackbar.LENGTH_SHORT).show();
+
     }
 }

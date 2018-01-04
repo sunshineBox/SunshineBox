@@ -1,6 +1,7 @@
 package shaolizhi.sunshinebox.ui.course;
 
 import android.app.Activity;
+import android.support.design.widget.CoordinatorLayout;
 
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
 import shaolizhi.sunshinebox.ui.base.BasePresenter;
@@ -22,10 +23,15 @@ class CourseContract {
 
         void setVideoButtonText(int resId);
 
+        CoordinatorLayout getCoordinatorLayout();
+
         Activity getActivity();
     }
 
     interface Presenter extends BasePresenter {
+        void tryToPlayAudio();
+
+        void tryToPlayVideo();
     }
 
     interface Model {
