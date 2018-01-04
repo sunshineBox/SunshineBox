@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 
 import io.objectbox.Box;
 import io.objectbox.query.Query;
@@ -139,7 +140,7 @@ class CourseModel implements CourseContract.Model {
     }
 
     @Override
-    public void requestVideoByCourseId(String courseId) {
+    public void requestVideoByCourseId(final String courseId) {
         final Courses courses;
         courses = getCourseByCourseId(courseId);
         if (courses != null) {
@@ -150,15 +151,8 @@ class CourseModel implements CourseContract.Model {
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.e(TAG, "server contacted and has file");
-                        new AsyncTask<Void, Void, Void>() {
-                            @Override
-                            protected Void doInBackground(Void... voids) {
-                                File file = getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
-                                boolean writtenToDisk = writeResponseBodyToDisk(response.body(), file);
-                                Log.i(TAG, "file download was a success?" + writtenToDisk);
-                                return null;
-                            }
-                        }.execute();
+                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response);
+                        downloadFile.execute();
                     } else {
                         Log.e(TAG, "server contact failed");
                     }
@@ -169,6 +163,35 @@ class CourseModel implements CourseContract.Model {
                     Log.e(TAG, "error");
                 }
             });
+        }
+    }
+
+    private static class DownloadFile extends AsyncTask<Void, Void, Void> {
+
+        private WeakReference<CourseModel> courseModelWeakReference;
+
+        private String courseId;
+
+        private Response<ResponseBody> response;
+
+        DownloadFile(CourseModel courseModel, String courseId, Response<ResponseBody> response) {
+            this.courseModelWeakReference = new WeakReference<>(courseModel);
+            this.courseId = courseId;
+            this.response = response;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            CourseModel courseModel = courseModelWeakReference.get();
+
+            if (courseModel != null) {
+                Courses courses = courseModel.getCourseByCourseId(courseId);
+                File file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
+                boolean writtenToDisk = writeResponseBodyToDisk(response.body(), file);
+                Log.i(TAG, "file download was a success?" + writtenToDisk);
+            }
+
+            return null;
         }
     }
 
