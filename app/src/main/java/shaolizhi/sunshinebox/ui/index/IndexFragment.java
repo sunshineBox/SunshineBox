@@ -56,15 +56,14 @@ public class IndexFragment extends BaseFragment implements MyRefreshLayout.OnRef
 
     @Override
     protected void created(Bundle bundle) {
-        courseType = getArguments().getString("course_type");
-        presenter = new IndexPresenter(this);
-        presenter.start();
 
     }
 
     @Override
     protected void resumed() {
-
+        courseType = getArguments().getString("course_type");
+        presenter = new IndexPresenter(this);
+        presenter.start();
     }
 
     @Override

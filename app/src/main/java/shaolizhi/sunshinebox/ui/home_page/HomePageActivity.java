@@ -9,7 +9,6 @@ import shaolizhi.sunshinebox.ui.index.IndexActivity;
 import shaolizhi.sunshinebox.ui.setting.SettingActivity;
 import shaolizhi.sunshinebox.utils.ActivityCollectorUtils;
 import shaolizhi.sunshinebox.utils.FormalActivityManager;
-import shaolizhi.sunshinebox.utils.UIUtils;
 
 public class HomePageActivity extends FormalActivityManager {
 
@@ -18,6 +17,8 @@ public class HomePageActivity extends FormalActivityManager {
         Intent intent = new Intent(HomePageActivity.this, IndexActivity.class);
         startActivity(intent);
     }
+
+
 
     @OnClick(R.id.home_page_act_imagebutton)
     public void openSettingActivity() {
@@ -41,8 +42,8 @@ public class HomePageActivity extends FormalActivityManager {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        UIUtils.ifBackOut(this, getString(R.string.home_page_act_string1));
-    }
+//    @Override
+//    public void onBackPressed() {
+//        UIUtils.ifBackOut(this, getString(R.string.home_page_act_string1));
+//    }
 }
