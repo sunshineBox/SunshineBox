@@ -1,5 +1,6 @@
 package shaolizhi.sunshinebox.ui.course;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,7 @@ import shaolizhi.sunshinebox.ui.base.BaseActivity;
 
 public class CourseActivity extends BaseActivity implements CourseContract.View {
 
-    private Long courseId;
+    private String courseId;
 
     private CourseContract.Presenter presenter;
 
@@ -81,25 +82,13 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     public void setUpView() {
         Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
         courseNameTextView.setText(courses.getCourse_name());
-
-        if (courses.getIs_audio_downloaded()) {
-            audioButton.setText(R.string.course_act_string2);
-        } else {
-            audioButton.setText(R.string.course_act_string6);
-        }
-
-        if (courses.getIs_video_downloaded()) {
-            videoButton.setText(R.string.course_act_string3);
-        } else {
-            videoButton.setText(R.string.course_act_string7);
-        }
     }
 
     @Override
-    public Long getCourseIdFromIntent() throws Exception {
+    public String getCourseIdFromIntent() throws Exception {
         Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
         if (courses != null) {
-            courseId = courses.getId();
+            courseId = courses.getCourse_id();
             return courseId;
         } else {
             if (courseId != null) {
@@ -108,5 +97,30 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
                 throw new Exception("Can not get courseId.");
             }
         }
+    }
+
+    @Override
+    public void setAudioButtonText(String text) {
+        audioButton.setText(text);
+    }
+
+    @Override
+    public void setAudioButtonText(int resId) {
+        audioButton.setText(resId);
+    }
+
+    @Override
+    public void setVideoButtonText(String text) {
+        videoButton.setText(text);
+    }
+
+    @Override
+    public void setVideoButtonText(int resId) {
+        videoButton.setText(resId);
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
     }
 }

@@ -1,5 +1,8 @@
 package shaolizhi.sunshinebox.ui.course;
 
+import android.app.Activity;
+
+import shaolizhi.sunshinebox.objectbox.courses.Courses;
 import shaolizhi.sunshinebox.ui.base.BasePresenter;
 import shaolizhi.sunshinebox.ui.base.BaseView;
 
@@ -9,14 +12,24 @@ import shaolizhi.sunshinebox.ui.base.BaseView;
 
 class CourseContract {
     interface View extends BaseView {
-        Long getCourseIdFromIntent() throws Exception;
+        String getCourseIdFromIntent() throws Exception;
+
+        void setAudioButtonText(String text);
+
+        void setAudioButtonText(int resId);
+
+        void setVideoButtonText(String text);
+
+        void setVideoButtonText(int resId);
+
+        Activity getActivity();
     }
 
     interface Presenter extends BasePresenter {
     }
 
     interface Model {
-
+        Courses getCourseByCourseId(String courseId);
     }
 
     interface CallBack {
