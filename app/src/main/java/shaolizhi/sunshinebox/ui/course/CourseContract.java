@@ -43,6 +43,6 @@ class CourseContract {
     }
 
     interface CallBack {
-
+        void downloadVideoSuccess();
     }
 }

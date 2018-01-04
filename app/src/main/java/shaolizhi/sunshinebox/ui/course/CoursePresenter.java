@@ -1,7 +1,9 @@
 package shaolizhi.sunshinebox.ui.course;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -91,30 +93,39 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         isAudioDownloading = true;
         //弹出SnackBar
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string8, Snackbar.LENGTH_SHORT).show();
-
     }
 
     @Override
     public void tryToPlayVideo() {
-        Courses courses = null;
-        if (courseId != null) {
-            courses = model.getCourseByCourseId(courseId);
-        }
-        if (courses != null) {
-            if (courses.getIs_audio_downloaded()) {
-                //视频已下载
-                playVideo();
-            } else {
-                //请求权限
-                checkPermissions();
-                //视频未下载
-                downloadVideo();
+        if (isVideoDownloading) {
+            Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string10, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Courses courses = null;
+            if (courseId != null) {
+                courses = model.getCourseByCourseId(courseId);
+            }
+            if (courses != null) {
+                if (courses.getIs_video_downloaded()) {
+                    //视频已下载
+                    playVideo();
+                } else {
+                    //请求权限
+                    checkPermissions();
+                    //视频未下载
+                    downloadVideo();
+                }
             }
         }
     }
 
     private void playVideo() {
-
+        Courses courses = model.getCourseByCourseId(courseId);
+        if (courses != null) {
+            Uri uri = Uri.parse(courses.getVideo_storage_address());
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setDataAndType(uri, "video/mp4");
+            view.getActivity().startActivity(intent);
+        }
     }
 
     private void downloadVideo() {
@@ -134,5 +145,12 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         if (ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
         }
+    }
+
+    @Override
+    public void downloadVideoSuccess() {
+        isVideoDownloading = false;
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string9, Snackbar.LENGTH_SHORT).show();
+        view.setVideoButtonText(R.string.course_act_string3);
     }
 }

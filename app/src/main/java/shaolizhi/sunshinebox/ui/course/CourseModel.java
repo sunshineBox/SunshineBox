@@ -34,7 +34,7 @@ class CourseModel implements CourseContract.Model {
 
     private static final String TAG = "CourseActivity";
 
-    final ApiService apiService = ServiceGenerator.createService(ApiService.class);
+    private final ApiService apiService = ServiceGenerator.createService(ApiService.class);
 
     private CourseContract.CallBack callBack;
 
@@ -174,6 +174,10 @@ class CourseModel implements CourseContract.Model {
 
         private Response<ResponseBody> response;
 
+        private Boolean isFileDownloadSuccess = false;
+
+        private File file = null;
+
         DownloadFile(CourseModel courseModel, String courseId, Response<ResponseBody> response) {
             this.courseModelWeakReference = new WeakReference<>(courseModel);
             this.courseId = courseId;
@@ -185,13 +189,36 @@ class CourseModel implements CourseContract.Model {
             CourseModel courseModel = courseModelWeakReference.get();
 
             if (courseModel != null) {
+                //下载文件
                 Courses courses = courseModel.getCourseByCourseId(courseId);
-                File file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
-                boolean writtenToDisk = writeResponseBodyToDisk(response.body(), file);
-                Log.i(TAG, "file download was a success?" + writtenToDisk);
+                file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
+                isFileDownloadSuccess = writeResponseBodyToDisk(response.body(), file);
+                Log.i(TAG, "file download was a success?" + isFileDownloadSuccess);
             }
 
             return null;
+        }
+
+        /**
+         * 此方法在doInBackground调用完成后调用
+         *
+         * @param aVoid
+         */
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            CourseModel courseModel = courseModelWeakReference.get();
+            if (courseModel != null) {
+                if (isFileDownloadSuccess) {
+                    Courses courses = courseModel.getCourseByCourseId(courseId);
+                    if (file != null) {
+                        courses.setIs_video_downloaded(true);
+                        courses.setVideo_storage_address(file.getAbsolutePath());
+                        courseModel.coursesBox.put(courses);
+                    }
+                    courseModel.callBack.downloadVideoSuccess();
+                }
+            }
+            super.onPostExecute(aVoid);
         }
     }
 

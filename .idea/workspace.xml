@@ -13,13 +13,16 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a3c9f46f-e8b1-4367-ac78-86162aa9a291" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +39,8 @@
             <file leaf-file-name="CourseContract.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="670">
-                    <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+                  <state relative-caret-position="643">
+                    <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -140,15 +143,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CourseModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CourseModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="852">
-              <caret line="168" column="74" lean-forward="true" selection-start-line="168" selection-start-column="74" selection-end-line="168" selection-end-column="74" />
+            <state relative-caret-position="312">
+              <caret line="217" column="55" lean-forward="false" selection-start-line="217" selection-start-column="55" selection-end-line="217" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#CourseModel#0;class#CourseModel#0" expanded="false" />
+                <element signature="method#getCourseByCourseId#0;class#CourseModel#0" expanded="false" />
+                <element signature="class#MediaType#0;class#CourseModel#0" expanded="false" />
                 <element signature="method#getStorageAddress#0;class#CourseModel#0" expanded="false" />
                 <element signature="method#writeResponseBodyToDisk#0;class#CourseModel#0" expanded="false" />
+                <element signature="method#requestVideoByCourseId#0;class#CourseModel#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -208,23 +215,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoursePresenter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CoursePresenter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="123" column="24" lean-forward="false" selection-start-line="123" selection-start-column="24" selection-end-line="123" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="126" column="51" lean-forward="false" selection-start-line="126" selection-start-column="51" selection-end-line="126" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#CoursePresenter#0;class#CoursePresenter#0" expanded="false" />
                 <element signature="method#start#0;class#CoursePresenter#0" expanded="false" />
                 <element signature="method#setUpButtonTextWhenThereIsNoDownload#0;class#CoursePresenter#0" expanded="false" />
-                <element signature="e#1440#1467#0" expanded="true" />
-                <element signature="e#1531#1558#0" expanded="true" />
-                <element signature="e#1668#1695#0" expanded="true" />
-                <element signature="e#1759#1786#0" expanded="true" />
+                <element signature="e#1495#1522#0" expanded="true" />
+                <element signature="e#1586#1613#0" expanded="true" />
+                <element signature="e#1723#1750#0" expanded="true" />
+                <element signature="e#1814#1841#0" expanded="true" />
                 <element signature="method#tryToPlayAudio#0;class#CoursePresenter#0" expanded="false" />
-                <element signature="e#2488#2515#0" expanded="true" />
-                <element signature="e#3223#3250#0" expanded="true" />
+                <element signature="e#2543#2570#0" expanded="true" />
+                <element signature="e#2748#2776#0" expanded="true" />
+                <element signature="e#3853#3880#0" expanded="true" />
+                <element signature="e#4791#4818#0" expanded="true" />
+                <element signature="e#4883#4910#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -233,7 +243,7 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
+            <state relative-caret-position="524">
               <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
               <folding />
             </state>
@@ -2119,25 +2129,24 @@
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/objectbox/courses/Courses.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/index/IndexAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/index/IndexModel.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/index/IndexContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_course.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/utils/ServiceGenerator.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/utils/IOUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/data/ConstantData.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/data/ApiService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1066" />
+    <option name="x" value="-7" />
+    <option name="width" value="974" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -2464,7 +2473,7 @@
     <property name="android.sdk.path" value="M:/development-software/Android/sdk" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/android-retrofit-file-download-master/FileDownload" />
-    <property name="device.picker.selection" value="80SQBDQC22NT4" />
+    <property name="device.picker.selection" value="65LJSCKR4DDUAESK" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="VectorAssetImportPath" value="C:\" />
     <property name="android.project.structure.last.selected" value="app" />
@@ -2583,7 +2592,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515070861200" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515072656768" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2631,7 +2640,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515070861200" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515072656768" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2814,7 +2823,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515070861200" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515072656768" />
       </method>
     </configuration>
     <list size="1">
@@ -2849,13 +2858,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511493005850</updated>
-    </task>
-    <task id="LOCAL-00007" summary="ActivationCodeActivity:添加一个回退按钮">
-      <created>1511857903820</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1511857903820</updated>
     </task>
     <task id="LOCAL-00008" summary="简单的重构了软键盘弹出整体布局上移的逻辑">
       <created>1511948131974</created>
@@ -3193,17 +3195,24 @@
       <option name="project" value="LOCAL" />
       <updated>1515067170629</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="重构了CourseModel，避免了内存泄露">
+      <created>1515070892124</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1515070892124</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-7" y="0" width="974" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21302429" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3245033" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32441473" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3263,7 +3272,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="调整了Tablayout右边距" />
     <MESSAGE value="完成UI设计" />
     <MESSAGE value="首页调整" />
     <MESSAGE value="小调整" />
@@ -3288,7 +3296,8 @@
     <MESSAGE value="在MVP架构中重构了之前的功能" />
     <MESSAGE value="添加在下载期间不要离开界面的Snackbar提示" />
     <MESSAGE value="终于可以在点击之后下载视频了..." />
-    <option name="LAST_COMMIT_MESSAGE" value="终于可以在点击之后下载视频了..." />
+    <MESSAGE value="重构了CourseModel，避免了内存泄露" />
+    <option name="LAST_COMMIT_MESSAGE" value="重构了CourseModel，避免了内存泄露" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3609,14 +3618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/utils/ServiceGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
@@ -3638,26 +3639,6 @@
         <state relative-caret-position="-883">
           <caret line="47" column="43" lean-forward="false" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="123" column="24" lean-forward="false" selection-start-line="123" selection-start-column="24" selection-end-line="123" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CoursePresenter#0;class#CoursePresenter#0" expanded="false" />
-            <element signature="method#start#0;class#CoursePresenter#0" expanded="false" />
-            <element signature="method#setUpButtonTextWhenThereIsNoDownload#0;class#CoursePresenter#0" expanded="false" />
-            <element signature="e#1440#1467#0" expanded="true" />
-            <element signature="e#1531#1558#0" expanded="true" />
-            <element signature="e#1668#1695#0" expanded="true" />
-            <element signature="e#1759#1786#0" expanded="true" />
-            <element signature="method#tryToPlayAudio#0;class#CoursePresenter#0" expanded="false" />
-            <element signature="e#2488#2515#0" expanded="true" />
-            <element signature="e#3223#3250#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3736,24 +3717,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="217" column="55" lean-forward="false" selection-start-line="217" selection-start-column="55" selection-end-line="217" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CourseModel#0;class#CourseModel#0" expanded="false" />
+            <element signature="method#getCourseByCourseId#0;class#CourseModel#0" expanded="false" />
+            <element signature="class#MediaType#0;class#CourseModel#0" expanded="false" />
+            <element signature="method#getStorageAddress#0;class#CourseModel#0" expanded="false" />
+            <element signature="method#writeResponseBodyToDisk#0;class#CourseModel#0" expanded="false" />
+            <element signature="method#requestVideoByCourseId#0;class#CourseModel#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseContract.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="643">
+          <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CourseModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="852">
-          <caret line="168" column="74" lean-forward="true" selection-start-line="168" selection-start-column="74" selection-end-line="168" selection-end-column="74" />
+        <state relative-caret-position="524">
+          <caret line="74" column="18" lean-forward="false" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/shaolizhi/sunshinebox/ui/course/CoursePresenter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="126" column="51" lean-forward="false" selection-start-line="126" selection-start-column="51" selection-end-line="126" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getStorageAddress#0;class#CourseModel#0" expanded="false" />
-            <element signature="method#writeResponseBodyToDisk#0;class#CourseModel#0" expanded="false" />
+            <element signature="method#CoursePresenter#0;class#CoursePresenter#0" expanded="false" />
+            <element signature="method#start#0;class#CoursePresenter#0" expanded="false" />
+            <element signature="method#setUpButtonTextWhenThereIsNoDownload#0;class#CoursePresenter#0" expanded="false" />
+            <element signature="e#1495#1522#0" expanded="true" />
+            <element signature="e#1586#1613#0" expanded="true" />
+            <element signature="e#1723#1750#0" expanded="true" />
+            <element signature="e#1814#1841#0" expanded="true" />
+            <element signature="method#tryToPlayAudio#0;class#CoursePresenter#0" expanded="false" />
+            <element signature="e#2543#2570#0" expanded="true" />
+            <element signature="e#2748#2776#0" expanded="true" />
+            <element signature="e#3853#3880#0" expanded="true" />
+            <element signature="e#4791#4818#0" expanded="true" />
+            <element signature="e#4883#4910#0" expanded="true" />
           </folding>
         </state>
       </provider>
