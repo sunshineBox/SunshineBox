@@ -24,7 +24,6 @@ class IndexContract {
         String getCourseType();
     }
 
-
     interface Presenter extends BasePresenter {
         void tryToLoadDataIntoRecyclerView();
     }

@@ -11,9 +11,15 @@ import shaolizhi.sunshinebox.data.ConstantData;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
 import shaolizhi.sunshinebox.ui.base.BaseActivity;
 
-public class CourseActivity extends BaseActivity {
+public class CourseActivity extends BaseActivity implements CourseContract.View {
 
-    private Courses courses;
+    private Long courseId;
+
+    private CourseContract.Presenter presenter;
+
+    private Boolean isAudioDownloading;
+
+    private Boolean isVideoDownloading;
 
     @OnClick(R.id.course_act_imagebutton1)
     public void back() {
@@ -24,17 +30,36 @@ public class CourseActivity extends BaseActivity {
     TextView courseNameTextView;
 
     @BindView(R.id.course_act_button1)
-    Button playAudioButton;
+    Button audioButton;
+
+    @OnClick(R.id.course_act_button1)
+    public void clickAudioButton() {
+
+    }
 
     @BindView(R.id.course_act_button2)
-    Button playVideoButton;
+    Button videoButton;
+
+    @OnClick(R.id.course_act_button2)
+    public void clickVideoButton() {
+
+    }
 
     @BindView(R.id.course_act_button3)
     Button lastLessonButton;
 
+    @OnClick(R.id.course_act_button3)
+    public void clickLastLessonButton() {
+
+    }
+
     @BindView(R.id.course_act_button4)
     Button nextLessonButton;
 
+    @OnClick(R.id.course_act_button4)
+    public void clickNextLessonButton() {
+
+    }
 
     @Override
     protected int layoutId() {
@@ -43,24 +68,45 @@ public class CourseActivity extends BaseActivity {
 
     @Override
     protected void created(Bundle bundle) {
-        courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
-        courseNameTextView.setText(courses.getCourse_name());
-
-        if (courses.getIs_audio_downloaded()) {
-            playAudioButton.setText(R.string.course_act_string2);
-        } else {
-            playAudioButton.setText(R.string.course_act_string6);
-        }
-
-        if (courses.getIs_video_downloaded()) {
-            playVideoButton.setText(R.string.course_act_string3);
-        } else {
-            playVideoButton.setText(R.string.course_act_string7);
-        }
+        presenter = new CoursePresenter(this);
+        presenter.start();
     }
 
     @Override
     protected void resumed() {
 
+    }
+
+    @Override
+    public void setUpView() {
+        Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
+        courseNameTextView.setText(courses.getCourse_name());
+
+        if (courses.getIs_audio_downloaded()) {
+            audioButton.setText(R.string.course_act_string2);
+        } else {
+            audioButton.setText(R.string.course_act_string6);
+        }
+
+        if (courses.getIs_video_downloaded()) {
+            videoButton.setText(R.string.course_act_string3);
+        } else {
+            videoButton.setText(R.string.course_act_string7);
+        }
+    }
+
+    @Override
+    public Long getCourseIdFromIntent() throws Exception {
+        Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
+        if (courses != null) {
+            courseId = courses.getId();
+            return courseId;
+        } else {
+            if (courseId != null) {
+                return courseId;
+            } else {
+                throw new Exception("Can not get courseId.");
+            }
+        }
     }
 }
