@@ -78,6 +78,8 @@ public class IndexPresenter implements IndexContract.Presenter, IndexContract.Ca
         if (view instanceof BaseActivity) {
             ((BaseActivity) view).showToastForRequestResult("403");
         }
+        List<Courses> coursesList = model.requestDataFromDatabase(view.getCourseType());
+        view.setDataInAdapter(coursesList);
         view.setRefresh(false);
     }
 

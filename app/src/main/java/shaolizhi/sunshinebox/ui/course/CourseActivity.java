@@ -3,6 +3,8 @@ package shaolizhi.sunshinebox.ui.course;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,6 +20,9 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     private String courseId;
 
     private CourseContract.Presenter presenter;
+
+    @BindView(R.id.course_act_webview1)
+    WebView webView;
 
     @OnClick(R.id.course_act_imagebutton1)
     public void back() {
@@ -82,6 +87,9 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     public void setUpView() {
         Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
         courseNameTextView.setText(courses.getCourse_name());
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
     }
 
     @Override
