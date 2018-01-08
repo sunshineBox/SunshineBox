@@ -86,7 +86,9 @@ public class IndexFragment extends BaseFragment implements MyRefreshLayout.OnRef
 
     @Override
     public void setRefresh(boolean refresh) {
-        myRefreshLayout.setRefreshing(refresh);
+        if (myRefreshLayout != null) {
+            myRefreshLayout.setRefreshing(refresh);
+        }
     }
 
     @Override

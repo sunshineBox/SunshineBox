@@ -36,6 +36,8 @@ class CourseContract {
         void tryToPlayAudio();
 
         void tryToPlayVideo();
+
+
     }
 
     interface Model {
@@ -48,5 +50,9 @@ class CourseContract {
 
     interface CallBack {
         void downloadVideoSuccess();
+
+        void updateAudioDownloadProgress(Long percent);
+
+        void updateVideoDownloadProgress(Long percent);
     }
 }

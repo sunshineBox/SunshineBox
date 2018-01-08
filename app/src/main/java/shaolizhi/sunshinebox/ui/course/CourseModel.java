@@ -90,54 +90,6 @@ class CourseModel implements CourseContract.Model {
         return fileDownloaded;
     }
 
-    private static boolean writeResponseBodyToDisk(ResponseBody body, File file) {
-        try {
-            // todo change the file location/name according to your needs
-
-            InputStream inputStream = null;
-            OutputStream outputStream = null;
-
-            try {
-                byte[] fileReader = new byte[4096];
-
-                long fileSize = body.contentLength();
-                long fileSizeDownloaded = 0;
-
-                inputStream = body.byteStream();
-                outputStream = new FileOutputStream(file);
-
-                while (true) {
-                    int read = inputStream.read(fileReader);
-
-                    if (read == -1) {
-                        break;
-                    }
-                    Log.e(TAG, "read:" + String.valueOf(read));
-                    outputStream.write(fileReader, 0, read);
-
-                    fileSizeDownloaded += read;
-
-                    Log.e(TAG, "file download: " + fileSizeDownloaded + " of " + fileSize);
-                }
-
-                outputStream.flush();
-
-                return true;
-            } catch (IOException e) {
-                return false;
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-
-                if (outputStream != null) {
-                    outputStream.close();
-                }
-            }
-        } catch (IOException e) {
-            return false;
-        }
-    }
 
     @Override
     public void requestVideoByCourseId(final String courseId) {
@@ -166,7 +118,7 @@ class CourseModel implements CourseContract.Model {
         }
     }
 
-    private static class DownloadFile extends AsyncTask<Void, Void, Void> {
+    private static class DownloadFile extends AsyncTask<Void, Long, Void> {
 
         private WeakReference<CourseModel> courseModelWeakReference;
 
@@ -194,16 +146,12 @@ class CourseModel implements CourseContract.Model {
                 file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
                 isFileDownloadSuccess = writeResponseBodyToDisk(response.body(), file);
                 Log.i(TAG, "file download was a success?" + isFileDownloadSuccess);
+
             }
 
             return null;
         }
 
-        /**
-         * 此方法在doInBackground调用完成后调用
-         *
-         * @param aVoid
-         */
         @Override
         protected void onPostExecute(Void aVoid) {
             CourseModel courseModel = courseModelWeakReference.get();
@@ -220,6 +168,70 @@ class CourseModel implements CourseContract.Model {
             }
             super.onPostExecute(aVoid);
         }
+
+        @Override
+        protected void onProgressUpdate(Long... values) {
+            super.onProgressUpdate(values);
+            CourseModel courseModel = courseModelWeakReference.get();
+            if (courseModel != null) {
+                Long progress = values[0];
+                if (progress != null) {
+                    courseModel.callBack.updateVideoDownloadProgress(progress);
+                }
+            }
+        }
+
+        private boolean writeResponseBodyToDisk(ResponseBody body, File file) {
+            try {
+                // todo change the file location/name according to your needs
+                InputStream inputStream = null;
+                OutputStream outputStream = null;
+
+                try {
+                    byte[] fileReader = new byte[4096];
+
+                    long fileSize = body.contentLength();
+                    long fileSizeDownloaded = 0;
+
+                    inputStream = body.byteStream();
+                    outputStream = new FileOutputStream(file);
+
+                    while (true) {
+                        int read = inputStream.read(fileReader);
+
+                        if (read == -1) {
+                            break;
+                        }
+                        Log.e(TAG, "read:" + String.valueOf(read));
+                        outputStream.write(fileReader, 0, read);
+
+                        fileSizeDownloaded += read;
+
+                        Log.e(TAG, "file download: " + fileSizeDownloaded + " of " + fileSize);
+                        float downloadPercent = (float) fileSizeDownloaded / (float) fileSize;
+                        long result = (long) (downloadPercent * 100);
+                        publishProgress(result);
+                    }
+
+                    outputStream.flush();
+
+                    return true;
+                } catch (IOException e) {
+                    return false;
+                } finally {
+                    if (inputStream != null) {
+                        inputStream.close();
+                    }
+
+                    if (outputStream != null) {
+                        outputStream.close();
+                    }
+                }
+            } catch (IOException e) {
+                return false;
+            }
+        }
+
     }
 
     @Override

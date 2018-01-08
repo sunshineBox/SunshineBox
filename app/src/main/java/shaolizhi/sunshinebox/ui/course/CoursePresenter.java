@@ -142,6 +142,16 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         }
     }
 
+    @Override
+    public void updateAudioDownloadProgress(Long percent) {
+
+    }
+
+    @Override
+    public void updateVideoDownloadProgress(Long percent) {
+        view.setVideoButtonText(String.valueOf(percent) + "%");
+    }
+
     private void playVideo() {
         Courses courses = model.getCourseByCourseId(courseId);
         if (courses != null) {
