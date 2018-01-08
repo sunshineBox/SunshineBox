@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
@@ -53,7 +54,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         if (courses != null) {
             if (courses.getIs_audio_downloaded()) {
                 if (courses.getCourse_audio() == null) {
-                    view.setAudioButtonText(R.string.course_act_string11);
+                    view.setAudioButtonText(R.string.course_act_string12);
                     view.setAudioButtonEnable(false);
                 } else {
                     view.setAudioButtonText(R.string.course_act_string2);
@@ -61,7 +62,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                 }
             } else {
                 if (courses.getCourse_audio() == null) {
-                    view.setAudioButtonText(R.string.course_act_string11);
+                    view.setAudioButtonText(R.string.course_act_string12);
                     view.setAudioButtonEnable(false);
                 } else {
                     view.setAudioButtonText(R.string.course_act_string6);
@@ -71,7 +72,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
             if (courses.getIs_video_downloaded()) {
                 if (courses.getCourse_video() == null) {
-                    view.setVideoButtonText(R.string.course_act_string12);
+                    view.setVideoButtonText(R.string.course_act_string13);
                     view.setVideoButtonEnable(false);
                 } else {
                     view.setVideoButtonText(R.string.course_act_string3);
@@ -79,7 +80,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                 }
             } else {
                 if (courses.getCourse_video() == null) {
-                    view.setVideoButtonText(R.string.course_act_string12);
+                    view.setVideoButtonText(R.string.course_act_string13);
                     view.setVideoButtonEnable(false);
                 } else {
                     view.setVideoButtonText(R.string.course_act_string7);
@@ -91,32 +92,43 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     @Override
     public void tryToPlayAudio() {
-        Courses courses = null;
-        if (courseId != null) {
-            courses = model.getCourseByCourseId(courseId);
-        }
+        if (isAudioDownloading) {
+            Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string11, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Courses courses = null;
+            if (courseId != null) {
+                courses = model.getCourseByCourseId(courseId);
+            }
 
-        if (courses != null) {
-            if (courses.getIs_audio_downloaded()) {
-                //音频已下载
-                playAudio();
-            } else {
-                //请求权限
-                checkPermissions();
-                //音频未下载
-                downloadAudio();
+            if (courses != null) {
+                if (courses.getIs_audio_downloaded()) {
+                    //音频已下载
+                    playAudio();
+                } else {
+                    //请求权限
+                    checkPermissions();
+                    //音频未下载
+                    downloadAudio();
+                }
             }
         }
+
     }
 
     private void playAudio() {
-
+        Courses courses = model.getCourseByCourseId(courseId);
+        if (courses != null) {
+            Uri uri = Uri.parse(courses.getAudio_storage_address());
+            Toast.makeText(view.getActivity(), String.valueOf(uri), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void downloadAudio() {
         isAudioDownloading = true;
         //弹出SnackBar
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string8, Snackbar.LENGTH_SHORT).show();
+        IOUtils.createDirectory();
+        model.requestAudioByCourseId(courseId);
     }
 
     @Override
@@ -144,7 +156,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     @Override
     public void updateAudioDownloadProgress(Long percent) {
-
+        view.setAudioButtonText(String.valueOf(percent) + "%");
     }
 
     @Override
@@ -186,5 +198,12 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         isVideoDownloading = false;
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string9, Snackbar.LENGTH_SHORT).show();
         view.setVideoButtonText(R.string.course_act_string3);
+    }
+
+    @Override
+    public void downloadAudioSuccess() {
+        isAudioDownloading = false;
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string14, Snackbar.LENGTH_SHORT).show();
+        view.setAudioButtonText(R.string.course_act_string2);
     }
 }

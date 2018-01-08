@@ -51,6 +51,8 @@ class CourseContract {
     interface CallBack {
         void downloadVideoSuccess();
 
+        void downloadAudioSuccess();
+
         void updateAudioDownloadProgress(Long percent);
 
         void updateVideoDownloadProgress(Long percent);

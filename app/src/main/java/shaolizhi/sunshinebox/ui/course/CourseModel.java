@@ -103,7 +103,7 @@ class CourseModel implements CourseContract.Model {
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.e(TAG, "server contacted and has file");
-                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response);
+                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP4);
                         downloadFile.execute();
                     } else {
                         Log.e(TAG, "server contact failed");
@@ -130,10 +130,13 @@ class CourseModel implements CourseContract.Model {
 
         private File file = null;
 
-        DownloadFile(CourseModel courseModel, String courseId, Response<ResponseBody> response) {
+        private MediaType mediaType;
+
+        DownloadFile(CourseModel courseModel, String courseId, Response<ResponseBody> response, MediaType mediaType) {
             this.courseModelWeakReference = new WeakReference<>(courseModel);
             this.courseId = courseId;
             this.response = response;
+            this.mediaType = mediaType;
         }
 
         @Override
@@ -143,10 +146,9 @@ class CourseModel implements CourseContract.Model {
             if (courseModel != null) {
                 //下载文件
                 Courses courses = courseModel.getCourseByCourseId(courseId);
-                file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), MediaType.MP4);
+                file = courseModel.getStorageAddress(courses.getCourse_type(), courses.getCourse_id(), mediaType);
                 isFileDownloadSuccess = writeResponseBodyToDisk(response.body(), file);
                 Log.i(TAG, "file download was a success?" + isFileDownloadSuccess);
-
             }
 
             return null;
@@ -158,12 +160,26 @@ class CourseModel implements CourseContract.Model {
             if (courseModel != null) {
                 if (isFileDownloadSuccess) {
                     Courses courses = courseModel.getCourseByCourseId(courseId);
-                    if (file != null) {
-                        courses.setIs_video_downloaded(true);
-                        courses.setVideo_storage_address(file.getAbsolutePath());
-                        courseModel.coursesBox.put(courses);
+                    switch (mediaType) {
+                        case MP3:
+                            if (file != null) {
+                                courses.setIs_audio_downloaded(true);
+                                courses.setAudio_storage_address(file.getAbsolutePath());
+                                courseModel.coursesBox.put(courses);
+                            }
+                            courseModel.callBack.downloadAudioSuccess();
+                            break;
+                        case MP4:
+                            if (file != null) {
+
+                                courses.setIs_video_downloaded(true);
+                                courses.setVideo_storage_address(file.getAbsolutePath());
+                                courseModel.coursesBox.put(courses);
+                            }
+                            courseModel.callBack.downloadVideoSuccess();
+                            break;
                     }
-                    courseModel.callBack.downloadVideoSuccess();
+
                 }
             }
             super.onPostExecute(aVoid);
@@ -176,7 +192,15 @@ class CourseModel implements CourseContract.Model {
             if (courseModel != null) {
                 Long progress = values[0];
                 if (progress != null) {
-                    courseModel.callBack.updateVideoDownloadProgress(progress);
+                    switch (mediaType) {
+                        case MP4:
+                            courseModel.callBack.updateVideoDownloadProgress(progress);
+                            break;
+                        case MP3:
+                            courseModel.callBack.updateAudioDownloadProgress(progress);
+                            break;
+                    }
+
                 }
             }
         }
@@ -235,7 +259,29 @@ class CourseModel implements CourseContract.Model {
     }
 
     @Override
-    public void requestAudioByCourseId(String courseId) {
+    public void requestAudioByCourseId(final String courseId) {
+        final Courses courses;
+        courses = getCourseByCourseId(courseId);
+        if (courses != null) {
+            Call<ResponseBody> call = apiService.downloadFileWithDynamicUrl(courses.getCourse_audio());
+            Log.e(TAG, "audio url:" + courses.getCourse_audio());
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        Log.e(TAG, "server contacted and has file");
+                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP3);
+                        downloadFile.execute();
+                    } else {
+                        Log.e(TAG, "server contact failed");
+                    }
+                }
 
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                    Log.e(TAG, "error");
+                }
+            });
+        }
     }
 }
