@@ -52,15 +52,39 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
         if (courses != null) {
             if (courses.getIs_audio_downloaded()) {
-                view.setAudioButtonText(R.string.course_act_string2);
+                if (courses.getCourse_audio() == null) {
+                    view.setAudioButtonText(R.string.course_act_string11);
+                    view.setAudioButtonEnable(false);
+                } else {
+                    view.setAudioButtonText(R.string.course_act_string2);
+                    view.setAudioButtonEnable(true);
+                }
             } else {
-                view.setAudioButtonText(R.string.course_act_string6);
+                if (courses.getCourse_audio() == null) {
+                    view.setAudioButtonText(R.string.course_act_string11);
+                    view.setAudioButtonEnable(false);
+                } else {
+                    view.setAudioButtonText(R.string.course_act_string6);
+                    view.setAudioButtonEnable(true);
+                }
             }
 
             if (courses.getIs_video_downloaded()) {
-                view.setVideoButtonText(R.string.course_act_string3);
+                if (courses.getCourse_video() == null) {
+                    view.setVideoButtonText(R.string.course_act_string12);
+                    view.setVideoButtonEnable(false);
+                } else {
+                    view.setVideoButtonText(R.string.course_act_string3);
+                    view.setVideoButtonEnable(true);
+                }
             } else {
-                view.setVideoButtonText(R.string.course_act_string7);
+                if (courses.getCourse_video() == null) {
+                    view.setVideoButtonText(R.string.course_act_string12);
+                    view.setVideoButtonEnable(false);
+                } else {
+                    view.setVideoButtonText(R.string.course_act_string7);
+                    view.setVideoButtonEnable(true);
+                }
             }
         }
     }

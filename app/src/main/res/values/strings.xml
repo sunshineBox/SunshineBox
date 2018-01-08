@@ -75,6 +75,8 @@
     <string name="course_act_string8">现在开始下载！请尽量不要关闭本页面直至下载结束！</string>
     <string name="course_act_string9">视频下载成功</string>
     <string name="course_act_string10">现在正在下载视频，请稍等片刻哦</string>
+    <string name="course_act_string11">无音频资源</string>
+    <string name="course_act_string12">无视频资源</string>
 
 
 </resources>

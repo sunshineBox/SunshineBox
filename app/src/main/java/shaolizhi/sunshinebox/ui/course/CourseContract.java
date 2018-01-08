@@ -15,6 +15,10 @@ class CourseContract {
     interface View extends BaseView {
         String getCourseIdFromIntent() throws Exception;
 
+        void setAudioButtonEnable(Boolean enable);
+
+        void setVideoButtonEnable(Boolean enable);
+
         void setAudioButtonText(String text);
 
         void setAudioButtonText(int resId);

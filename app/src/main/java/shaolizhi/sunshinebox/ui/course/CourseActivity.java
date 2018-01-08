@@ -108,6 +108,16 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     }
 
     @Override
+    public void setAudioButtonEnable(Boolean enable) {
+        audioButton.setEnabled(enable);
+    }
+
+    @Override
+    public void setVideoButtonEnable(Boolean enable) {
+        videoButton.setEnabled(enable);
+    }
+
+    @Override
     public void setAudioButtonText(String text) {
         audioButton.setText(text);
     }
