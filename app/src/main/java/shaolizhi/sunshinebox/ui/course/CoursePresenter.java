@@ -175,6 +175,24 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     }
 
     @Override
+    public void networkChanged(boolean isThereANetworkConnection) {
+        if (isAudioDownloading) {
+            if (!isThereANetworkConnection) {
+                model.cancelAudioDownloadTask();
+                isAudioDownloading = false;
+                view.setAudioButtonText(R.string.course_act_string6);
+            }
+        }
+        if (isVideoDownloading) {
+            if (!isThereANetworkConnection) {
+                model.cancelVideoDownloadTask();
+                isVideoDownloading = false;
+                view.setVideoButtonText(R.string.course_act_string7);
+            }
+        }
+    }
+
+    @Override
     public void exit() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -244,6 +262,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     @Override
     public void downloadVideoFailure() {
         isVideoDownloading = false;
+        view.setVideoButtonText(R.string.course_act_string7);
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string15, Snackbar.LENGTH_SHORT).show();
     }
 
@@ -257,6 +276,9 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     @Override
     public void downloadAudioFailure() {
         isAudioDownloading = false;
+        view.setAudioButtonText(R.string.course_act_string6);
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string15, Snackbar.LENGTH_SHORT).show();
     }
+
+
 }

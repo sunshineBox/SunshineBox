@@ -40,6 +40,10 @@ class CourseModel implements CourseContract.Model {
 
     private Box<Courses> coursesBox;
 
+    private DownloadFile audioDownloadTask;
+
+    private DownloadFile videoDownloadTask;
+
     CourseModel(@NonNull CourseContract.CallBack callBack, @NonNull Activity activity) {
         this.callBack = callBack;
         //get courses-box
@@ -90,7 +94,6 @@ class CourseModel implements CourseContract.Model {
         return fileDownloaded;
     }
 
-
     @Override
     public void requestVideoByCourseId(final String courseId) {
         final Courses courses;
@@ -103,8 +106,8 @@ class CourseModel implements CourseContract.Model {
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.e(TAG, "server contacted and has file");
-                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP4);
-                        downloadFile.execute();
+                        videoDownloadTask = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP4);
+                        videoDownloadTask.execute();
                     } else {
                         Log.e(TAG, "server contact failed");
                     }
@@ -270,8 +273,8 @@ class CourseModel implements CourseContract.Model {
                 public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
                     if (response.isSuccessful()) {
                         Log.e(TAG, "server contacted and has file");
-                        DownloadFile downloadFile = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP3);
-                        downloadFile.execute();
+                        audioDownloadTask = new DownloadFile(CourseModel.this, courseId, response, MediaType.MP3);
+                        audioDownloadTask.execute();
                     } else {
                         Log.e(TAG, "server contact failed");
                     }
@@ -284,4 +287,20 @@ class CourseModel implements CourseContract.Model {
             });
         }
     }
+
+    @Override
+    public void cancelAudioDownloadTask() {
+        if (audioDownloadTask != null && audioDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+            audioDownloadTask.cancel(true);
+        }
+    }
+
+    @Override
+    public void cancelVideoDownloadTask() {
+        if (videoDownloadTask != null && videoDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
+            videoDownloadTask.cancel(true);
+        }
+    }
+
+
 }

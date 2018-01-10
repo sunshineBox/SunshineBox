@@ -37,6 +37,8 @@ class CourseContract {
 
         void tryToPlayVideo();
 
+        void networkChanged(boolean isThereANetworkConnection);
+
         void exit();
     }
 
@@ -46,6 +48,11 @@ class CourseContract {
         void requestVideoByCourseId(String courseId);
 
         void requestAudioByCourseId(String courseId);
+
+        void cancelAudioDownloadTask();
+
+        void cancelVideoDownloadTask();
+
     }
 
     interface CallBack {
