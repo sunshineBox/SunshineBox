@@ -9,7 +9,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import java.io.File;
 import java.io.IOException;
 
 import shaolizhi.sunshinebox.R;
@@ -125,11 +124,10 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         Courses courses = model.getCourseByCourseId(courseId);
         if (courses != null) {
             Uri uri = Uri.parse(courses.getAudio_storage_address());
-            File file = new File(String.valueOf(uri));
             try {
                 if (!mediaPlayer.isPlaying()) {
                     //此时没有播放
-                    mediaPlayer.setDataSource(file.getPath());
+                    mediaPlayer.setDataSource(String.valueOf(uri));
                     mediaPlayer.prepare();
                     mediaPlayer.start();
                     view.setAudioButtonText("Stop停止");
