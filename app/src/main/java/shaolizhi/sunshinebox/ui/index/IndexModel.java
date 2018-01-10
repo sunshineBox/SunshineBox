@@ -56,6 +56,7 @@ public class IndexModel implements IndexContract.Model {
                 }
             }
 
+            //没有联网
             @Override
             public void onFailure(@NonNull Call<IndexBean> call, @NonNull Throwable t) {
                 callBack.requestDataFromNetFailure();

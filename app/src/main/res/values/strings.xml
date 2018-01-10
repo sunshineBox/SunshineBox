@@ -79,6 +79,6 @@
     <string name="course_act_string12">无音频资源</string>
     <string name="course_act_string13">无视频资源</string>
     <string name="course_act_string14">音频下载成功</string>
-
+    <string name="course_act_string15">下载失败，请检查您的网络</string>
 
 </resources>

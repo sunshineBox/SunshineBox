@@ -112,7 +112,7 @@ class CourseModel implements CourseContract.Model {
 
                 @Override
                 public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                    Log.e(TAG, "error");
+                    callBack.downloadVideoFailure();
                 }
             });
         }
@@ -279,7 +279,7 @@ class CourseModel implements CourseContract.Model {
 
                 @Override
                 public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
-                    Log.e(TAG, "error");
+                    callBack.downloadAudioFailure();
                 }
             });
         }

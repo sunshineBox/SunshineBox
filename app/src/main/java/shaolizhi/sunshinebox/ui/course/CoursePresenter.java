@@ -228,9 +228,21 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     }
 
     @Override
+    public void downloadVideoFailure() {
+        isVideoDownloading = false;
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string15, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void downloadAudioSuccess() {
         isAudioDownloading = false;
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string14, Snackbar.LENGTH_SHORT).show();
         view.setAudioButtonText(R.string.course_act_string2);
+    }
+
+    @Override
+    public void downloadAudioFailure() {
+        isAudioDownloading = false;
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string15, Snackbar.LENGTH_SHORT).show();
     }
 }
