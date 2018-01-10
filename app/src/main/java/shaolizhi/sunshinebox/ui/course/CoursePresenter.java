@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -152,22 +153,22 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     @Override
     public void tryToPlayVideo() {
-        if (isVideoDownloading) {
-            Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string10, Snackbar.LENGTH_SHORT).show();
-        } else {
-            Courses courses = null;
-            if (courseId != null) {
-                courses = model.getCourseByCourseId(courseId);
-            }
-            if (courses != null) {
-                if (courses.getIs_video_downloaded()) {
-                    //视频已下载
-                    playVideo();
-                } else {
-                    //请求权限
-                    checkPermissions();
-                    //视频未下载
-                    downloadVideo();
+        if (checkPermissions()) {
+            if (isVideoDownloading) {
+                Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string10, Snackbar.LENGTH_SHORT).show();
+            } else {
+                Courses courses = null;
+                if (courseId != null) {
+                    courses = model.getCourseByCourseId(courseId);
+                }
+                if (courses != null) {
+                    if (courses.getIs_video_downloaded()) {
+                        //视频已下载
+                        playVideo();
+                    } else {
+                        //视频未下载
+                        downloadVideo();
+                    }
                 }
             }
         }
@@ -209,15 +210,28 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         model.requestVideoByCourseId(courseId);
     }
 
-    private void checkPermissions() {
+    /**
+     * @return true 权限检查通过
+     * false  权限检查没有通过
+     */
+    private boolean checkPermissions() {
         //检查运行时权限
-        if (ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS}, 1);
+        boolean result1 = ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS) != PackageManager.PERMISSION_GRANTED;
+        boolean result2 = ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED;
+        //result1 = true 说明缺少权限
+        Log.e("result1", String.valueOf(result1));
+        Log.e("result2", String.valueOf(result2));
+
+        //有一个为true（缺少权限），就需要申请
+        if (result2) {
+            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
 
-        if (ContextCompat.checkSelfPermission(view.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
-        }
+//        if (result2) {
+//            ActivityCompat.requestPermissions(view.getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+//        }
+        //都为false（拥有权限）了，再返回true
+        return !result2;
     }
 
     @Override
