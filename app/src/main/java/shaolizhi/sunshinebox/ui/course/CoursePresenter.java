@@ -47,7 +47,8 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     @Override
     public void start() {
-        view.setUpView();
+        Courses courses = model.getCourseByCourseId(courseId);
+        view.setUpView(courses);
         setUpButtonTextWhenThereIsNoDownload();
     }
 
@@ -188,6 +189,40 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                 model.cancelVideoDownloadTask();
                 isVideoDownloading = false;
                 view.setVideoButtonText(R.string.course_act_string7);
+            }
+        }
+    }
+
+    @Override
+    public void goToTheLastLesson() {
+        if (isVideoDownloading || isAudioDownloading) {
+            Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string18, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Courses lastCourses = model.getLastCourseByCourseId(courseId);
+            if (lastCourses == null) {
+                //没有上一节课了
+                Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string17, Snackbar.LENGTH_SHORT).show();
+            } else {
+                //还有上一节课
+                courseId = lastCourses.getCourse_id();
+                this.start();
+            }
+        }
+    }
+
+    @Override
+    public void goToTheNextLesson() {
+        if (isVideoDownloading || isAudioDownloading) {
+            Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string18, Snackbar.LENGTH_SHORT).show();
+        } else {
+            Courses nextCourses = model.getNextCourseByCourseId(courseId);
+            if (nextCourses == null) {
+                //没有下一节课了
+                Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string16, Snackbar.LENGTH_SHORT).show();
+            } else {
+                //还有下一节课
+                courseId = nextCourses.getCourse_id();
+                this.start();
             }
         }
     }

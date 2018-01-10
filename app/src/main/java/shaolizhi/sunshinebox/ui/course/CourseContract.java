@@ -30,6 +30,8 @@ class CourseContract {
         CoordinatorLayout getCoordinatorLayout();
 
         Activity getActivity();
+
+        void setUpView(Courses course);
     }
 
     interface Presenter extends BasePresenter {
@@ -38,6 +40,10 @@ class CourseContract {
         void tryToPlayVideo();
 
         void networkChanged(boolean isThereANetworkConnection);
+
+        void goToTheLastLesson();
+
+        void goToTheNextLesson();
 
         void exit();
     }
@@ -53,6 +59,9 @@ class CourseContract {
 
         void cancelVideoDownloadTask();
 
+        Courses getNextCourseByCourseId(String courseId);
+
+        Courses getLastCourseByCourseId(String courseId);
     }
 
     interface CallBack {

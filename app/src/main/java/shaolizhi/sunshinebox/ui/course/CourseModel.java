@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.Objects;
 
 import io.objectbox.Box;
 import io.objectbox.query.Query;
@@ -300,6 +302,44 @@ class CourseModel implements CourseContract.Model {
         if (videoDownloadTask != null && videoDownloadTask.getStatus() == AsyncTask.Status.RUNNING) {
             videoDownloadTask.cancel(true);
         }
+    }
+
+    @Override
+    public Courses getNextCourseByCourseId(String courseId) {
+        Courses courses = this.getCourseByCourseId(courseId);
+        String courseType = courses.getCourse_type();
+        QueryBuilder<Courses> builder = coursesBox.query();
+        Query<Courses> query = builder.equal(Courses_.course_type, courseType).build();
+        List<Courses> coursesList = query.find();
+        boolean flag = false;
+        for (Courses item : coursesList) {
+            if (flag) {
+                return item;
+            }
+            if (Objects.equals(item.getCourse_id(), courseId)) {
+                flag = true;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Courses getLastCourseByCourseId(String courseId) {
+        Courses courses = this.getCourseByCourseId(courseId);
+        String courseType = courses.getCourse_type();
+        QueryBuilder<Courses> builder = coursesBox.query();
+        Query<Courses> query = builder.equal(Courses_.course_type, courseType).build();
+        List<Courses> coursesList = query.find();
+        boolean flag = false;
+        for (int i = coursesList.size() - 1; i >= 0; i--) {
+            if (flag) {
+                return coursesList.get(i);
+            }
+            if (Objects.equals(coursesList.get(i).getCourse_id(), courseId)) {
+                flag = true;
+            }
+        }
+        return null;
     }
 
 

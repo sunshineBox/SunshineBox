@@ -63,7 +63,7 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @OnClick(R.id.course_act_button3)
     public void clickLastLessonButton() {
-
+        presenter.goToTheLastLesson();
     }
 
     @BindView(R.id.course_act_button4)
@@ -71,7 +71,7 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @OnClick(R.id.course_act_button4)
     public void clickNextLessonButton() {
-
+        presenter.goToTheNextLesson();
     }
 
     @Override
@@ -101,11 +101,7 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @Override
     public void setUpView() {
-        Courses courses = (Courses) getIntent().getSerializableExtra(ConstantData.COURSE);
-        courseNameTextView.setText(courses.getCourse_name());
-//        WebSettings webSettings = webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
+
     }
 
     @Override
@@ -167,6 +163,14 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     @Override
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    public void setUpView(Courses courses) {
+        courseNameTextView.setText(courses.getCourse_name());
+//        WebSettings webSettings = webView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+        webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
     }
 
     private class NetworkChangeBroadcast extends BroadcastReceiver {

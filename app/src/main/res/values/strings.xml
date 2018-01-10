@@ -80,5 +80,8 @@
     <string name="course_act_string13">无视频资源</string>
     <string name="course_act_string14">音频下载成功</string>
     <string name="course_act_string15">下载失败，请检查您的网络</string>
+    <string name="course_act_string16">已经是最后一节课了！</string>
+    <string name="course_act_string17">已经是第一节课了！</string>
+    <string name="course_act_string18">请等待下载结束后再切换课程！</string>
 
 </resources>
