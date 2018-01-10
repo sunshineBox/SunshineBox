@@ -3,11 +3,14 @@ package shaolizhi.sunshinebox.ui.course;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
@@ -29,6 +32,8 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
 
     private Boolean isVideoDownloading = false;
 
+    private MediaPlayer mediaPlayer;
+
     CoursePresenter(CourseContract.View view) {
         this.view = view;
         model = new CourseModel(this, view.getActivity());
@@ -37,6 +42,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         } catch (Exception e) {
             e.printStackTrace();
         }
+        mediaPlayer = new MediaPlayer();
     }
 
     @Override
@@ -119,7 +125,22 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         Courses courses = model.getCourseByCourseId(courseId);
         if (courses != null) {
             Uri uri = Uri.parse(courses.getAudio_storage_address());
-            Toast.makeText(view.getActivity(), String.valueOf(uri), Toast.LENGTH_LONG).show();
+            File file = new File(String.valueOf(uri));
+            try {
+                if (!mediaPlayer.isPlaying()) {
+                    //此时没有播放
+                    mediaPlayer.setDataSource(file.getPath());
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                    view.setAudioButtonText("Stop停止");
+                } else {
+                    mediaPlayer.reset();
+                    view.setAudioButtonText("Play音频");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+//            Toast.makeText(view.getActivity(), String.valueOf(uri), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -151,6 +172,14 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                     downloadVideo();
                 }
             }
+        }
+    }
+
+    @Override
+    public void exit() {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
         }
     }
 

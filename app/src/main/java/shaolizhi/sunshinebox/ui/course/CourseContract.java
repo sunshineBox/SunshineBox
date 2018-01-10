@@ -37,7 +37,7 @@ class CourseContract {
 
         void tryToPlayVideo();
 
-
+        void exit();
     }
 
     interface Model {

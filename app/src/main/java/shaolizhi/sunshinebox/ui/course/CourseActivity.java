@@ -118,6 +118,12 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.exit();
+    }
+
+    @Override
     public void setAudioButtonText(String text) {
         audioButton.setText(text);
     }
