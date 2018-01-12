@@ -173,29 +173,41 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
         webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
     }
 
+    public static boolean isConnected(Context context) {
+        ConnectivityManager
+                cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = null;
+        if (cm != null) {
+            activeNetwork = cm.getActiveNetworkInfo();
+        }
+        return activeNetwork != null
+                && activeNetwork.isConnectedOrConnecting();
+    }
+
     private class NetworkChangeBroadcast extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             boolean success = false;
-            //获得网络连接服务
-            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
-            //获取wifi连接状态
-            NetworkInfo.State state = null;
-            if (connectivityManager != null) {
-                state = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
-            }
-            //判断是否正在使用wifi网络
-            if (state == NetworkInfo.State.CONNECTED) {
-                success = true;
-            }
-            //获取4G状态
-            if (connectivityManager != null) {
-                state = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState();
-            }
-            //判断是否在使用4G网络
-            if (state == NetworkInfo.State.CONNECTED) {
-                success = true;
-            }
+//            //获得网络连接服务
+//            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(CONNECTIVITY_SERVICE);
+//            //获取wifi连接状态
+//            NetworkInfo.State state = null;
+//            if (connectivityManager != null) {
+//                state = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState();
+//            }
+//            //判断是否正在使用wifi网络
+//            if (state == NetworkInfo.State.CONNECTED) {
+//                success = true;
+//            }
+//            //获取4G状态
+//            if (connectivityManager != null) {
+//                state = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState();
+//            }
+//            //判断是否在使用4G网络
+//            if (state == NetworkInfo.State.CONNECTED) {
+//                success = true;
+//            }
+            success = isConnected(CourseActivity.this);
             //如果没有连接成功
             if (!success) {
                 presenter.networkChanged(false);
