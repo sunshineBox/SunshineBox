@@ -10,7 +10,7 @@ import io.objectbox.annotation.Id;
  */
 
 @Entity
-public class Courses implements Serializable{
+public class Courses implements Serializable {
     @Id
     long id;
 
@@ -24,15 +24,45 @@ public class Courses implements Serializable{
 
     String course_name;
 
+    String course_text;
+
     Long last_modification_time;
 
     String video_storage_address;
 
     String audio_storage_address;
 
+    String text_storage_address;
+
     Boolean is_audio_downloaded;
 
     Boolean is_video_downloaded;
+
+    Boolean is_text_downloaded;
+
+    public Boolean getIs_text_downloaded() {
+        return is_text_downloaded;
+    }
+
+    public void setIs_text_downloaded(Boolean is_text_downloaded) {
+        this.is_text_downloaded = is_text_downloaded;
+    }
+
+    public String getCourse_text() {
+        return course_text;
+    }
+
+    public void setCourse_text(String course_text) {
+        this.course_text = course_text;
+    }
+
+    public String getText_storage_address() {
+        return text_storage_address;
+    }
+
+    public void setText_storage_address(String text_storage_address) {
+        this.text_storage_address = text_storage_address;
+    }
 
     public long getId() {
         return id;
