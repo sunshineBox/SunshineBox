@@ -99,11 +99,14 @@ public class IndexModel implements IndexContract.Model {
             courses.setCourse_type(item.getCourse_type());
             courses.setCourse_video(item.getCourse_video());
             courses.setCourse_audio(item.getCourse_audio());
+            courses.setCourse_text(item.getCourse_text());
             courses.setLast_modification_time(Long.parseLong(item.getLast_modification_time()));
             courses.setVideo_storage_address(null);
             courses.setAudio_storage_address(null);
+            courses.setText_storage_address(null);
             courses.setIs_audio_downloaded(false);
             courses.setIs_video_downloaded(false);
+            courses.setIs_text_downloaded(false);
             coursesBox.put(courses);
             if (id == 0) {
                 Log.e("ObjectBox", "Inserted new courses, ID:" + courses.getId());
