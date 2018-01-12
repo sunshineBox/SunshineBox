@@ -11,7 +11,7 @@ public class IndexBean {
     /**
      * flag : 001
      * message : success
-     * content : {"update":[{"course_id":"17","course_type":"music","course_name":"大黄蜂","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E5%A4%A7%E9%BB%84%E8%9C%82/01%E5%A4%A7%E9%BB%84%E8%9C%82.mp4","course_audio":null,"last_modification_time":"1514293465"},{"course_id":"18","course_type":"music","course_name":"蜂房在这里","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C/01%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C.mp4","course_audio":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C/01%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C.mp3","last_modification_time":"1514293474"},{"course_id":"19","course_type":"music","course_name":"两只小小鸟","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E4%B8%A4%E5%8F%AA%E5%B0%8F%E5%B0%8F%E9%B8%9F/01%E4%B8%A4%E5%8F%AA%E5%B0%8F%E5%B0%8F%E9%B8%9F%28A%E7%89%88%29.mp4","course_audio":null,"last_modification_time":"1514293482"}],"delete":[{"course_id":"26","time_deleted":"1514877469"}]}
+     * content : {"update":[{"course_id":"17","course_type":"music","course_name":"大黄蜂","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E5%A4%A7%E9%BB%84%E8%9C%82/01%E5%A4%A7%E9%BB%84%E8%9C%82.mp4","course_audio":null,"course_text":null,"last_modification_time":"1514293465"},{"course_id":"18","course_type":"music","course_name":"蜂房在这里","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C/01%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C.mp4","course_audio":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C/01%E8%9C%82%E6%88%BF%E5%9C%A8%E8%BF%99%E9%87%8C.mp3","course_text":null,"last_modification_time":"1514293474"},{"course_id":"19","course_type":"music","course_name":"两只小小鸟","course_video":"http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E4%B8%A4%E5%8F%AA%E5%B0%8F%E5%B0%8F%E9%B8%9F/01%E4%B8%A4%E5%8F%AA%E5%B0%8F%E5%B0%8F%E9%B8%9F%28A%E7%89%88%29.mp4","course_audio":null,"course_text":null,"last_modification_time":"1514293482"}],"delete":[{"course_id":"26","time_deleted":"1514877469"},{"course_id":"30","time_deleted":"1514883354"},{"course_id":"31","time_deleted":"1514883396"},{"course_id":"36","time_deleted":"1514884000"},{"course_id":"37","time_deleted":"1514883998"},{"course_id":"38","time_deleted":"1514883995"},{"course_id":"39","time_deleted":"1514883991"},{"course_id":"40","time_deleted":"1514883987"},{"course_id":"41","time_deleted":"1514883984"},{"course_id":"42","time_deleted":"1514883981"}]}
      */
 
     private String flag;
@@ -69,6 +69,7 @@ public class IndexBean {
              * course_name : 大黄蜂
              * course_video : http://sunshinebox-1255613827.file.myqcloud.com/%E9%9F%B3%E4%B9%90/%E5%A4%A7%E9%BB%84%E8%9C%82/01%E5%A4%A7%E9%BB%84%E8%9C%82.mp4
              * course_audio : null
+             * course_text : null
              * last_modification_time : 1514293465
              */
 
@@ -77,6 +78,7 @@ public class IndexBean {
             private String course_name;
             private String course_video;
             private String course_audio;
+            private String course_text;
             private String last_modification_time;
 
             public String getCourse_id() {
@@ -117,6 +119,14 @@ public class IndexBean {
 
             public void setCourse_audio(String course_audio) {
                 this.course_audio = course_audio;
+            }
+
+            public String getCourse_text() {
+                return course_text;
+            }
+
+            public void setCourse_text(String course_text) {
+                this.course_text = course_text;
             }
 
             public String getLast_modification_time() {
