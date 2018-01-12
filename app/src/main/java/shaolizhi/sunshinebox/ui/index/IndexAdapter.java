@@ -7,9 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +33,13 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHol
     private List<Courses> coursesList;
 
     private Activity activity;
+
+    private int[] backgroundList = {R.drawable.background1, R.drawable.background2,
+            R.drawable.background3, R.drawable.background4, R.drawable.background5,
+            R.drawable.background6, R.drawable.background7, R.drawable.background8,
+            R.drawable.background9, R.drawable.background10, R.drawable.background11,
+            R.drawable.background13};
+
 
     IndexAdapter(Context context) {
         layoutInflater = LayoutInflater.from(context);
@@ -51,7 +62,7 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHol
     @Override
     public void onBindViewHolder(IndexViewHolder holder, int position) {
         if (holder != null) {
-            holder.bind(coursesList.get(position));
+            holder.bind(coursesList.get(position), position);
         }
     }
 
@@ -66,22 +77,22 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.IndexViewHol
 
     class IndexViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.index_item_textview1)
-        TextView isDownloadTextview;
+        @BindView(R.id.index_item_imageview)
+        ImageView backgroundImageView;
 
         @BindView(R.id.index_item_textview2)
         TextView courseNameTextview;
 
         private Courses courses;
 
-        void bind(Courses courses) {
+        private final int random = new Random().nextInt(15);
+
+        void bind(Courses courses, int position) {
             this.courses = courses;
             courseNameTextview.setText(this.courses.getCourse_name());
-            if (this.courses.getIs_video_downloaded()) {
-                isDownloadTextview.setText("视频已下载");
-            } else {
-                isDownloadTextview.setText("视频未下载");
-            }
+            int pos = random + position;
+            int background = backgroundList[pos % 12];
+            Glide.with(activity).load(background).into(backgroundImageView);
         }
 
         IndexViewHolder(View itemView) {
