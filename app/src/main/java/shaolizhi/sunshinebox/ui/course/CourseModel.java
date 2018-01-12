@@ -46,6 +46,8 @@ class CourseModel implements CourseContract.Model {
 
     private DownloadFile videoDownloadTask;
 
+    private DownloadFile textDownloadTask;
+
     CourseModel(@NonNull CourseContract.CallBack callBack, @NonNull Activity activity) {
         this.callBack = callBack;
         //get courses-box
@@ -60,7 +62,7 @@ class CourseModel implements CourseContract.Model {
     }
 
     public enum MediaType {
-        MP3, MP4
+        MP3, MP4, HTML
     }
 
     private File getStorageAddress(String courseType, String courseId, MediaType audioOrVideo) {
@@ -73,6 +75,9 @@ class CourseModel implements CourseContract.Model {
                 break;
             case MP4:
                 mediaType = ".mp4";
+                break;
+            case HTML:
+                mediaType = ".html";
                 break;
         }
 
@@ -176,12 +181,19 @@ class CourseModel implements CourseContract.Model {
                             break;
                         case MP4:
                             if (file != null) {
-
                                 courses.setIs_video_downloaded(true);
                                 courses.setVideo_storage_address(file.getAbsolutePath());
                                 courseModel.coursesBox.put(courses);
                             }
                             courseModel.callBack.downloadVideoSuccess();
+                            break;
+                        case HTML:
+                            if (file != null) {
+                                courses.setIs_text_downloaded(true);
+                                courses.setText_storage_address(file.getAbsolutePath());
+                                courseModel.coursesBox.put(courses);
+                            }
+                            courseModel.callBack.downloadTextSuccess();
                             break;
                     }
 
@@ -203,6 +215,8 @@ class CourseModel implements CourseContract.Model {
                             break;
                         case MP3:
                             courseModel.callBack.updateAudioDownloadProgress(progress);
+                            break;
+                        case HTML:
                             break;
                     }
 
@@ -285,6 +299,33 @@ class CourseModel implements CourseContract.Model {
                 @Override
                 public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
                     callBack.downloadAudioFailure();
+                }
+            });
+        }
+    }
+
+    @Override
+    public void requestTextByCourseId(final String courseId) {
+        final Courses courses;
+        courses = getCourseByCourseId(courseId);
+        if (courses != null) {
+            Call<ResponseBody> call = apiService.downloadFileWithDynamicUrl(courses.getCourse_text());
+            Log.e(TAG, "text url:" + courses.getCourse_text());
+            call.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(@NonNull Call<ResponseBody> call, @NonNull final Response<ResponseBody> response) {
+                    if (response.isSuccessful()) {
+                        Log.e(TAG, "server contacted and has file");
+                        textDownloadTask = new DownloadFile(CourseModel.this, courseId, response, MediaType.HTML);
+                        textDownloadTask.execute();
+                    } else {
+                        Log.e(TAG, "server contact failed");
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ResponseBody> call, @NonNull Throwable t) {
+                    callBack.downloadTextFailure();
                 }
             });
         }

@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,9 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
 
     @BindView(R.id.course_act_textview1)
     TextView courseNameTextView;
+
+    @BindView(R.id.course_act_textview2)
+    TextView cardViewTextView;
 
     @BindView(R.id.course_act_button1)
     Button audioButton;
@@ -170,7 +174,21 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
         courseNameTextView.setText(courses.getCourse_name());
 //        WebSettings webSettings = webView.getSettings();
 //        webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
+//        webView.loadUrl("http://111.231.71.150/sunshinebox/fuck.html");
+    }
+
+    @Override
+    public void setCardViewTextViewVisibility(boolean isVisible) {
+        if (isVisible) {
+            cardViewTextView.setVisibility(View.VISIBLE);
+        } else {
+            cardViewTextView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void setWebViewContent(String url) {
+        webView.loadUrl(url);
     }
 
     public static boolean isConnected(Context context) {

@@ -32,6 +32,10 @@ class CourseContract {
         Activity getActivity();
 
         void setUpView(Courses course);
+
+        void setCardViewTextViewVisibility(boolean isVisible);
+
+        void setWebViewContent(String url);
     }
 
     interface Presenter extends BasePresenter {
@@ -55,6 +59,8 @@ class CourseContract {
 
         void requestAudioByCourseId(String courseId);
 
+        void requestTextByCourseId(String courseId);
+
         void cancelAudioDownloadTask();
 
         void cancelVideoDownloadTask();
@@ -72,6 +78,10 @@ class CourseContract {
         void downloadAudioSuccess();
 
         void downloadAudioFailure();
+
+        void downloadTextSuccess();
+
+        void downloadTextFailure();
 
         void updateAudioDownloadProgress(Long percent);
 

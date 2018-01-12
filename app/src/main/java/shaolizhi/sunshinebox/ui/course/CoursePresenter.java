@@ -52,6 +52,11 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         setUpButtonTextWhenThereIsNoDownload();
     }
 
+    private void webViewLoadData(Courses courses) {
+        view.setWebViewContent("file://" + courses.getText_storage_address());
+        Log.e("WebView's URL: ", courses.getText_storage_address());
+    }
+
     private void setUpButtonTextWhenThereIsNoDownload() {
         Courses courses = null;
         if (courseId != null) {
@@ -59,41 +64,87 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         }
 
         if (courses != null) {
-            if (courses.getIs_audio_downloaded()) {
-                if (courses.getCourse_audio() == null) {
-                    view.setAudioButtonText(R.string.course_act_string12);
-                    view.setAudioButtonEnable(false);
+//            if (courses.getIs_text_downloaded()) {
+//                if (courses.getCourse_text() == null) {
+//                    view.setCardViewTextViewVisibility(false);
+//                } else {
+//                    view.setWebViewContent(courses);
+//                }
+//            }
+            if (courses.getCourse_text() == null) {
+                view.setCardViewTextViewVisibility(true);
+            } else {
+                view.setCardViewTextViewVisibility(false);
+                if (courses.getIs_text_downloaded()) {
+                    webViewLoadData(courses);
                 } else {
+                    //请求权限
+                    checkPermissions();
+                    model.requestTextByCourseId(courseId);
+                }
+            }
+
+
+            if (courses.getCourse_audio() == null) {
+                view.setAudioButtonText(R.string.course_act_string12);
+                view.setAudioButtonEnable(false);
+            } else {
+                if (courses.getIs_audio_downloaded()) {
                     view.setAudioButtonText(R.string.course_act_string2);
                     view.setAudioButtonEnable(true);
-                }
-            } else {
-                if (courses.getCourse_audio() == null) {
-                    view.setAudioButtonText(R.string.course_act_string12);
-                    view.setAudioButtonEnable(false);
                 } else {
                     view.setAudioButtonText(R.string.course_act_string6);
                     view.setAudioButtonEnable(true);
                 }
             }
 
-            if (courses.getIs_video_downloaded()) {
-                if (courses.getCourse_video() == null) {
-                    view.setVideoButtonText(R.string.course_act_string13);
-                    view.setVideoButtonEnable(false);
-                } else {
+//            if (courses.getIs_audio_downloaded()) {
+//                if (courses.getCourse_audio() == null) {
+//                    view.setAudioButtonText(R.string.course_act_string12);
+//                    view.setAudioButtonEnable(false);
+//                } else {
+//                    view.setAudioButtonText(R.string.course_act_string2);
+//                    view.setAudioButtonEnable(true);
+//                }
+//            } else {
+//                if (courses.getCourse_audio() == null) {
+//                    view.setAudioButtonText(R.string.course_act_string12);
+//                    view.setAudioButtonEnable(false);
+//                } else {
+//                    view.setAudioButtonText(R.string.course_act_string6);
+//                    view.setAudioButtonEnable(true);
+//                }
+//            }
+
+            if (courses.getCourse_video() == null) {
+                view.setVideoButtonText(R.string.course_act_string13);
+                view.setVideoButtonEnable(false);
+            } else {
+                if (courses.getIs_video_downloaded()) {
                     view.setVideoButtonText(R.string.course_act_string3);
                     view.setVideoButtonEnable(true);
-                }
-            } else {
-                if (courses.getCourse_video() == null) {
-                    view.setVideoButtonText(R.string.course_act_string13);
-                    view.setVideoButtonEnable(false);
                 } else {
                     view.setVideoButtonText(R.string.course_act_string7);
                     view.setVideoButtonEnable(true);
                 }
             }
+//            if (courses.getIs_video_downloaded()) {
+//                if (courses.getCourse_video() == null) {
+//                    view.setVideoButtonText(R.string.course_act_string13);
+//                    view.setVideoButtonEnable(false);
+//                } else {
+//                    view.setVideoButtonText(R.string.course_act_string3);
+//                    view.setVideoButtonEnable(true);
+//                }
+//            } else {
+//                if (courses.getCourse_video() == null) {
+//                    view.setVideoButtonText(R.string.course_act_string13);
+//                    view.setVideoButtonEnable(false);
+//                } else {
+//                    view.setVideoButtonText(R.string.course_act_string7);
+//                    view.setVideoButtonEnable(true);
+//                }
+//            }
         }
     }
 
@@ -315,5 +366,15 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string15, Snackbar.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void downloadTextSuccess() {
+        Courses courses = model.getCourseByCourseId(courseId);
+        webViewLoadData(courses);
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string20, Snackbar.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void downloadTextFailure() {
+        Snackbar.make(view.getCoordinatorLayout(), R.string.course_act_string21, Snackbar.LENGTH_SHORT).show();
+    }
 }

@@ -83,5 +83,8 @@
     <string name="course_act_string16">已经是最后一节课了！</string>
     <string name="course_act_string17">已经是第一节课了！</string>
     <string name="course_act_string18">请等待下载结束后再切换课程！</string>
+    <string name="course_act_string19">本课没有教案</string>
+    <string name="course_act_string20">教案下载成功</string>
+    <string name="course_act_string21">教案下载失败</string>
 
 </resources>
