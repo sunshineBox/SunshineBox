@@ -35,6 +35,8 @@ class CourseContract {
 
         void setCardViewTextViewVisibility(boolean isVisible);
 
+        void setWebViewVisibility(boolean isVisible);
+
         void setWebViewContent(String url);
     }
 

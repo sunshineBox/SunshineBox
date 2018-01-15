@@ -64,17 +64,13 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
         }
 
         if (courses != null) {
-//            if (courses.getIs_text_downloaded()) {
-//                if (courses.getCourse_text() == null) {
-//                    view.setCardViewTextViewVisibility(false);
-//                } else {
-//                    view.setWebViewContent(courses);
-//                }
-//            }
+            //加载CardView上的内容
             if (courses.getCourse_text() == null) {
                 view.setCardViewTextViewVisibility(true);
+                view.setWebViewVisibility(false);
             } else {
                 view.setCardViewTextViewVisibility(false);
+                view.setWebViewVisibility(true);
                 if (courses.getIs_text_downloaded()) {
                     webViewLoadData(courses);
                 } else {
@@ -83,8 +79,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                     model.requestTextByCourseId(courseId);
                 }
             }
-
-
+            //加载音频内容
             if (courses.getCourse_audio() == null) {
                 view.setAudioButtonText(R.string.course_act_string12);
                 view.setAudioButtonEnable(false);
@@ -97,25 +92,7 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                     view.setAudioButtonEnable(true);
                 }
             }
-
-//            if (courses.getIs_audio_downloaded()) {
-//                if (courses.getCourse_audio() == null) {
-//                    view.setAudioButtonText(R.string.course_act_string12);
-//                    view.setAudioButtonEnable(false);
-//                } else {
-//                    view.setAudioButtonText(R.string.course_act_string2);
-//                    view.setAudioButtonEnable(true);
-//                }
-//            } else {
-//                if (courses.getCourse_audio() == null) {
-//                    view.setAudioButtonText(R.string.course_act_string12);
-//                    view.setAudioButtonEnable(false);
-//                } else {
-//                    view.setAudioButtonText(R.string.course_act_string6);
-//                    view.setAudioButtonEnable(true);
-//                }
-//            }
-
+            //加载视频内容
             if (courses.getCourse_video() == null) {
                 view.setVideoButtonText(R.string.course_act_string13);
                 view.setVideoButtonEnable(false);
@@ -128,23 +105,6 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
                     view.setVideoButtonEnable(true);
                 }
             }
-//            if (courses.getIs_video_downloaded()) {
-//                if (courses.getCourse_video() == null) {
-//                    view.setVideoButtonText(R.string.course_act_string13);
-//                    view.setVideoButtonEnable(false);
-//                } else {
-//                    view.setVideoButtonText(R.string.course_act_string3);
-//                    view.setVideoButtonEnable(true);
-//                }
-//            } else {
-//                if (courses.getCourse_video() == null) {
-//                    view.setVideoButtonText(R.string.course_act_string13);
-//                    view.setVideoButtonEnable(false);
-//                } else {
-//                    view.setVideoButtonText(R.string.course_act_string7);
-//                    view.setVideoButtonEnable(true);
-//                }
-//            }
         }
     }
 
@@ -191,7 +151,6 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//            Toast.makeText(view.getActivity(), String.valueOf(uri), Toast.LENGTH_LONG).show();
         }
     }
 

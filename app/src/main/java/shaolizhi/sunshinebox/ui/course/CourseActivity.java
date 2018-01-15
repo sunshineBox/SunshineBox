@@ -187,6 +187,15 @@ public class CourseActivity extends BaseActivity implements CourseContract.View 
     }
 
     @Override
+    public void setWebViewVisibility(boolean isVisible) {
+        if (isVisible) {
+            webView.setVisibility(View.VISIBLE);
+        } else {
+            webView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void setWebViewContent(String url) {
         webView.loadUrl(url);
     }
