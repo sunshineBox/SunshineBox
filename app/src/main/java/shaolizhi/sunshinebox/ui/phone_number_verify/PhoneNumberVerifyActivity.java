@@ -3,18 +3,20 @@ package shaolizhi.sunshinebox.ui.phone_number_verify;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import java.util.regex.Pattern;
 
@@ -60,8 +62,8 @@ public class PhoneNumberVerifyActivity extends ActivationActivityManager impleme
         }
     }
 
-    @BindView(R.id.phone_number_verify_act_relativelayout1)
-    RelativeLayout relativeLayout;
+    @BindView(R.id.phone_number_verify_act_constraintlayout)
+    ConstraintLayout relativeLayout;
 
     PhoneNumberVerifyContract.Presenter presenter;
 
@@ -97,13 +99,14 @@ public class PhoneNumberVerifyActivity extends ActivationActivityManager impleme
      * @param outerViewGroup    传入顶层ViewGroup
      * @param theBottomMostView 处于布局最下面的View
      */
-
     public void listenToTheSoftKeyboardAndKeepTheLayoutVisible(final View outerViewGroup, final View theBottomMostView) {
         outerViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+                //l：处于屏幕最下面的控件，其底部距离DecorView顶部的距离
                 int l = theBottomMostView.getBottom();
-                int ll = getWindow().getDecorView().getBottom() - getSoftKeyBoardHeight();
+                //ll：目前可视矩形的底边距离DecorView顶部的距离(DecorView = 底部导航栏 + 软键盘 + 可视矩形)
+                int ll = getWindow().getDecorView().getBottom() - getSoftKeyBoardHeight() - getNavigationBarHeight(PhoneNumberVerifyActivity.this);
                 int scrollY = l - ll;
                 if (getSoftKeyBoardHeight() == 0) {
                     //软键盘没有弹出
@@ -162,7 +165,16 @@ public class PhoneNumberVerifyActivity extends ActivationActivityManager impleme
     private int getSoftKeyBoardHeight() {
         Rect rect = new Rect();
         getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-        return getWindow().getDecorView().getBottom() - rect.bottom;
+        Log.e("DecorView's Bottom", String.valueOf(getWindow().getDecorView().getBottom()));
+        Log.e("Visible's Bottom", String.valueOf(rect.bottom));
+        return getWindow().getDecorView().getBottom() - rect.bottom - getNavigationBarHeight(this);
+    }
+
+    //获取虚拟按键高度
+    private int getNavigationBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        return resources.getDimensionPixelSize(resourceId);
     }
 
     //让View失去焦点
