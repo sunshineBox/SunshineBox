@@ -107,9 +107,9 @@
 
     <Button
         android:id="@+id/phone_number_verify_act_button2"
-        android:layout_width="670dp"
+        android:layout_width="640dp"
         android:layout_height="60dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="370dp"
         android:background="@drawable/shape_white_button"
         android:text="@string/phone_number_verify_act_string8"
         android:textColor="#6bcab2"
