@@ -2,23 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="菜单栏">
+    <item android:title="@string/drawer_string1">
         <menu>
             <item
                 android:id="@+id/nav_camera"
-                android:title="我的收藏" />
+                android:title="@string/drawer_string2" />
             <item
                 android:id="@+id/nav_share"
-                android:title="意见反馈" />
+                android:title="@string/drawer_string3" />
             <item
                 android:id="@+id/nav_send"
-                android:title="联系我们" />
-            <item
-                android:id="@+id/nav_style"
-                android:title="界面风格" />
+                android:title="@string/drawer_string4" />
             <item
                 android:id="@+id/nav_manage"
-                android:title="退出激活" />
+                android:title="@string/drawer_string5" />
         </menu>
     </item>
 

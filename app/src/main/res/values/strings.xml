@@ -88,5 +88,10 @@
     <string name="course_act_string21">教案下载失败</string>
     <string name="nav_header_string1">阳光书屋</string>
     <string name="nav_header_string2">http://www.sunshine-library.org/</string>
+    <string name="drawer_string1">菜单栏</string>
+    <string name="drawer_string2">我的收藏</string>
+    <string name="drawer_string3">意见反馈</string>
+    <string name="drawer_string4">联系我们</string>
+    <string name="drawer_string5">退出激活</string>
 
 </resources>
