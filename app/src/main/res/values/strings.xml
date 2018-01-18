@@ -86,5 +86,7 @@
     <string name="course_act_string19">本课没有教案</string>
     <string name="course_act_string20">教案下载成功</string>
     <string name="course_act_string21">教案下载失败</string>
+    <string name="nav_header_string1">阳光书屋</string>
+    <string name="nav_header_string2">http://www.sunshine-library.org/</string>
 
 </resources>
