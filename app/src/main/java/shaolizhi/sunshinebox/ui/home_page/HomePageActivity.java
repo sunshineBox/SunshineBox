@@ -18,8 +18,6 @@ public class HomePageActivity extends FormalActivityManager {
         startActivity(intent);
     }
 
-
-
     @OnClick(R.id.home_page_act_imagebutton)
     public void openSettingActivity() {
         Intent intent = new Intent(HomePageActivity.this, SettingActivity.class);

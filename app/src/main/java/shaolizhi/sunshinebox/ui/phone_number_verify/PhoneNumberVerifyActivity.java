@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.OnClick;
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.home_page.HomePageActivity;
+import shaolizhi.sunshinebox.ui.index.IndexActivity;
 import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 import shaolizhi.sunshinebox.utils.ToastUtils;
 
@@ -141,7 +141,7 @@ public class PhoneNumberVerifyActivity extends ActivationActivityManager impleme
 
     @Override
     public void openVerifyActivationCodeActivity() {
-        Intent intent = new Intent(PhoneNumberVerifyActivity.this, HomePageActivity.class);
+        Intent intent = new Intent(PhoneNumberVerifyActivity.this, IndexActivity.class);
         intent.putExtra("phone_number", getPhoneNumber());
         startActivity(intent);
     }

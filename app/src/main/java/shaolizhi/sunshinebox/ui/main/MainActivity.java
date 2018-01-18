@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import shaolizhi.sunshinebox.R;
-import shaolizhi.sunshinebox.ui.home_page.HomePageActivity;
+import shaolizhi.sunshinebox.ui.index.IndexActivity;
 import shaolizhi.sunshinebox.ui.welcome.WelcomeActivity;
 import shaolizhi.sunshinebox.utils.ActivationActivityManager;
 import shaolizhi.sunshinebox.utils.SharedPreferencesUtils;
@@ -30,7 +30,7 @@ public class MainActivity extends ActivationActivityManager {
         if (uuid == null) {
             intent = new Intent(MainActivity.this, WelcomeActivity.class);
         } else {
-            intent = new Intent(MainActivity.this, HomePageActivity.class);
+            intent = new Intent(MainActivity.this, IndexActivity.class);
         }
         startActivity(intent);
     }
