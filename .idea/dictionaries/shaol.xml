@@ -9,6 +9,7 @@
       <w>navigationview</w>
       <w>relativelayout</w>
       <w>snackbar</w>
+      <w>videoview</w>
     </words>
   </dictionary>
 </component>

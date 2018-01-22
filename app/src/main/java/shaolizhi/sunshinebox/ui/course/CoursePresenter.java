@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import shaolizhi.sunshinebox.R;
 import shaolizhi.sunshinebox.objectbox.courses.Courses;
+import shaolizhi.sunshinebox.ui.video.VideoActivity;
 import shaolizhi.sunshinebox.utils.IOUtils;
 
 /**
@@ -258,10 +259,14 @@ public class CoursePresenter implements CourseContract.Presenter, CourseContract
     private void playVideo() {
         Courses courses = model.getCourseByCourseId(courseId);
         if (courses != null) {
-            Uri uri = Uri.parse(courses.getVideo_storage_address());
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(uri, "video/mp4");
+            //自定义播放器
+            Intent intent = VideoActivity.newIntent(view.getActivity(), courses.getVideo_storage_address());
             view.getActivity().startActivity(intent);
+            //系统播放器
+//            Uri uri = Uri.parse(courses.getVideo_storage_address());
+//            Intent intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setDataAndType(uri, "video/mp4");
+//            view.getActivity().startActivity(intent);
         }
     }
 
