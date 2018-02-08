@@ -33,6 +33,7 @@ public class MainActivity extends ActivationActivityManager {
             intent = new Intent(MainActivity.this, IndexActivity.class);
         }
         startActivity(intent);
+        finish();
     }
 
     @Override
